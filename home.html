@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infaq@MAMTJ6</title>
+    <!-- Favicon (Sila tukar pautan jika perlu) -->
+    <link rel="icon" href="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" type="image/svg+xml">
+    
+    <!-- Google Fonts untuk reka bentuk yang lebih menarik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #3a2f6b;
+            --color-secondary: #36669c;
+            --color-tertiary: #41a0ae;
+            --color-accent: #3ec995;
+            --color-highlight: #77f07f;
+            --color-text: #ffffff;
+            --color-background-card: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--color-text);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-tertiary), var(--color-accent));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 1. Header */
+        .main-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        .main-header .logo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .main-header img {
+            width: 50px;
+            height: 50px;
+        }
+        .main-header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 700;
+        }
+        .main-header .subtext {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Wrapper untuk kad-kad kandungan */
+        .card {
+            background: var(--color-background-card);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* 2. Projek Pembangunan Terkini */
+        #projek-terkini #projek-nama {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .progress-bar-container {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            height: 25px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        #projek-bar-kemajuan {
+            background-color: var(--color-highlight);
+            width: 0%; /* Lebar akan dikemas kini oleh JS */
+            height: 100%;
+            border-radius: 50px;
+            transition: width 1.5s ease-in-out;
+            text-align: center;
+            line-height: 25px;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        #projek-jumlah {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Butang Umum */
+        .btn {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: var(--color-highlight);
+            transform: translateY(-2px);
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* 3. Kaedah Infaq */
+        .infaq-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+        .infaq-btn {
+            background-color: var(--color-background-card);
+            border: 1px solid var(--color-accent);
+            padding: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .infaq-btn:hover {
+            background-color: rgba(62, 201, 149, 0.3);
+            transform: translateY(-5px);
+        }
+        .infaq-btn .icon {
+            font-size: 2.5em; /* Saiz ikon dummy */
+            margin-bottom: 10px;
+        }
+
+        /* 4. Ringkasan Kutipan */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .summary-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .summary-table tr:last-child td {
+            border-bottom: none;
+        }
+        .summary-table .label {
+            font-weight: 600;
+        }
+        .summary-table .amount {
+            text-align: right;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--color-highlight);
+        }
+        .loading-placeholder {
+            opacity: 0.5;
+        }
+
+        /* 5. Footer */
+        .main-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-bottom: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        .main-footer a {
+            color: var(--color-highlight);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 1. Header -->
+        <header class="main-header">
+            <div class="logo-wrapper">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo MAMTJ6">
+                <h1>Infaq@MAMTJ6</h1>
+            </div>
+            <p class="subtext">Memudahkan Anda Berinfaq, Memberkati Ummah</p>
+        </header>
+
+        <main>
+            <!-- 2. Projek Pembangunan Terkini -->
+            <section id="projek-terkini" class="card">
+                <h2>Projek Pembangunan Terkini</h2>
+                <p id="projek-nama" class="loading-placeholder">Memuatkan nama projek...</p>
+                <div class="progress-bar-container">
+                    <div id="projek-bar-kemajuan">0%</div>
+                </div>
+                <p id="projek-jumlah" class="loading-placeholder">Memuatkan data kutipan...</p>
+                <div class="text-center">
+                    <!-- Pautan ke halaman infaq-pembangunan.html anda -->
+                    <a id="projek-butang" href="infaq-pembangunan.html" class="btn">Maklumat Lanjut</a>
+                </div>
+            </section>
+
+            <!-- 3. 4 Butang Cara Infaq -->
+            <section id="kaedah-infaq" class="card">
+                <h2>Kaedah Infaq</h2>
+                <div class="infaq-buttons-grid">
+                    <!-- Pautan dummy, sila tukar 'href' ke halaman sebenar -->
+                    <a href="#" class="infaq-btn">
+                        <div class="icon">🏦</div>
+                        <div>Pindahan Atas Talian</div>
+                    </a>
+                    <a href="#" class="infaq-btn">
+                        <div class="icon">📱</div>
+                        <div>QR Pay</div>
+                    </a>
+                    <a href="#" class="infaq-btn">
+                        <div class="icon">💳</div>
+                        <div>FPX (Billplz)</div>
+                    </a>
+                    <a href="#" class="infaq-btn">
+                        <div class="icon">🕌</div>
+                        <div>Tabung Fizikal</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 4. Ringkasan Kutipan Tabung -->
+            <section id="ringkasan-kutipan" class="card">
+                <h2>Ringkasan Kutipan Tabung</h2>
+                <table class="summary-table">
+                    <tbody>
+                        <tr>
+                            <td class="label">Kutipan <span id="nama-bulan-ini">Bulan Ini</span></td>
+                            <td id="jumlah-bulan-ini" class="amount loading-placeholder">RM 0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Kutipan <span id="nama-bulan-lepas">Bulan Lepas</span></td>
+                            <td id="jumlah-bulan-lepas" class="amount loading-placeholder">RM 0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Jumlah <span id="nama-tahun-ini">Tahun Ini</span></td>
+                            <td id="jumlah-tahun-ini" class="amount loading-placeholder">RM 0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Jumlah <span id="nama-tahun-lepas">Tahun Lepas</span></td>
+                            <td id="jumlah-tahun-lepas" class="amount loading-placeholder">RM 0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                     <!-- Pautan ke halaman jadual lengkap / graf anda -->
+                    <a href="graf.html" class="btn">Lihat Laporan Penuh</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- 5. Footer -->
+        <footer class="main-footer">
+            <p>Data dikemas kini pada: <strong id="tarikh-kemaskini-footer" class="loading-placeholder">Memuatkan tarikh...</strong></p>
+            <p>Dibangunkan oleh admin.mamtj6</p>
+            <p>Untuk info lanjut, layari <a href="https://www.mamtj6.com" target="_blank">mamtj6.com</a></p>
+            <p>&copy; 2025 Hak Cipta Terpelihara</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
+
+        function formatCurrency(amount) {
+            if (typeof amount !== 'number') return "N/A";
+            return `RM ${amount.toLocaleString('en-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        async function populateData() {
+            try {
+                // Ambil data dari fail JSON di GitHub
+                const response = await fetch(`${jsonDataUrl}?t=${new Date().getTime()}`);
+                if (!response.ok) {
+                    throw new Error(`Ralat HTTP: ${response.status}`);
+                }
+                const data = await response.json();
+
+                // 1. Populasi Bahagian Projek Terkini
+                const projek = data.projek;
+                document.getElementById('projek-nama').textContent = projek.NamaProjek;
+                document.getElementById('projek-jumlah').textContent = `${formatCurrency(projek.JumlahTerkumpul)} / ${formatCurrency(projek.SasaranKutipan).replace('.00','')}`;
+                const progressBar = document.getElementById('projek-bar-kemajuan');
+                // Tambah sedikit delay untuk animasi yang cantik
+                setTimeout(() => {
+                    progressBar.style.width = `${projek.Peratusan}%`;
+                    progressBar.textContent = `${projek.Peratusan}%`;
+                }, 100);
+                
+                // 2. Populasi Bahagian Ringkasan Kutipan
+                const kutipan = data.ringkasan.kutipan;
+                document.getElementById('nama-bulan-ini').textContent = `Bulan Ini (${kutipan.bulanIni.bulan.charAt(0) + kutipan.bulanIni.bulan.slice(1).toLowerCase()})`;
+                document.getElementById('jumlah-bulan-ini').textContent = formatCurrency(kutipan.bulanIni.jumlah);
+
+                document.getElementById('nama-bulan-lepas').textContent = `Bulan Lepas (${kutipan.bulanLepas.bulan.charAt(0) + kutipan.bulanLepas.bulan.slice(1).toLowerCase()})`;
+                document.getElementById('jumlah-bulan-lepas').textContent = formatCurrency(kutipan.bulanLepas.jumlah);
+                
+                document.getElementById('nama-tahun-ini').textContent = `Tahun Ini (${kutipan.tahunIni.tahun})`;
+                document.getElementById('jumlah-tahun-ini').textContent = formatCurrency(kutipan.tahunIni.jumlah);
+
+                document.getElementById('nama-tahun-lepas').textContent = `Tahun Lepas (${kutipan.tahunLepas.tahun})`;
+                document.getElementById('jumlah-tahun-lepas').textContent = formatCurrency(kutipan.tahunLepas.jumlah);
+
+                // 3. Populasi Bahagian Footer
+                const tarikhKemaskini = new Date(data.tarikhKemaskini);
+                document.getElementById('tarikh-kemaskini-footer').textContent = tarikhKemaskini.toLocaleDateString('ms-MY', {
+                    day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
+                });
+
+                // Buang class 'loading-placeholder' selepas data dimuatkan
+                document.querySelectorAll('.loading-placeholder').forEach(el => el.classList.remove('loading-placeholder'));
+
+            } catch (error) {
+                console.error("Gagal memuat naik dan memaparkan data:", error);
+                // Maklumkan kepada pengguna jika berlaku ralat
+                document.body.innerHTML = `<div style="text-align: center; padding-top: 50px; color: white;"><h1>Oops!</h1><p>Gagal memuatkan data infaq terkini. Sila cuba lagi sebentar lagi.</p><p>Ralat: ${error.message}</p></div>`;
+            }
+        }
+
+        // Panggil fungsi untuk memulakan proses
+        document.addEventListener('DOMContentLoaded', populateData);
+    </script>
+</body>
+</html>
