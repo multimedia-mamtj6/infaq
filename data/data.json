@@ -21,26 +21,26 @@
     "projek": {
       "NamaProjek": "Infaq Tabung Bangunan Tambahan MAMTJ6",
       "SasaranKutipan": 250000,
-      "JumlahTerkumpul": 131735,
-      "TarikhKemaskini": "2025-10-05T16:00:00.000Z",
-      "Peratusan": 52.7
+      "JumlahTerkumpul": 139932,
+      "TarikhKemaskini": "2025-11-25T16:00:00.000Z",
+      "Peratusan": 56
     }
   },
   "projek": {
     "NamaProjek": "Infaq Tabung Bangunan Tambahan MAMTJ6",
     "SasaranKutipan": 250000,
-    "JumlahTerkumpul": 131735,
-    "TarikhKemaskini": "2025-10-05T16:00:00.000Z",
-    "Peratusan": 52.7
+    "JumlahTerkumpul": 139932,
+    "TarikhKemaskini": "2025-11-25T16:00:00.000Z",
+    "Peratusan": 56
   },
   "paparanBulanIni": {
     "Tahun": 2025,
     "Bulan": "OKTOBER",
     "Minggu1": 1900,
     "Minggu2": 1718,
-    "Minggu3": 0,
-    "Minggu4": 0,
-    "Minggu5": 0,
+    "Minggu3": 1913,
+    "Minggu4": 1946,
+    "Minggu5": 1866,
     "JumlahBulanan": 3618
   },
   "paparanBulanLepas": {
@@ -115,5 +115,5 @@
       ]
     }
   },
-  "tarikhKemaskini": "2025-10-13T15:21:29.507Z"
+  "tarikhKemaskini": "2025-11-26T07:38:51.267Z"
 }
