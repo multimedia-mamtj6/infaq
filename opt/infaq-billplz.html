@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infaq Billplz - MAMTJ6</title>
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- 3. Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+            <a href="/index.html" class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition">
+                <i class="ph ph-arrow-left text-xl"></i>
+                <span class="font-semibold text-sm">Kembali</span>
+            </a>
+            <div class="flex items-center gap-2">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-8 h-8">
+                <span class="font-bold text-slate-800 hidden md:block">Infaq Center</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT (Split Layout) -->
+    <main
+        class="flex-grow w-full max-w-6xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+
+        <!-- LEFT COLUMN: Context & Information -->
+        <div class="space-y-8 fade-in-up order-2 lg:order-1">
+
+            <!-- Header Text -->
+            <div>
+                <span class="text-purple-600 font-bold tracking-wider uppercase text-xs mb-2 block">Kaedah 3: Bayaran
+                    Online (Billplz)</span>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                    Bayar Dengan Kad Kredit, Debit & FPX.
+                </h1>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Billplz memudahkan anda berinfaq menggunakan pelbagai kaedah pembayaran dalam satu platform yang
+                    selamat dan dipercayai.
+                </p>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="ph-fill ph-credit-card text-purple-600 text-xl"></i>
+                    Kaedah Pembayaran Tersedia:
+                </h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-100">
+                        <i class="ph-fill ph-credit-card text-3xl text-slate-400 mb-2"></i>
+                        <p class="text-sm font-semibold text-slate-700">Kad Kredit</p>
+                        <p class="text-xs text-slate-500">Visa, Mastercard</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-100">
+                        <i class="ph-fill ph-credit-card text-3xl text-slate-400 mb-2"></i>
+                        <p class="text-sm font-semibold text-slate-700">Kad Debit</p>
+                        <p class="text-xs text-slate-500">Semua bank</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-100">
+                        <i class="ph-fill ph-bank text-3xl text-slate-400 mb-2"></i>
+                        <p class="text-sm font-semibold text-slate-700">FPX</p>
+                        <p class="text-xs text-slate-500">Online Banking</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-100">
+                        <i class="ph-fill ph-wallet text-3xl text-slate-400 mb-2"></i>
+                        <p class="text-sm font-semibold text-slate-700">E-Wallet</p>
+                        <p class="text-xs text-slate-500">Touch 'n Go, Boost</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Badge -->
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 p-6 rounded-2xl">
+                <div class="flex items-start gap-4">
+                    <div class="bg-green-500 text-white p-3 rounded-xl shrink-0">
+                        <i class="ph-fill ph-shield-check text-3xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-green-900 mb-2">Transaksi Selamat & Terjamin</h4>
+                        <p class="text-sm text-green-800 leading-relaxed">
+                            Billplz adalah payment gateway berlesen oleh Bank Negara Malaysia. Semua transaksi
+                            dilindungi dengan enkripsi SSL 256-bit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Billplz -->
+            <div class="space-y-3">
+                <h3 class="font-bold text-slate-800 text-lg">Kenapa Pilih Billplz?</h3>
+                <div class="flex gap-3 items-start">
+                    <i class="ph-fill ph-check-circle text-green-500 text-xl shrink-0 mt-1"></i>
+                    <p class="text-slate-600">Resit digital automatik dihantar ke email anda.</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <i class="ph-fill ph-check-circle text-green-500 text-xl shrink-0 mt-1"></i>
+                    <p class="text-slate-600">Pengesahan pembayaran segera (real-time).</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <i class="ph-fill ph-check-circle text-green-500 text-xl shrink-0 mt-1"></i>
+                    <p class="text-slate-600">Tiada caj tambahan untuk penderma.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Payment Form -->
+        <div class="fade-in-up order-1 lg:order-2 lg:sticky lg:top-24">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+                <!-- Form Header -->
+                <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-white text-center">
+                    <i class="ph-fill ph-hand-heart text-5xl mb-3 opacity-90"></i>
+                    <h2 class="text-2xl font-bold">Borang Sumbangan</h2>
+                    <p class="text-sm text-purple-100 mt-1">Isi maklumat di bawah untuk meneruskan</p>
+                </div>
+
+                <!-- Form Content -->
+                <div class="p-6 space-y-5">
+
+                    <!-- Amount Selection -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-3">Pilih Jumlah Sumbangan</label>
+                        <div class="grid grid-cols-2 gap-3 mb-3">
+                            <button type="button" onclick="selectAmount(10)"
+                                class="amount-btn bg-slate-50 border-2 border-slate-200 hover:border-purple-500 hover:bg-purple-50 text-slate-700 font-bold py-3 rounded-xl transition">
+                                RM 10
+                            </button>
+                            <button type="button" onclick="selectAmount(30)"
+                                class="amount-btn bg-slate-50 border-2 border-slate-200 hover:border-purple-500 hover:bg-purple-50 text-slate-700 font-bold py-3 rounded-xl transition">
+                                RM 30
+                            </button>
+                            <button type="button" onclick="selectAmount(50)"
+                                class="amount-btn bg-slate-50 border-2 border-slate-200 hover:border-purple-500 hover:bg-purple-50 text-slate-700 font-bold py-3 rounded-xl transition">
+                                RM 50
+                            </button>
+                            <button type="button" onclick="selectAmount(100)"
+                                class="amount-btn bg-slate-50 border-2 border-slate-200 hover:border-purple-500 hover:bg-purple-50 text-slate-700 font-bold py-3 rounded-xl transition">
+                                RM 100
+                            </button>
+                        </div>
+
+                        <!-- Custom Amount -->
+                        <div class="relative">
+                            <span
+                                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 font-bold text-lg">RM</span>
+                            <input type="number" id="custom-amount" placeholder="Atau masukkan jumlah lain"
+                                class="w-full pl-14 pr-4 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent focus:bg-white transition font-bold text-lg text-slate-800 placeholder:font-normal placeholder:text-slate-400 placeholder:text-sm">
+                        </div>
+                    </div>
+
+                    <!-- User Details -->
+                    <div class="space-y-4 pt-2">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Nama Penuh</label>
+                            <input type="text" placeholder="Nama Anda"
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Emel</label>
+                            <input type="email" placeholder="contoh@email.com"
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">No. Telefon</label>
+                            <input type="tel" placeholder="0123456789"
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition">
+                        </div>
+                    </div>
+
+                    <!-- Pay Button -->
+                    <button
+                        class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 transition flex justify-between items-center px-6 group">
+                        <span class="flex items-center gap-2">
+                            <i class="ph-bold ph-lock-simple text-lg"></i>
+                            Teruskan Bayaran
+                        </span>
+                        <span id="total-amount" class="bg-white/20 px-4 py-1 rounded-lg text-sm font-mono">RM
+                            0.00</span>
+                    </button>
+
+                    <p class="text-center text-xs text-slate-400">
+                        <i class="ph-fill ph-shield-check text-green-500"></i>
+                        Pembayaran dilindungi oleh Billplz
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">© 2024 Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6)</p>
+        </div>
+    </footer>
+
+    <script>
+        function selectAmount(amount) {
+            // Reset custom input
+            document.getElementById('custom-amount').value = '';
+
+            // Update UI for buttons
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('border-purple-500', 'bg-purple-50', 'text-purple-700');
+                btn.classList.add('border-slate-200', 'text-slate-700');
+            });
+
+            // Highlight selected button
+            event.target.classList.remove('border-slate-200', 'text-slate-700');
+            event.target.classList.add('border-purple-500', 'bg-purple-50', 'text-purple-700');
+
+            updateTotal(amount);
+        }
+
+        document.getElementById('custom-amount').addEventListener('input', function (e) {
+            // Reset buttons
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('border-purple-500', 'bg-purple-50', 'text-purple-700');
+                btn.classList.add('border-slate-200', 'text-slate-700');
+            });
+
+            updateTotal(e.target.value);
+        });
+
+        function updateTotal(amount) {
+            const display = document.getElementById('total-amount');
+            const val = parseFloat(amount);
+            if (!isNaN(val) && val > 0) {
+                display.innerText = 'RM ' + val.toFixed(2);
+            } else {
+                display.innerText = 'RM 0.00';
+            }
+        }
+    </script>
+</body>
+
+</html>

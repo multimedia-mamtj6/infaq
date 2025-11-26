@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infaq Tabung - MAMTJ6</title>
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- 3. Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+            <a href="/index.html" class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition">
+                <i class="ph ph-arrow-left text-xl"></i>
+                <span class="font-semibold text-sm">Kembali</span>
+            </a>
+            <div class="flex items-center gap-2">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-8 h-8">
+                <span class="font-bold text-slate-800 hidden md:block">Infaq Center</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT (Split Layout) -->
+    <main
+        class="flex-grow w-full max-w-6xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+
+        <!-- LEFT COLUMN: Context & Information -->
+        <div class="space-y-8 fade-in-up order-2 lg:order-1">
+
+            <!-- Header Text -->
+            <div>
+                <span class="text-amber-600 font-bold tracking-wider uppercase text-xs mb-2 block">Kaedah 4: Tabung
+                    Fizikal</span>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                    Sumbang Secara Terus Di Pejabat Masjid.
+                </h1>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Bagi yang lebih selesa dengan kaedah tradisional, anda boleh menyumbang secara tunai terus di
+                    pejabat pengurusan masjid atau melalui tabung bergerak semasa solat Jumaat.
+                </p>
+            </div>
+
+            <!-- Operating Hours -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-5">
+                <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                    <i class="ph-fill ph-clock text-amber-600 text-xl"></i>
+                    Waktu Operasi
+                </h3>
+
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+                        <div class="bg-blue-100 text-blue-600 p-2 rounded-lg shrink-0">
+                            <i class="ph-fill ph-calendar text-2xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-800">Hari Bekerja</p>
+                            <p class="text-sm text-slate-600">Isnin - Jumaat</p>
+                            <p class="text-sm text-slate-500">9:00 Pagi - 5:00 Petang</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border border-green-200">
+                        <div class="bg-green-500 text-white p-2 rounded-lg shrink-0">
+                            <i class="ph-fill ph-mosque text-2xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-green-900">Solat Jumaat</p>
+                            <p class="text-sm text-green-800">Tabung bergerak tersedia di ruang solat utama</p>
+                            <p class="text-sm text-green-700 mt-1">Setiap Jumaat, 12:30 PM - 2:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Physical Donation -->
+            <div class="space-y-4">
+                <h3 class="font-bold text-slate-800 text-lg">Kelebihan Tabung Fizikal:</h3>
+                <div class="flex gap-4">
+                    <div class="bg-amber-100 text-amber-600 p-3 rounded-xl shrink-0">
+                        <i class="ph-fill ph-hand-coins text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Mudah & Langsung</p>
+                        <p class="text-sm text-slate-500">Tiada perlu akaun bank atau aplikasi. Hanya datang dan
+                            sumbang.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="bg-blue-100 text-blue-600 p-3 rounded-xl shrink-0">
+                        <i class="ph-fill ph-user-circle text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Jumpa Petugas Sendiri</p>
+                        <p class="text-sm text-slate-500">Dapatkan resit rasmi dan berbincang terus dengan pengurusan.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="bg-purple-100 text-purple-600 p-3 rounded-xl shrink-0">
+                        <i class="ph-fill ph-users-three text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Sambil Ziarah Masjid</p>
+                        <p class="text-sm text-slate-500">Lihat sendiri projek pembangunan yang sedang berjalan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white p-6 rounded-2xl">
+                <h4 class="font-bold mb-3 flex items-center gap-2">
+                    <i class="ph-fill ph-phone text-xl"></i>
+                    Hubungi Kami
+                </h4>
+                <p class="text-slate-300 text-sm mb-4">
+                    Ada pertanyaan? Hubungi petugas kami untuk maklumat lanjut.
+                </p>
+                <a href="https://wa.me/60123456789" target="_blank"
+                    class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition shadow-lg">
+                    <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                    WhatsApp Petugas
+                </a>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Map & Location -->
+        <div class="fade-in-up order-1 lg:order-2 lg:sticky lg:top-24">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+                <!-- Map Header -->
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    <strong>Tip:</strong> Gunakan pintu masuk utama dan tanya petugas di kaunter penerimaan
+                    tetamu. Tempat letak kereta tersedia.
+                </p>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">© 2024 Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6)</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

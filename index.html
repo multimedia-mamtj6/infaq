@@ -1,10 +1,203 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="ms">
+
 <head>
-    <meta http-equiv="refresh" content="0;https://www.mamtj6.com/infaq-wakaf">
-    <title>Redirecting...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infaq Dashboard MAMTJ6</title>
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- 3. Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <p>If you are not redirected, <a href="https://www.mamtj6.com/infaq-wakaf">click here</a>.</p>
+
+<body class="p-4 md:p-8 bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Container Utama: Lebih lebar untuk desktop (max-w-5xl) -->
+    <div class="w-full max-w-5xl mx-auto flex-grow flex flex-col gap-6">
+
+        <!-- HEADER -->
+        <header
+            class="text-center md:text-left flex flex-col md:flex-row items-center gap-4 py-4 border-b border-slate-200/60 mb-2">
+            <div class="bg-white p-2 rounded-full shadow-sm">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-12 h-12">
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold text-slate-800">Infaq Center MAMTJ6</h1>
+                <p class="text-slate-500 text-sm">Memudahkan Anda Berinfaq</p>
+            </div>
+        </header>
+
+        <!-- LAYOUT GRID: 1 Lajur di Mobile, 2 Lajur di Desktop -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+
+            <!-- LAJUR KIRI: KAD PROJEK UTAMA -->
+            <!-- Saya letakkan 'h-full' supaya ia sama tinggi dengan lajur kanan di desktop -->
+            <div
+                class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 relative overflow-hidden flex flex-col justify-between h-full">
+
+                <!-- Bahagian Atas Kad -->
+                <div>
+                    <div class="flex justify-between items-start mb-6">
+                        <span
+                            class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Sedang Berjalan
+                        </span>
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <i class="ph ph-buildings text-2xl text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- Tajuk Projek (Baiki Isu Bertindih: Guna gap dan susunan flow biasa) -->
+                    <div class="mb-8">
+                        <h2 id="project-name" class="text-xl md:text-3xl font-bold text-slate-800 skeleton mb-4">
+                            Memuatkan Projek...
+                        </h2>
+                        <p class="text-slate-400 text-sm">Sumbangan anda membina masa depan.</p>
+                    </div>
+                </div>
+
+                <!-- Bahagian Bawah Kad: Progress Bar -->
+                <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <span class="text-slate-500 text-xs font-semibold uppercase">Terkumpul</span>
+                            <div id="project-stats" class="text-lg md:text-xl font-bold text-slate-800 skeleton mt-1">
+                                RM 0.00 / RM 0.00
+                            </div>
+                        </div>
+                        <span id="project-percent" class="text-3xl font-bold text-blue-600 skeleton">0%</span>
+                    </div>
+
+                    <div class="w-full bg-slate-200 rounded-full h-4 overflow-hidden">
+                        <div id="project-bar"
+                            class="bg-blue-500 h-4 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-blue-500/30"
+                            style="width: 0%"></div>
+                    </div>
+
+                    <a href="infaq-pembangunan.html"
+                        class="mt-4 block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 rounded-lg transition shadow-md">
+                        Lihat Maklumat Lanjut
+                    </a>
+                </div>
+            </div>
+
+            <!-- LAJUR KANAN: STATISTIK & BUTANG -->
+            <div class="flex flex-col gap-6">
+
+                <!-- 1. KAD RINGKASAN KUTIPAN -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
+                        <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                            <i class="ph ph-chart-bar text-blue-500 text-lg"></i> Ringkasan Kutipan
+                        </h3>
+                        <a href="tabung-bulanan.html" class="text-xs font-semibold text-blue-600 hover:underline">
+                            Lihat Laporan Penuh &rarr;
+                        </a>
+                    </div>
+
+                    <div class="divide-y divide-slate-100">
+                        <!-- Item 1 -->
+                        <div class="p-4 flex justify-between items-center hover:bg-slate-50 transition">
+                            <span id="lbl-month-curr" class="text-sm text-slate-500 skeleton">Bulan Ini</span>
+                            <span id="val-month-curr" class="text-base font-bold text-slate-800 skeleton">RM
+                                0.00</span>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="p-4 flex justify-between items-center hover:bg-slate-50 transition">
+                            <span id="lbl-month-prev" class="text-sm text-slate-500 skeleton">Bulan
+                                Lepas</span>
+                            <span id="val-month-prev" class="text-base font-bold text-slate-800 skeleton">RM
+                                0.00</span>
+                        </div>
+                        <!-- Item 3 (Highlight) -->
+                        <div class="p-4 flex justify-between items-center bg-blue-50/60">
+                            <span id="lbl-year-curr" class="text-sm text-blue-800 font-semibold skeleton">Tahun
+                                Ini</span>
+                            <span id="val-year-curr" class="text-base font-bold text-blue-700 skeleton">RM
+                                0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. GRID BUTANG PANTAS -->
+                <div>
+                    <div class="text-left font-bold text-slate-700 mb-3 flex items-center gap-2">
+                        <i class="ph ph-money text-blue-500 text-lg"></i> Kaedah Sumbangan:
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="opt/infaq-transfer.html"
+                            class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition text-center group flex flex-col items-center justify-center gap-2 h-28">
+                            <i
+                                class="ph ph-bank text-3xl text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span
+                                class="text-sm font-semibold text-slate-600 group-hover:text-slate-800">Transfer</span>
+                        </a>
+
+                        <a href="opt/infaq-qr.html"
+                            class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition text-center group flex flex-col items-center justify-center gap-2 h-28">
+                            <i
+                                class="ph ph-qr-code text-3xl text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="text-sm font-semibold text-slate-600 group-hover:text-slate-800">QR
+                                Pay</span>
+                        </a>
+
+                        <a href="opt/infaq-billplz.html"
+                            class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition text-center group flex flex-col items-center justify-center gap-2 h-28">
+                            <i
+                                class="ph ph-credit-card text-3xl text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="text-sm font-semibold text-slate-600 group-hover:text-slate-800">Billplz</span>
+                        </a>
+
+                        <a href="opt/infaq-tabung.html"
+                            class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition text-center group flex flex-col items-center justify-center gap-2 h-28">
+                            <i
+                                class="ph ph-hand-coins text-3xl text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="text-sm font-semibold text-slate-600 group-hover:text-slate-800">Tabung</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="text-center pt-8 pb-4 mt-auto">
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1">
+                <i class="ph-fill ph-clock"></i> Data dikemaskini: <span id="last-update"
+                    class="font-medium text-slate-500">...</span>
+            </p>
+            <p class="text-[10px] text-slate-300 mt-2 uppercase tracking-widest">
+                MAMTJ6 System v2.1
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Script Logic -->
+    <script src="script.js"></script>
 </body>
+
 </html>

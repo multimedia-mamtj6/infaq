@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Tabung Bulanan - MAMTJ6</title>
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- 3. Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 4. Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="p-4 md:p-8 bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Container Utama -->
+    <div class="w-full max-w-5xl mx-auto flex-grow flex flex-col gap-6">
+
+        <!-- HEADER -->
+        <header
+            class="flex flex-col md:flex-row items-center justify-between gap-4 py-4 border-b border-slate-200/60 mb-2">
+            <div class="flex items-center gap-4">
+                <div class="bg-white p-2 rounded-full shadow-sm">
+                    <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-12 h-12">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-800">Laporan Tabung</h1>
+                    <p class="text-slate-500 text-sm">Analisis Kutipan Bulanan & Tahunan</p>
+                </div>
+            </div>
+            <a href="index.html"
+                class="flex items-center gap-2 text-slate-600 hover:text-blue-600 font-medium transition bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm hover:shadow-md">
+                <i class="ph ph-arrow-left"></i> Kembali
+            </a>
+        </header>
+
+        <!-- KAD RINGKASAN UTAMA -->
+        <div
+            class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
+                <i class="ph-fill ph-chart-line-up text-[15rem]"></i>
+            </div>
+
+            <div class="relative z-10">
+                <h2 class="text-blue-100 text-sm font-medium uppercase tracking-wider mb-1">Jumlah Kutipan Bulan Ini
+                </h2>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-4xl md:text-5xl font-bold" id="report-month-total">RM 0.00</span>
+                    <span class="text-blue-200 text-lg" id="report-month-name">(...)</span>
+                </div>
+                <p class="mt-4 text-blue-100 text-sm max-w-md">
+                    Data ini dikemaskini secara berkala. Berikut adalah perincian trend kutipan mingguan dan tahunan.
+                </p>
+            </div>
+        </div>
+
+        <!-- GRID CARTA -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- CARTA 1: TREND MINGGUAN -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                        <i class="ph-fill ph-calendar-week text-blue-500"></i> Trend Mingguan
+                    </h3>
+                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium">Bulan Ini</span>
+                </div>
+                <div class="h-64 w-full">
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+
+            <!-- CARTA 2: TREND TAHUNAN -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                        <i class="ph-fill ph-trend-up text-blue-500"></i> Trend Tahunan
+                    </h3>
+                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded font-medium"
+                        id="report-year-label">2025</span>
+                </div>
+                <div class="h-64 w-full">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="text-center pt-8 pb-4 mt-auto">
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1">
+                <i class="ph-fill ph-clock"></i> Data dikemaskini: <span id="last-update"
+                    class="font-medium text-slate-500">...</span>
+            </p>
+            <p class="text-[10px] text-slate-300 mt-2 uppercase tracking-widest">
+                MAMTJ6 System v2.1
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Script Logic -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize report specific logic when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof loadReport === 'function') {
+                loadReport();
+            }
+        });
+    </script>
+</body>
+
+</html>
