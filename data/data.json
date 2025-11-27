@@ -3,7 +3,7 @@
     "kutipan": {
       "tahunIni": {
         "tahun": 2025,
-        "jumlah": 85443
+        "jumlah": 96686
       },
       "tahunLepas": {
         "tahun": 2024,
@@ -11,7 +11,7 @@
       },
       "bulanIni": {
         "bulan": "OKTOBER",
-        "jumlah": 3618
+        "jumlah": 9343
       },
       "bulanLepas": {
         "bulan": "SEPTEMBER",
@@ -41,7 +41,7 @@
     "Minggu3": 1913,
     "Minggu4": 1946,
     "Minggu5": 1866,
-    "JumlahBulanan": 3618
+    "JumlahBulanan": 9343
   },
   "paparanBulanLepas": {
     "Tahun": 2025,
@@ -109,11 +109,11 @@
         7161,
         9337,
         6761,
-        3618,
-        0,
+        9343,
+        5518,
         0
       ]
     }
   },
-  "tarikhKemaskini": "2025-11-26T07:38:51.267Z"
+  "tarikhKemaskini": "2025-11-27T08:04:52.241Z"
 }
