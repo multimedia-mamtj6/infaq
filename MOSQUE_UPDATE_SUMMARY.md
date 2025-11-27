@@ -11,7 +11,7 @@ Updated mosque name and address information across the MAMTJ6 Infaq Center proje
 
 ### Address
 - **Old**: Tasik Jaya, Selangor, Malaysia (or variations like "Jalan Tasik Jaya 1/1, 43000 Kajang, Selangor")
-- **New**: Jln Jaya 6/1, Taman Jaya 6, 28000 Temerloh, Pahang, Malaysia
+- **New**: Jalan Jaya 6/5, Taman Jaya 6, 28000 Temerloh, Pahang, Malaysia
 
 ## Files Updated
 

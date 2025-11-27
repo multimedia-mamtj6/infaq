@@ -33,28 +33,44 @@
     </script>
 </head>
 
-<body class="p-4 md:p-8 bg-slate-50 min-h-screen flex flex-col">
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
 
-    <!-- Container Utama: Lebih lebar untuk desktop (max-w-5xl) -->
-    <div class="w-full max-w-5xl mx-auto flex-grow flex flex-col gap-6">
+    <!-- NAVIGATION -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+            <!-- Logo & Title -->
+            <div class="flex items-center gap-3">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-8 h-8">
+                <div>
+                    <h1 class="font-bold text-slate-800 text-lg leading-none">Infaq Center MAMTJ6</h1>
+                    <p class="text-slate-500 text-[10px] leading-none">Memudahkan Anda Berinfaq</p>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-        <!-- HEADER -->
-        <header
-            class="text-center md:text-left flex flex-col md:flex-row items-center gap-4 py-4 border-b border-slate-200/60 mb-2">
-            <div class="bg-white p-2 rounded-full shadow-sm">
-                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-12 h-12">
+    <!-- MAIN CONTENT -->
+    <main class="w-full max-w-5xl mx-auto p-4 md:p-8 flex-grow flex flex-col gap-6">
+
+        <!-- INTRO SECTION -->
+        <section class="bg-gradient-to-r from-blue-50 to-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+            <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1 space-y-3">
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <i class="ph ph-info text-blue-600"></i>
+                        Selamat Datang ke Infaq Center MAMTJ6
+                    </h2>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                        Laman ini memaparkan kutipan tabung bulanan, kemajuan projek pembangunan masjid, dan statistik infaq masa nyata untuk Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6). Anda boleh mengikuti ringkasan kutipan, melihat perkembangan projek, dan memilih saluran infaq yang paling sesuai. Setiap sumbangan membantu meningkatkan kemudahan jemaah MAMTJ6.
+                    </p>
+                </div>
             </div>
-            <div>
-                <h1 class="text-2xl font-bold text-slate-800">Infaq Center MAMTJ6</h1>
-                <p class="text-slate-500 text-sm">Memudahkan Anda Berinfaq</p>
-            </div>
-        </header>
+        </section>
 
         <!-- LAYOUT GRID: 1 Lajur di Mobile, 2 Lajur di Desktop -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
 
             <!-- LAJUR KIRI: KAD PROJEK UTAMA -->
-            <!-- Saya letakkan 'h-full' supaya ia sama tinggi dengan lajur kanan di desktop -->
             <div
                 class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 relative overflow-hidden flex flex-col justify-between h-full">
 
@@ -70,7 +86,7 @@
                         </div>
                     </div>
 
-                    <!-- Tajuk Projek (Baiki Isu Bertindih: Guna gap dan susunan flow biasa) -->
+                    <!-- Tajuk Projek -->
                     <div class="mb-8">
                         <h2 id="project-name" class="text-xl md:text-3xl font-bold text-slate-800 skeleton mb-4">
                             Memuatkan Projek...
@@ -81,11 +97,15 @@
 
                 <!-- Bahagian Bawah Kad: Progress Bar -->
                 <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <span class="text-slate-500 text-xs font-semibold uppercase">Terkumpul</span>
-                            <div id="project-stats" class="text-lg md:text-xl font-bold text-slate-800 skeleton mt-1">
-                                RM 0.00 / RM 0.00
+                    <div class="flex justify-between items-end gap-4 flex-wrap">
+                        <div class="flex-1 min-w-[160px]">
+                            <span class="text-slate-500 text-xs font-semibold uppercase">Jumlah Terkumpul</span>
+                            <div id="project-stats" class="mt-2 flex flex-col gap-1 leading-tight">
+                                <span id="project-raised" class="text-2xl md:text-3xl font-bold text-slate-800 skeleton">RM 0.00</span>
+                                <div class="text-sm text-slate-500 flex items-baseline gap-2">
+                                    <span class="uppercase tracking-[0.3em] text-[10px] text-slate-400">Daripada</span>
+                                    <span id="project-target" class="font-semibold text-slate-500 skeleton">RM 0.00</span>
+                                </div>
                             </div>
                         </div>
                         <span id="project-percent" class="text-3xl font-bold text-blue-600 skeleton">0%</span>
@@ -111,7 +131,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                     <div class="p-4 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
                         <h3 class="font-bold text-slate-700 flex items-center gap-2">
-                            <i class="ph ph-chart-bar text-blue-500 text-lg"></i> Ringkasan Kutipan
+                            <i class="ph ph-chart-bar text-blue-500 text-lg"></i> Ringkasan Kutipan Bulanan
                         </h3>
                         <a href="tabung-bulanan.html" class="text-xs font-semibold text-blue-600 hover:underline">
                             Lihat Laporan Penuh &rarr;
@@ -122,22 +142,18 @@
                         <!-- Item 1 -->
                         <div class="p-4 flex justify-between items-center hover:bg-slate-50 transition">
                             <span id="lbl-month-curr" class="text-sm text-slate-500 skeleton">Bulan Ini</span>
-                            <span id="val-month-curr" class="text-base font-bold text-slate-800 skeleton">RM
-                                0.00</span>
+                            <span id="val-month-curr" class="text-base font-bold text-slate-800 skeleton">RM 0.00</span>
                         </div>
                         <!-- Item 2 -->
                         <div class="p-4 flex justify-between items-center hover:bg-slate-50 transition">
-                            <span id="lbl-month-prev" class="text-sm text-slate-500 skeleton">Bulan
-                                Lepas</span>
-                            <span id="val-month-prev" class="text-base font-bold text-slate-800 skeleton">RM
-                                0.00</span>
+                            <span id="lbl-month-prev" class="text-sm text-slate-500 skeleton">Bulan Lepas</span>
+                            <span id="val-month-prev" class="text-base font-bold text-slate-800 skeleton">RM 0.00</span>
                         </div>
                         <!-- Item 3 (Highlight) -->
                         <div class="p-4 flex justify-between items-center bg-blue-50/60">
                             <span id="lbl-year-curr" class="text-sm text-blue-800 font-semibold skeleton">Tahun
                                 Ini</span>
-                            <span id="val-year-curr" class="text-base font-bold text-blue-700 skeleton">RM
-                                0.00</span>
+                            <span id="val-year-curr" class="text-base font-bold text-blue-700 skeleton">RM 0.00</span>
                         </div>
                     </div>
                 </div>
@@ -160,8 +176,7 @@
                             class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition text-center group flex flex-col items-center justify-center gap-2 h-28">
                             <i
                                 class="ph ph-qr-code text-3xl text-slate-400 group-hover:text-blue-500 transition-colors"></i>
-                            <span class="text-sm font-semibold text-slate-600 group-hover:text-slate-800">QR
-                                Pay</span>
+                            <span class="text-sm font-semibold text-slate-600 group-hover:text-slate-800">QR Pay</span>
                         </a>
 
                         <a href="opt/infaq-billplz.html"
@@ -183,18 +198,48 @@
             </div>
         </div>
 
-        <!-- FOOTER -->
-        <footer class="text-center pt-8 pb-4 mt-auto">
-            <p class="text-xs text-slate-400 flex items-center justify-center gap-1">
+        <!-- QURAN VERSES SECTION -->
+        <section class="mt-8 space-y-6">
+            <h2 class="text-xl md:text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <i class="ph ph-book-open text-blue-600"></i>
+                Ayat-Ayat Al-Quran
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Verse 1 -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
+                    <i class="ph-fill ph-quotes text-3xl text-blue-300 mb-2"></i>
+                    <p class="text-blue-900 font-medium italic mb-4 leading-relaxed">
+                        "Siapakah yang mahu memberi pinjaman kepada Allah, pinjaman yang baik (menafkahkan hartanya di jalan Allah), maka Allah akan menggandakan pembayaran kepadanya dengan lipat ganda yang banyak."
+                    </p>
+                    <p class="text-sm text-blue-700 font-bold uppercase tracking-wide">— Surah Al-Baqarah: 245</p>
+                </div>
+
+                <!-- Verse 2 -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
+                    <i class="ph-fill ph-quotes text-3xl text-blue-300 mb-2"></i>
+                    <p class="text-blue-900 font-medium italic mb-4 leading-relaxed">
+                        "Bandingan (derma) orang-orang yang membelanjakan hartanya pada jalan Allah, ialah sama seperti sebiji benih yang tumbuh menerbitkan tujuh tangkai; tiap-tiap tangkai itu pula mengandungi seratus biji. Dan (ingatlah), Allah akan melipatgandakan pahala bagi sesiapa yang dikehendakiNya, dan Allah Maha Luas (rahmat) kurniaNya, lagi Meliputi ilmu pengetahuanNya"
+                    </p>
+                    <p class="text-sm text-blue-700 font-bold uppercase tracking-wide">— Surah Al-Baqarah: 261</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1 mb-2">
                 <i class="ph-fill ph-clock"></i> Data dikemaskini: <span id="last-update"
                     class="font-medium text-slate-500">...</span>
             </p>
+            <p class="text-slate-500 text-sm">© 2024 Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6)</p>
             <p class="text-[10px] text-slate-300 mt-2 uppercase tracking-widest">
                 MAMTJ6 System v2.1
             </p>
-        </footer>
-
-    </div>
+        </div>
+    </footer>
 
     <!-- Script Logic -->
     <script src="script.js"></script>

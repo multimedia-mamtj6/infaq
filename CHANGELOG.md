@@ -8,6 +8,117 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.3.2] - 2024-12-XX
+
+### Added
+- **Dashboard Page (`index.html`)**:
+    - **Intro Section**: Added welcome introduction section below the navigation header
+        - Welcome heading "Selamat Datang ke Infaq Center MAMTJ6" with info icon
+        - Descriptive paragraph explaining the page purpose, features, and available information
+        - Explains dashboard shows monthly collection summaries, project progress, and real-time infaq statistics
+        - Mentions ability to view collection summaries, track project development, and choose donation methods
+        - Highlights how contributions help improve facilities for MAMTJ6 congregation
+        - Styled with gradient background (blue-50 to slate-50) and rounded corners
+        - Fully responsive design matching existing page aesthetic
+    - **Quran Verses Section**: Added inspirational Quran verses section above the footer
+        - Section heading "Ayat-Ayat Al-Quran" with book icon
+        - Two separate quote cards displaying Surah Al-Baqarah verses (245 and 261)
+        - Malay translation only, displayed together for inspirational content
+        - Styled with blue-50 background, left border accent (border-blue-500), and quote icons
+        - Responsive grid layout: single column on mobile, two columns on desktop (md:grid-cols-2)
+        - Matches existing quote card design pattern from donation pages
+        - Purely inspirational content with no interactive elements
+        - Proper spacing (mt-8 top margin, gap-6 between cards) within main content container
+
+---
+
+## [2.3.1] - 2024-12-XX
+
+### Changed
+- **Project Details Page (`infaq-pembangunan.html`)**:
+    - **Timeline Section Updates**:
+        - Item 1: Updated date from "28 Mac 2024" to "28 Mac 2024 - Kini" to indicate current status
+        - Item 2: Updated date from "Q2 2024" to "Sedang berjalan" to reflect ongoing status
+        - Item 3: Updated date from "Q3 2024" to "Tarikh Akan Dimaklumkan" for Libat Urus & Kelulusan phase
+        - Item 4: 
+            - Updated date from "Tarikh Mula" to "Tarikh Akan Dimaklumkan"
+            - Updated title from "Akan Dimaklumkan" to "Mula Pembinaan"
+        - Item 5:
+            - Updated date from "Tarikh Siap" to "Tarikh Akan Dimaklumkan"
+            - Updated title from "Akan Dimaklumkan" to "Siap Pembinaan"
+- **Date Format (`script.js`)**:
+    - Changed "Data dikemaskini" timestamp format from 24-hour format (Malay PTG/Pagi) to 12-hour AM/PM format
+    - Updated locale from `ms-MY` to `en-US` for consistent English AM/PM display
+    - Applied to both dashboard and report page timestamp displays
+
+---
+
+## [2.3.0] - 2024-11-28
+
+### Added
+- **Project Details Page (`infaq-pembangunan.html`)**:
+    - **Hero Section**: Comprehensive project introduction with launch date, status badges, and key benefits display.
+    - **Status Tracking**: Real-time donation progress with animated progress bar, percentage display, and target tracking (RM250,000 goal).
+    - **Key Facts Grid**: Quick reference cards showing project area (1,104 sq ft), estimated cost, and current status.
+    - **Project Narrative**: Detailed explanation of project purpose and comprehensive project details (name, location, area, cost, organizer, timeline).
+    - **Visual Gallery**: 
+        - Plan drawings gallery (4 views: front, side, floor, roof) with lightbox functionality
+        - Location gallery (3 views: main entrance, satellite, site plan) with lightbox functionality
+        - Interactive image viewing with hover effects and click-to-expand
+    - **Timeline Section**: Visual timeline showing project milestones from launch (28 Mac 2024) through planning, approval, and future construction phases.
+    - **Call-to-Action Section**: Direct links to donation methods (Transfer Bank, QR Pay, Billplz) with styled buttons.
+    - **Lightbox Modal**: 
+        - Full-screen image viewing with backdrop blur
+        - Image caption display
+        - Keyboard support (ESC to close)
+        - Browser back button support
+        - Touch/swipe gesture support for mobile devices
+        - Smooth animations and transitions
+
+### Enhanced
+- **Navigation**: Sticky navigation bar with "Kembali" (Back) button for consistent navigation experience.
+- **Responsive Design**: Fully responsive layout optimized for both desktop and mobile viewing.
+- **User Experience**: 
+    - Skeleton loading states for dynamic content
+    - Smooth scroll behavior
+    - Touch-friendly interactive elements
+    - Professional gradient backgrounds and card designs
+
+### Technical
+- **Image Handling**: Graceful fallback for missing images with placeholder text.
+- **Accessibility**: Semantic HTML structure, proper alt text, and keyboard navigation support.
+- **Performance**: Optimized image loading with onload handlers and error handling.
+
+---
+
+## [2.2.1] - 2024-11-27
+
+### Changed
+- **Index Page (`index.html`)**:
+    - **Header Synchronization**: Implemented sticky navigation bar to match inner pages. Removed "Kembali" button for root page context.
+    - **Footer Synchronization**: Combined "Last Updated" information with the standardized copyright footer.
+    - **Layout**: Refined main container and padding to ensure visual consistency with the premium split layout of inner pages.
+
+## [2.2.0] - 2024-11-27
+
+### Added
+- **Bank Rakyat Logo**: Integrated official Bank Rakyat landscape logotype in `infaq-transfer.html` for better brand recognition.
+
+### Changed
+- **QR Code Page (`infaq-qr.html`)**:
+    - Increased QR code size to 600px for better scannability.
+    - Updated DuitNow logo to a transparent version.
+    - Refined QR header styling with rounded corners and better spacing.
+    - Adjusted "Powered by DuitNow" text positioning.
+- **Index Page (`index.html`)**:
+    - Updated "Ringkasan Kutipan" title to "Ringkasan Kutipan Bulanan".
+    - Changed "Terkumpul" label to "Jumlah Terkumpul".
+- **Tabung Page (`infaq-tabung.html`)**:
+    - Removed redundant "Tip" section for a cleaner interface.
+
+### Fixed
+- **File Corruption**: Restored corrupted bank card visual section in `infaq-transfer.html`.
+
 ## [2.1.0] - 2024-11-26
 
 ### Changed - Mosque Information Update

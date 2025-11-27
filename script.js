@@ -31,7 +31,8 @@ async function loadDashboard() {
         // --- 1. Update Project Section ---
         const p = data.projek;
         set('project-name', p.NamaProjek);
-        set('project-stats', `${formatCurrency(p.JumlahTerkumpul)} / ${formatCurrency(p.SasaranKutipan).replace('.00', '')}`);
+        set('project-raised', formatCurrency(p.JumlahTerkumpul));
+        set('project-target', formatCurrency(p.SasaranKutipan).replace('.00', ''));
 
         // Update Progress Bar
         const bar = document.getElementById('project-bar');
@@ -62,9 +63,10 @@ async function loadDashboard() {
 
         // --- 3. Footer Timestamp ---
         const dateObj = new Date(data.tarikhKemaskini);
-        set('last-update', dateObj.toLocaleDateString('ms-MY', {
-            day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
-        }));
+        const formattedDate = dateObj.toLocaleString('en-US', {
+            day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
+        });
+        ['last-update', 'status-update'].forEach(id => set(id, formattedDate));
 
         // Remove Skeletons to reveal data
         stopLoading();
@@ -102,8 +104,8 @@ async function loadReport() {
 
         // Update Footer Timestamp
         const dateObj = new Date(data.tarikhKemaskini);
-        set('last-update', dateObj.toLocaleDateString('ms-MY', {
-            day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+        set('last-update', dateObj.toLocaleString('en-US', {
+            day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
         }));
 
         // 2. Render Weekly Chart

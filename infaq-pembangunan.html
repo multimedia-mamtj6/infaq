@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infaq Pembangunan MAMTJ6</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
+
+    <!-- NAV -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-5xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+            <!-- Logo & Title -->
+            <div class="flex items-center gap-3">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-8 h-8">
+                <div>
+                    <h1 class="font-bold text-slate-800 text-lg leading-none">Infaq Center MAMTJ6</h1>
+                    <p class="text-slate-500 text-[10px] leading-none">Memudahkan Anda Berinfaq</p>
+                </div>
+            </div>
+            <a href="index.html"
+                class="text-sm font-semibold text-blue-600 hover:text-blue-700 transition flex items-center gap-1">
+                <i class="ph ph-arrow-left"></i> Kembali
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="w-full max-w-5xl mx-auto px-4 md:px-8 py-8 flex-grow flex flex-col gap-8">
+
+        <!-- HERO -->
+        <section class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm relative overflow-hidden">
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-blue-100/60 via-transparent to-transparent pointer-events-none">
+            </div>
+            <div class="relative flex flex-col lg:flex-row lg:items-center gap-6">
+                <div class="flex-1 space-y-5">
+                    <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] font-semibold">
+                        <span class="text-blue-600">Dilancarkan 28 Mac 2024</span>
+                        <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 tracking-[0.2em]">
+                            Dalam Perancangan
+                        </span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Infaq Pembangunan Masjid</h2>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                        Projek penambahan ruang solat terbuka di bahagian belakang Masjid Al-Mukhlisin bagi menampung
+                        kehadiran jemaah yang semakin meningkat. Fasa ini memberi fokus kepada pengumpulan dana,
+                        pengesahan pelan serta proses kelulusan pihak berkuasa.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500">
+                        <span class="flex items-center gap-1"><i class="ph ph-calendar-blank text-blue-500"></i>
+                            Fasa: Perancangan & Pengumpulan Dana</span>
+                        <span class="flex items-center gap-1"><i class="ph ph-target text-blue-500"></i> Sasaran Dana
+                            RM250,000</span>
+                    </div>
+                </div>
+                <div class="bg-slate-900 text-white rounded-2xl p-6 w-full lg:w-72 shadow-lg">
+                    <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-4">Apa Yang Anda Bantu?</p>
+                    <ul class="space-y-3 text-sm text-slate-200">
+                        <li class="flex gap-3">
+                            <i class="ph ph-check text-blue-300"></i>
+                            Memberi keselesaan jemaah ketika hujan atau majlis besar.
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="ph ph-check text-blue-300"></i>
+                            Menyokong kelulusan projek dengan komitmen dana awal.
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="ph ph-check text-blue-300"></i>
+                            Menambah baik kapasiti ruang solat hingga 1,104 kaki persegi.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATUS KUTIPAN -->
+        <section class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-blue-500 font-semibold">Status Kutipan Semasa</p>
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mt-1">
+                        Dana Infaq Pembangunan Masjid
+                    </h3>
+                    <p class="text-sm text-slate-500">
+                        Gambaran langsung jumlah yang telah dikutip berbanding sasaran RM250,000.
+                    </p>
+                </div>
+                <div class="text-xs text-slate-500">
+                    Dikemaskini: <span id="status-update" class="font-semibold text-slate-700">...</span>
+                </div>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-5 space-y-4">
+                <div class="flex items-end justify-between gap-4 flex-wrap">
+                    <div class="flex-1 min-w-[180px]">
+                        <p class="text-xs uppercase text-slate-500 font-semibold">Jumlah Terkumpul</p>
+                        <div id="project-stats" class="mt-2 flex flex-col gap-1 leading-tight">
+                            <span id="project-raised" class="text-3xl font-bold text-slate-900 skeleton">RM 0.00</span>
+                            <div class="text-sm text-slate-500 flex items-baseline gap-2">
+                                <span class="uppercase tracking-[0.3em] text-[10px] text-slate-400">Daripada</span>
+                                <span id="project-target" class="font-semibold text-slate-500 skeleton">RM 0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span id="project-percent" class="text-4xl font-bold text-blue-600 skeleton">0%</span>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-4 overflow-hidden">
+                    <div id="project-bar"
+                        class="bg-blue-500 h-4 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-blue-500/30"
+                        style="width: 0%">
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center gap-3 pt-2 text-center">
+                    <p class="text-sm text-slate-500">
+                        Ingin untuk bantu kami untuk mencapai sasaran?
+                    </p>
+                    <a href="#sertai-kami"
+                        class="inline-flex items-center justify-center bg-blue-600 text-white text-sm font-semibold px-6 py-3 rounded-2xl shadow-sm hover:bg-blue-500 transition">
+                        Jom berinfaq sekarang
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEY FACTS -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">Keluasan</p>
+                <h3 class="text-2xl font-semibold text-slate-900 mt-2">1,104 kaki²</h3>
+                <p class="text-slate-500 text-sm">Ruang solat baharu bersambung dengan dewan utama.</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">Kos Anggaran</p>
+                <h3 class="text-2xl font-semibold text-slate-900 mt-2">RM 250,000</h3>
+                <p class="text-slate-500 text-sm">Termasuk struktur bumbung, lantai, elektrik & landskap.</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">Status</p>
+                <h3 class="text-2xl font-semibold text-slate-900 mt-2">Proposal & Dana</h3>
+                <p class="text-slate-500 text-sm">Tarikh mula & siap akan diumumkan selepas kelulusan.</p>
+            </div>
+        </section>
+
+        <!-- NARRATIVE -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm flex flex-col gap-4">
+                <div class="flex items-center gap-2 text-slate-700 font-semibold">
+                    <i class="ph ph-quote text-blue-500 text-xl"></i> Kenapa Projek Ini Dilaksanakan?
+                </div>
+                <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+                    <p>
+                        Kehadiran jemaah di Masjid Al-Mukhlisin semakin bertambah sehingga ramai terpaksa bersolat di
+                        luar bangunan utama hanya beralaskan kanopi sementara. Ketika hujan, ruang sempit ini menjadi
+                        tidak selesa dan menimbulkan risiko keselamatan.
+                    </p>
+                    <p>
+                        Penambahan ruang solat terbuka kekal akan memastikan pengalaman ibadah yang lebih damai,
+                        memelihara kebersihan, dan memberi ruang selesa kepada warga emas, wanita serta kanak-kanak.
+                    </p>
+                    <p>
+                        Sokongan anda memastikan komuniti Taman Jaya 6 terus menikmati kemudahan masjid yang kondusif
+                        untuk aktiviti harian, kelas dan majlis ilmu.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm flex flex-col gap-4">
+                <div class="flex items-center gap-2 text-slate-700 font-semibold">
+                    <i class="ph ph-list-bullets text-blue-500 text-xl"></i> Butiran Projek
+                </div>
+                <dl class="space-y-3 text-sm text-slate-600">
+                    <div>
+                        <dt class="font-semibold text-slate-800">Nama Projek</dt>
+                        <dd>Penambahan Ruang Solat Masjid Al-Mukhlisin</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-800">Lokasi</dt>
+                        <dd>Bahagian belakang Masjid Al-Mukhlisin, Taman Jaya 6, Temerloh</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-800">Keluasan</dt>
+                        <dd>1,104 kaki persegi</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-800">Kos Anggaran</dt>
+                        <dd>RM 250,000 (sebelum tender)</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-800">Penganjur</dt>
+                        <dd>Ahli Jawatankuasa Masjid Al-Mukhlisin</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-800">Status Terkini</dt>
+                        <dd>Proposal, reka bentuk & pengumpulan dana</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-800">Tarikh Mula & Siap</dt>
+                        <dd>Belum dimuktamadkan (bergantung kelulusan & dana)</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- VISUALS -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2 text-slate-700 font-semibold">
+                        <i class="ph ph-ruler text-blue-500 text-xl"></i> Lukisan Pelan
+                    </div>
+                    <span class="text-xs text-slate-400 uppercase tracking-[0.2em]">Fasa Proposal</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 aspect-video relative border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                         onclick="openLightbox('images/Asset%206@150x.png', 'Pelan Pandangan Hadapan')">
+                        <img src="images/Asset%206@150x.png" alt="Pelan Pandangan Hadapan" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                             onload="this.nextElementSibling.style.display='none';"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs text-center px-3">
+                            Pelan Pandangan Hadapan
+                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 aspect-video relative border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                         onclick="openLightbox('images/plan-side-view.png', 'Pelan Pandangan Kanan & Kiri')">
+                        <img src="images/plan-side-view.png" alt="Pelan Pandangan Kanan & Kiri" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                             onload="this.nextElementSibling.style.display='none';"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs text-center px-3">
+                            Pelan Pandangan Kanan & Kiri
+                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 aspect-video relative border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                         onclick="openLightbox('images/plan-floor.png', 'Pelan Lantai')">
+                        <img src="images/plan-floor.png" alt="Pelan Lantai" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                             onload="this.nextElementSibling.style.display='none';"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs text-center px-3">
+                            Pelan Lantai
+                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 aspect-video relative border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                         onclick="openLightbox('images/plan-roof.png', 'Pelan Bumbung')">
+                        <img src="images/plan-roof.png" alt="Pelan Bumbung" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                             onload="this.nextElementSibling.style.display='none';"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs text-center px-3">
+                            Pelan Bumbung
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 text-center mt-3">*Imej awal. Pelan terperinci akan dikongsi selepas diluluskan.</p>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2 text-slate-700 font-semibold">
+                        <i class="ph ph-map-pin text-blue-500 text-xl"></i> Lokasi Projek
+                    </div>
+                    <span class="text-xs text-slate-400 uppercase tracking-[0.2em]">Tinjauan Tapak</span>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 aspect-square relative border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                         onclick="openLightbox('images/location-main-entrance.png', 'Tapak dari pintu masuk utama')">
+                        <img src="images/location-main-entrance.png" alt="Tapak dari pintu masuk utama" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                             onload="this.nextElementSibling.style.display='none';"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs text-center px-2">
+                            Tapak dari pintu masuk utama
+                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 aspect-square relative border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                         onclick="openLightbox('images/location-satellite.png', 'Imej satelit')">
+                        <img src="images/location-satellite.png" alt="Imej satelit" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                             onload="this.nextElementSibling.style.display='none';"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs text-center px-2">
+                            Imej satelit
+                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 aspect-square relative border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                         onclick="openLightbox('images/location-site-plan.png', 'Pelan tapak projek')">
+                        <img src="images/location-site-plan.png" alt="Pelan tapak projek" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                             onload="this.nextElementSibling.style.display='none';"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs text-center px-2">
+                            Pelan tapak projek
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 text-center mt-3">*Foto sebenar akan dimuat naik selepas sesi penggambaran rasmi.</p>
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+            <div class="flex items-center gap-2 text-slate-700 font-semibold mb-6">
+                <i class="ph ph-timer text-blue-500 text-xl"></i> Garis Masa (Terkini)
+            </div>
+            <div class="space-y-6 relative">
+                <div class="absolute top-5 left-4 bottom-0 w-px bg-slate-200"></div>
+                <div class="relative pl-10">
+                    <span
+                        class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">1</span>
+                    <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">28 Mac 2024 - Kini</p>
+                    <h4 class="text-lg font-semibold text-slate-900">Pelancaran Kempen Infaq</h4>
+                    <p class="text-sm text-slate-600">Kempen diumumkan kepada komuniti & platform dalam talian.</p>
+                </div>
+                <div class="relative pl-10">
+                    <span
+                        class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 font-semibold">2</span>
+                    <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">Sedang berjalan</p>
+                    <h4 class="text-lg font-semibold text-slate-900">Penyediaan Proposal & Pelan</h4>
+                    <p class="text-sm text-slate-600">Mengumpul lukisan arkitek, keperluan teknikal & kos terperinci.</p>
+                </div>
+                <div class="relative pl-10">
+                    <span
+                        class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 font-semibold">3</span>
+                    <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">Tarikh Akan Dimaklumkan</p>
+                    <h4 class="text-lg font-semibold text-slate-900">Libat Urus & Kelulusan</h4>
+                    <p class="text-sm text-slate-600">Pertemuan bersama pihak berkuasa tempatan & pengumpulan sokongan komuniti.</p>
+                </div>
+                <div class="relative pl-10">
+                    <span
+                        class="absolute left-0 top-1 w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 font-semibold">4</span>
+                    <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">Tarikh Akan Dimaklumkan</p>
+                    <h4 class="text-lg font-semibold text-slate-900">Mula Pembinaan</h4>
+                    <p class="text-sm text-slate-600">Ditentukan selepas kelulusan dan dana mencukupi.</p>
+                </div>
+                <div class="relative pl-10">
+                    <span
+                        class="absolute left-0 top-1 w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 font-semibold">5</span>
+                    <p class="text-xs uppercase text-slate-400 tracking-[0.2em]">Tarikh Akan Dimaklumkan</p>
+                    <h4 class="text-lg font-semibold text-slate-900">Siap Pembinaan</h4>
+                    <p class="text-sm text-slate-600">Anggaran dikemas kini selepas jadual pembinaan dimuktamadkan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="sertai-kami" class="bg-slate-900 text-white rounded-3xl p-8 md:p-10 shadow-lg">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+                <div class="flex-1 space-y-3">
+                    <p class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">INFAQ TABUNG PEMBANGUNAN MAMTJ6</p>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">Jom sama-sama sempurnakan rumah Allah.</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed max-w-2xl">Sumbangan anda membantu kami bergerak ke fasa pembinaan secepat mungkin.</p>
+                </div>
+                <div class="flex flex-col gap-4 lg:min-w-[280px] xl:min-w-0">
+                    <div class="space-y-1 text-center lg:text-left">
+                        <p class="text-lg md:text-xl font-semibold text-white">Sumbang dalam tabung khas di masjid</p>
+                        <p class="text-xs text-slate-400">atau mana-mana pilihan infaq dibawah</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
+                        <a href="opt/infaq-transfer.html"
+                            class="bg-white text-slate-900 font-semibold px-6 py-3.5 rounded-2xl hover:bg-slate-100 transition-all text-sm text-center shadow-sm hover:shadow-md flex-1 sm:flex-none">
+                            Transfer Bank
+                        </a>
+                        <a href="opt/infaq-qr.html"
+                            class="bg-blue-500 text-white font-semibold px-6 py-3.5 rounded-2xl hover:bg-blue-400 transition-all text-sm text-center shadow-sm hover:shadow-md flex-1 sm:flex-none">
+                            QR Pay
+                        </a>
+                        <a href="opt/infaq-billplz.html"
+                            class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-6 py-3.5 rounded-2xl hover:bg-white/20 transition-all text-sm text-center flex-1 sm:flex-none">
+                            Billplz
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1 mb-2">
+                <i class="ph-fill ph-clock"></i> Data dikemaskini:
+                <span id="last-update" class="font-medium text-slate-500">...</span>
+            </p>
+            <p class="text-slate-500 text-sm">© 2024 Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6)</p>
+            <p class="text-[10px] text-slate-300 mt-2 uppercase tracking-widest">MAMTJ6 System v2.1</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="max-w-7xl w-full max-h-[90vh] flex flex-col items-center">
+            <div class="relative">
+                <button onclick="closeLightbox()" 
+                        class="absolute top-4 right-4 text-white hover:text-slate-300 transition-colors text-2xl md:text-xl font-bold bg-black/50 rounded-full w-12 h-12 md:w-10 md:h-10 flex items-center justify-center hover:bg-black/70 touch-manipulation z-10">
+                    <i class="ph ph-x"></i>
+                </button>
+                <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl touch-none">
+            </div>
+            <p id="lightbox-caption" class="text-white text-center mt-4 text-sm md:text-base bg-black/50 px-4 py-2 rounded-lg"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        // Lightbox functionality
+        let lightboxOpen = false;
+        let touchStartX = 0;
+        let touchStartY = 0;
+        const SWIPE_THRESHOLD = 50; // Minimum distance for swipe
+
+        function openLightbox(imageSrc, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            lightboxImg.src = imageSrc;
+            lightboxCaption.textContent = caption;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            lightboxOpen = true;
+
+            // Add history state for back button support
+            history.pushState({ lightbox: true }, '', window.location.href);
+        }
+
+        function closeLightbox(skipHistory = false) {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = '';
+            lightboxOpen = false;
+
+            // Only go back in history if not already handling a popstate event
+            if (!skipHistory && history.state && history.state.lightbox) {
+                history.back();
+            }
+        }
+
+        // Browser back button support
+        window.addEventListener('popstate', function(e) {
+            if (lightboxOpen) {
+                closeLightbox(true); // Skip history manipulation since we're already going back
+            }
+        });
+
+        // Close lightbox on background click
+        document.getElementById('lightbox')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightboxOpen) {
+                closeLightbox();
+            }
+        });
+
+        // Swipe gesture support for mobile
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            lightbox.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            lightbox.addEventListener('touchend', function(e) {
+                if (!lightboxOpen) return;
+
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                const deltaX = touchEndX - touchStartX;
+                const deltaY = touchEndY - touchStartY;
+
+                // Check if it's a horizontal swipe (more horizontal than vertical)
+                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > SWIPE_THRESHOLD) {
+                    // Swipe left or right to close
+                    closeLightbox();
+                }
+            }, { passive: true });
+        }
+    </script>
+</body>
+
+</html>
+
