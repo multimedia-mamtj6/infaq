@@ -2,8 +2,8 @@
   "projek": {
     "NamaProjek": "Infaq Tabung Bangunan Tambahan MAMTJ6",
     "SasaranKutipan": 250000,
-    "JumlahTerkumpul": 139932,
-    "Peratusan": 56
+    "JumlahTerkumpul": 142711,
+    "Peratusan": 57.1
   },
   "paparanHarian": [
     {
@@ -500,7 +500,22 @@
       "tarikh": "2025-11-24",
       "jumlah": 1139,
       "keterangan": "Tabung (Fizikal, 21/11/2025)"
+    },
+    {
+      "tarikh": "2025-12-01",
+      "jumlah": 1171,
+      "keterangan": "Tabung (Fizikal, 28/11/2025)"
+    },
+    {
+      "tarikh": "2025-12-03",
+      "jumlah": 500,
+      "keterangan": "Infaq Zubaidah Ahmad (online, 2/12/2025)"
+    },
+    {
+      "tarikh": "2025-12-08",
+      "jumlah": 1108,
+      "keterangan": "Tabung (Fizikal, 5/12/2025)"
     }
   ],
-  "tarikhKemaskini": "2025-12-09T05:16:12.179Z"
+  "tarikhKemaskini": "2025-12-09T05:28:23.846Z"
 }
