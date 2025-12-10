@@ -3,7 +3,7 @@
     "kutipan": {
       "tahunIni": {
         "tahun": 2025,
-        "jumlah": 98583
+        "jumlah": 100538
       },
       "tahunLepas": {
         "tahun": 2024,
@@ -11,7 +11,7 @@
       },
       "bulanIni": {
         "bulan": "DISEMBER",
-        "jumlah": 0
+        "jumlah": 1955
       },
       "bulanLepas": {
         "bulan": "NOVEMBER",
@@ -29,12 +29,12 @@
   "paparanBulanIni": {
     "Tahun": 2025,
     "Bulan": "DISEMBER",
-    "Minggu1": 0,
+    "Minggu1": 1955,
     "Minggu2": 0,
     "Minggu3": 0,
     "Minggu4": 0,
     "Minggu5": 0,
-    "JumlahBulanan": 0
+    "JumlahBulanan": 1955
   },
   "paparanBulanLepas": {
     "Tahun": 2025,
@@ -104,9 +104,9 @@
         6761,
         9343,
         7415,
-        0
+        1955
       ]
     }
   },
-  "tarikhKemaskini": "2025-12-09T05:28:23.846Z"
+  "tarikhKemaskini": "2025-12-10T05:59:48.598Z"
 }
