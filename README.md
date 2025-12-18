@@ -93,7 +93,7 @@ infaq-mamtj6/
 ├── index.html                 # Main dashboard page
 ├── infaq-transfer.html        # Bank transfer donation page
 ├── infaq-qr.html             # QR Pay donation page
-├── infaq-billplz.html        # Billplz payment page (UI only)
+├── toyyib-pay.html           # toyyibPay payment page (UI only)
 ├── infaq-tabung.html         # Physical donation box page
 ├── tabung-bulanan.html       # Monthly reports page
 ├── script.js                 # Main JavaScript logic

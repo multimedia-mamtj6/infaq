@@ -4,7 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Tabung Bulanan - MAMTJ6</title>
+
+    <!-- SEO Basic -->
+    <title>Laporan Tabung Bulanan - Infaq Center MAMTJ6</title>
+    <meta name="description" content="Lihat laporan lengkap kutipan tabung bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6. Trend mingguan, analisis bulanan, dan statistik infaq yang dikemaskini secara berkala.">
+    <meta name="keywords" content="Laporan Infaq MAMTJ6, Kutipan Bulanan Masjid, Statistik Derma, Trend Infaq, Tabung Masjid, Grafik Kutipan, Infaq Masjid Al-Mukhlisin">
+    <link rel="canonical" href="https://infaq.mamtj6.com/tabung-bulanan.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="media/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/media/favicon/favicon-192x192.png" sizes="192x192" />
+    <link rel="icon" type="image/png" href="/media/favicon/favicon-512x512.png" sizes="512x512" />
+    <link rel="icon" type="image/svg+xml" href="media/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="media/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Infaq Center" />
+    <link rel="manifest" href="media/favicon/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Laporan Tabung Bulanan - Infaq Center MAMTJ6">
+    <meta property="og:description" content="Lihat laporan lengkap kutipan tabung bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6 dengan trend dan analisis statistik.">
+    <meta property="og:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
+    <meta property="og:url" content="https://infaq.mamtj6.com/tabung-bulanan.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Infaq Center MAMTJ6">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laporan Tabung Bulanan - Infaq Center MAMTJ6">
+    <meta name="twitter:description" content="Lihat laporan lengkap kutipan tabung bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6 dengan trend dan analisis statistik.">
+    <meta name="twitter:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
+
 
     <!-- 1. Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,10 +75,10 @@
                 <i class="ph ph-arrow-left text-xl"></i>
                 <span class="font-semibold text-sm">Kembali</span>
             </a>
-            <div class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition">
                 <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-8 h-8">
                 <span class="font-bold text-slate-800 hidden md:block">Laporan Tabung</span>
-            </div>
+            </a>
         </div>
     </nav>
 
@@ -98,14 +128,56 @@
                     <h3 class="font-bold text-slate-700 flex items-center gap-2">
                         <i class="ph-fill ph-trend-up text-blue-500"></i> Trend Tahunan
                     </h3>
-                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded font-medium"
+                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium"
                         id="report-year-label">2025</span>
                 </div>
                 <div class="h-64 w-full">
                     <canvas id="monthlyChart"></canvas>
                 </div>
+                <!-- Total Sum Display -->
+                <div class="mt-4 bg-slate-50 border border-slate-100 rounded-xl p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-blue-100 p-2 rounded-lg">
+                            <i class="ph-fill ph-coins text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-slate-600 text-sm">Jumlah Tahunan</p>
+                            <p class="text-slate-800 font-bold text-lg" id="current-year-total">RM 0.00</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+        </div>
+
+        <!-- PAST YEARS CHARTS SECTION -->
+        <div id="past-years-section" class="hidden">
+            <!-- Section Header -->
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                    <i class="ph-fill ph-clock-counter-clockwise text-blue-500"></i>
+                    Trend Tahun-Tahun Lepas
+                </h3>
+                <span class="text-xs text-slate-500">Data sejarah kutipan</span>
+            </div>
+
+            <!-- Year Selector Dropdown -->
+            <div class="mb-6">
+                <label for="year-selector" class="block text-sm font-medium text-slate-700 mb-2">
+                    Pilih Tahun untuk Paparan:
+                </label>
+                <select
+                    id="year-selector"
+                    class="w-full md:w-64 px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+
+            <!-- Single Full-Width Chart Container -->
+            <div id="past-years-container">
+                <!-- Selected year chart will appear here -->
+            </div>
         </div>
 
     </main>

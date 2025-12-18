@@ -24,7 +24,7 @@ Updated mosque name and address information across the MAMTJ6 Infaq Center proje
    - Updated mosque name display under QR code
    - Updated footer copyright text
 
-3. **infaq-billplz.html**
+3. **toyyib-pay.html**
    - Updated footer copyright text
 
 4. **README.md**

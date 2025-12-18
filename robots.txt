@@ -1,0 +1,8 @@
+# Robots.txt for Infaq Center MAMTJ6
+# https://infaq.mamtj6.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://infaq.mamtj6.com/sitemap.xml

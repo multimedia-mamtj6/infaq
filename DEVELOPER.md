@@ -102,7 +102,7 @@ graph TB
 graph LR
     A[index.html<br/>Dashboard] --> B[infaq-transfer.html<br/>Bank Transfer]
     A --> C[infaq-qr.html<br/>QR Pay]
-    A --> D[infaq-billplz.html<br/>Billplz]
+    A --> D[toyyib-pay.html<br/>toyyibPay]
     A --> E[infaq-tabung.html<br/>Physical Box]
     A --> F[tabung-bulanan.html<br/>Reports]
 ```
@@ -125,7 +125,7 @@ graph LR
 |------|--------|--------|
 | `infaq-transfer.html` | Bank Transfer | ✅ Complete |
 | `infaq-qr.html` | QR Pay (DuitNow) | ✅ Complete |
-| `infaq-billplz.html` | Online Payment | 🔄 UI Only |
+| `toyyib-pay.html` | Online Payment | 🔄 UI Only |
 | `infaq-tabung.html` | Physical Donation | ✅ Complete |
 
 ### Report Pages

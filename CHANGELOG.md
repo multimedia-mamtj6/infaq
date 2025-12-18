@@ -6,6 +6,208 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.6.0] - 2025-01-15
+
+### Added
+- **SEO Meta Tags Implementation**: Comprehensive SEO optimization across all pages
+    - **Favicon System**: Multi-size favicon support for all devices
+        - 96x96px PNG for standard browsers
+        - 192x192px PNG for mobile devices
+        - 512x512px PNG for high-resolution displays
+        - SVG format for scalable vector display
+        - ICO format for legacy browser support
+        - Apple touch icon (180x180px) for iOS devices
+        - Apple web app title: "Infaq Center"
+    - **Open Graph Tags**: Social media sharing optimization
+        - Page-specific titles and descriptions for each page
+        - Preview image: `link-preview.jpg` (1200x630px)
+        - Proper OG type, URL, and site name tags
+        - Enables rich preview cards on Facebook, WhatsApp, LinkedIn
+    - **Twitter Card Tags**: Twitter-specific social media optimization
+        - Summary large image card type
+        - Page-specific titles and descriptions
+        - Consistent preview image across all pages
+    - **SEO Basics**: Search engine optimization fundamentals
+        - Page-specific meta descriptions for better SERP snippets
+        - Relevant keywords for each donation method
+        - Canonical URLs to prevent duplicate content issues
+    - **PWA Manifest** (`media/favicon/site.webmanifest`):
+        - App name: "Infaq Center MAMTJ6"
+        - Short name: "Infaq MAMTJ6"
+        - Theme color: #3b82f6 (blue)
+        - Background color: #ffffff (white)
+        - Standalone display mode for app-like experience
+        - Icon references for different sizes
+
+- **Search Engine Support Files**:
+    - **robots.txt**: Allows all search engine crawlers to index the site
+    - **sitemap.xml**: XML sitemap with all 7 pages, priorities, and change frequencies
+        - Homepage: Priority 1.0, weekly updates
+        - Monthly reports: Priority 0.8, weekly updates
+        - Project development: Priority 0.9, monthly updates
+        - Donation methods: Priority 0.7, monthly updates
+
+### Changed
+- **Domain Migration**: Full URL migration from `https://mamtj6.com/infaq` to `https://infaq.mamtj6.com`
+    - **All HTML Pages**: Updated canonical URLs, Open Graph URLs, and Twitter Card image URLs
+        - `index.html`: Main dashboard (homepage)
+        - `tabung-bulanan.html`: Monthly reports page
+        - `infaq-pembangunan.html`: Project development page
+        - `opt/infaq-transfer.html`: Bank transfer donation page
+        - `opt/infaq-qr.html`: QR Pay donation page
+        - `opt/toyyib-pay.html`: Online payment page
+        - `opt/infaq-tabung.html`: Physical tabung page
+    - **robots.txt**: Updated sitemap URL to new domain
+    - **sitemap.xml**: Updated all 7 page URLs to new domain structure
+    - **site.webmanifest**: Updated icon paths and start_url for new domain
+
+- **Favicon Structure**: Enhanced favicon references with proper formatting
+    - Root-level pages: Use relative paths (`media/favicon/`)
+    - Subfolder pages (opt/): Use parent-relative paths (`../media/favicon/`)
+    - Absolute paths (`/media/favicon/`) for 192x192 and 512x512 sizes
+    - Consistent structure across all 7 HTML pages
+
+- **Preview Image**: Renamed from `og-image.jpg` to `link-preview.jpg`
+    - Updated references across all HTML pages
+    - Consistent naming for social media previews
+
+### Technical
+- **Meta Tag Organization**: All pages now follow consistent SEO structure
+    1. SEO Basic (title, description, keywords, canonical)
+    2. Favicon (multiple sizes and formats)
+    3. Open Graph (Facebook, WhatsApp, LinkedIn)
+    4. Twitter Card (Twitter-specific tags)
+- **Path Handling**: Proper relative/absolute path usage
+    - Root pages use `media/` for most resources
+    - Opt pages use `../media/` for relative resources
+    - Absolute `/media/` paths for specific high-res favicons
+- **Consistency**: All pages share same core SEO elements while maintaining page-specific titles and descriptions
+
+### Benefits
+- **Search Engine Visibility**: Improved discoverability on Google, Bing, and other search engines
+- **Social Media Sharing**: Beautiful preview cards when sharing links on social platforms
+- **Mobile Experience**: Progressive Web App capabilities with "Add to Home Screen" support
+- **Professional Branding**: Consistent favicons across all browsers and devices
+- **SEO Best Practices**: Canonical URLs, proper meta tags, and structured data
+
+---
+
+## [2.5.0] - 2024-12-12
+
+### Added
+- **Monthly Reports Page (`tabung-bulanan.html`)**:
+    - **Past Years Charts**: Dynamic historical trend visualization showing all available past years from JSON data
+        - Automatically displays charts for all years except current year (e.g., 2024, 2023, 2022)
+        - Sorted in descending order (most recent first)
+        - Responsive 2-column grid on desktop, single column on mobile
+        - Section header "Trend Tahun-Tahun Lepas" with descriptive text
+        - Each chart includes year badge (e.g., "Tahun 2024")
+        - Uses same blue styling (#3b82f6) as current year for consistency
+        - Memory-efficient: properly destroys old chart instances on data refresh
+        - Gracefully handles edge cases (no past data, single year, multiple years)
+    - **Current Year Label Enhancement**: Changed year label styling from slate to blue theme
+        - Background: `bg-blue-50` (light blue)
+        - Text: `text-blue-600` (blue)
+        - Matches "Bulan Ini" badge styling for visual consistency
+
+- **Digital Signage Display (`display/data-infaq-pembangunan.html`)**:
+    - **Slot Machine Animation**: Dramatic number rolling effect for donation total
+        - Each digit rolls independently in vertical column (like casino slot machine)
+        - Stagger effect: digits animate sequentially with 50ms delay (wave effect)
+        - Full digit rotation: each digit rolls through 10+ numbers before stopping
+        - GPU-accelerated CSS transforms for smooth 60fps animation
+        - Duration: 2.5 seconds with easeInOutCubic easing
+        - Maintains proper formatting (RM prefix, commas, decimal points remain static)
+        - Progress bar animates in sync with donation amount
+        - Animation only on first page load (no re-animation on auto-refresh)
+
+### Changed
+- **Monthly Reports Page (`tabung-bulanan.html`)**:
+    - **Year Labels**: Added "Tahun" prefix to all year badges
+        - Current year: "Tahun 2025" instead of "2025"
+        - Past years: "Tahun 2024", "Tahun 2023", etc.
+
+- **Digital Signage Display (`display/data-infaq-pembangunan.html`)**:
+    - **Date Format**: Changed "Kemaskini sehingga" text from bold to regular weight
+        - Updated CSS: `font-weight: normal` for `p:last-of-type` selector
+        - Creates cleaner, less heavy appearance
+    - **Percentage Display**: Enhanced to show one decimal place
+        - Changed from "50%" to "50.1%"
+        - Applied to both animated and instant update displays
+        - Uses `toFixed(1)` for consistent formatting
+
+### Technical
+- **JavaScript Updates (`script.js`)**:
+    - Added `pastYearChartInstances` object to track all past year chart instances
+    - Modified `loadReport()` to call `renderPastYearsCharts()` after current year chart
+    - Added `renderPastYearsCharts()` function (~60 lines):
+        - Filters years to exclude current year
+        - Sorts in descending order
+        - Dynamically creates chart cards with unique canvas IDs
+        - Handles section visibility based on data availability
+    - Added `renderPastYearChart()` function (~50 lines):
+        - Creates Chart.js line chart with blue styling
+        - Stores instance for proper cleanup
+        - Uses same configuration as current year chart
+    - Updated `set()` calls for year labels to include "Tahun" prefix
+
+- **JavaScript Updates (`display/data-infaq-pembangunan.html`)**:
+    - Replaced `animateCounter()` with `animateSlotMachine()` function (~60 lines):
+        - Parses currency string into individual characters
+        - Creates vertical column for each digit (overflow hidden)
+        - Implements stagger timing with setTimeout
+        - Uses CSS transforms for animation
+    - Added `setSlotMachineValue()` helper function for instant updates
+    - Updated `animateProgressBar()` to use `toFixed(1)` for decimal precision
+    - Modified `fetchDataAndUpdate()` to call new slot machine function
+
+- **CSS Updates**:
+    - Added slot machine animation styles (~40 lines):
+        - `.slot-machine-container`: Flex container for all digits
+        - `.slot-digit-wrapper`: Creates "window" with overflow hidden
+        - `.slot-digit-column`: Vertical column with transform transition
+        - `.slot-digit`: Individual digit styling
+        - `.slot-static`: Static characters (RM, comma, period)
+        - Responsive adjustments for mobile devices
+
+---
+
+## [2.4.0] - 2024-12-09
+
+### Added
+- **Digital Signage Display (`display/data-tabung-bulanan.html`)**:
+    - **Footer Section**: Added informational footer with text "Maklumat lanjut, layari infaq.mamtj6.com"
+        - Responsive text sizing: `text-base md:text-lg lg:text-xl` (16px → 18px → 20px)
+        - Centered white text with adequate padding (`py-2`)
+        - Positioned at bottom of layout for easy visibility
+        - Provides users with URL to access full infaq website
+
+### Changed
+- **Digital Signage Display (`display/data-tabung-bulanan.html`)**:
+    - **Body Padding Optimization**: Removed all vertical padding to eliminate wasted space
+        - Removed top padding: `pt-1 md:pt-1 lg:pt-2` (4px → 4px → 8px)
+        - Removed bottom padding: `pb-1 md:pb-1 lg:pb-1` (4px → 4px → 4px)
+        - Logo now positioned flush with top edge for maximum space efficiency
+        - Kept horizontal padding (`px-2 md:px-3 lg:px-4`) for content margins
+        - Result: 8-12px of vertical space reclaimed for content display
+    - **Icon Removal**: Removed all decorative icons from monthly data sections
+        - Removed calendar icons from month headers (Bulan Ini, Bulan Lepas)
+        - Removed calendar-check icons from week rows (Minggu 1-5)
+        - Removed coin icons from monthly totals
+        - Cleaner, more focused text-only layout for digital signage
+        - Simplified HTML structure and reduced visual clutter
+    - **Color Unification**: Changed current month total background to match previous month
+        - Changed from blue gradient (`from-blue-600 to-blue-800`)
+        - Changed to solid slate (`bg-slate-900`)
+        - Creates more consistent visual appearance between both monthly sections
+
+### Technical
+- **JavaScript Updates**: Modified `populateMonthData()` function to handle text-only structure
+    - Updated to directly set `textContent` instead of querying for nested span elements
+    - Removed icon-related DOM queries and manipulations
+    - Simplified error handling for "TIADA DATA" states
+    - Maintained all data formatting and display logic
+
 ---
 
 ## [2.3.2] - 2024-12-XX
@@ -143,7 +345,7 @@ Updated mosque name and address information across all project files to reflect 
 **HTML Pages**:
 - `infaq-transfer.html` - Footer copyright text
 - `infaq-qr.html` - Mosque name display and footer
-- `infaq-billplz.html` - Footer copyright text
+- `toyyib-pay.html` - Footer copyright text
 - `infaq-tabung.html` - Map header, address display, navigation links, and footer
 
 **Documentation**:
@@ -196,7 +398,7 @@ Implemented **Premium Split Layout** across all 4 infaq donation pages, ensuring
 - **Enhanced**: Download QR button functionality
 - **Enhanced**: Bank compatibility visual badges
 
-##### 3. Billplz Page (`infaq-billplz.html`)
+##### 3. toyyibPay Page (`toyyib-pay.html`)
 - **Added**: Payment methods grid (Credit Card, Debit Card, FPX, E-Wallet)
 - **Added**: Security assurance badge with Bank Negara mention
 - **Added**: Benefits of using Billplz section
