@@ -66,17 +66,100 @@
 
     <!-- NAVIGATION -->
     <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-            <!-- Logo & Title -->
-            <div class="flex items-center gap-3">
-                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-8 h-8">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+            <!-- LEFT: Logo & Title -->
+            <a href="index.html" class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-7 h-7 md:w-8 md:h-8">
                 <div>
-                    <h1 class="font-bold text-slate-800 text-lg leading-none">Infaq Center MAMTJ6</h1>
-                    <p class="text-slate-500 text-[10px] leading-none">Memudahkan Anda Berinfaq</p>
+                    <h1 class="font-bold text-slate-800 text-xs sm:text-sm md:text-base leading-tight">Infaq Center MAMTJ6</h1>
+                    <p class="text-slate-500 text-[7px] sm:text-[9px] leading-tight">Memudahkan Anda Berinfaq</p>
+                </div>
+            </a>
+
+            <!-- CENTER: Navigation Tabs -->
+            <div class="hidden md:flex items-center gap-1 lg:gap-2">
+                <!-- Tab 1: Utama -->
+                <a href="index.html" class="nav-tab active">
+                    <i class="ph ph-house"></i>
+                    <span>Utama</span>
+                </a>
+
+                <!-- Tab 2: Projek Pembangunan -->
+                <a href="infaq-pembangunan.html" class="nav-tab">
+                    <i class="ph ph-buildings"></i>
+                    <span>Projek Pembangunan</span>
+                </a>
+
+                <!-- Tab 3: Kaedah Infaq (Dropdown) -->
+                <div class="relative group">
+                    <button class="nav-tab">
+                        <i class="ph ph-hand-coins"></i>
+                        <span>Kaedah Infaq</span>
+                        <i class="ph ph-caret-down text-xs"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <a href="opt/infaq-transfer.html" class="dropdown-item">
+                            <i class="ph ph-bank text-blue-600"></i>
+                            <span>Bank Transfer</span>
+                        </a>
+                        <a href="opt/infaq-qr.html" class="dropdown-item">
+                            <i class="ph ph-qr-code text-green-600"></i>
+                            <span>QR Pay (DuitNow)</span>
+                        </a>
+                        <a href="opt/toyyib-pay.html" class="dropdown-item">
+                            <i class="ph ph-credit-card text-purple-600"></i>
+                            <span>ToyyibPay</span>
+                        </a>
+                        <a href="opt/infaq-tabung.html" class="dropdown-item">
+                            <i class="ph ph-package text-orange-600"></i>
+                            <span>Tabung Fizikal</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Laporan Bulanan -->
+                <a href="tabung-bulanan.html" class="nav-tab">
+                    <i class="ph ph-chart-line"></i>
+                    <span>Laporan Bulanan</span>
+                </a>
+
+                <!-- Tab 5: Perbelanjaan (Coming Soon - Disabled) -->
+                <div class="nav-tab-disabled">
+                    <i class="ph ph-chart-bar"></i>
+                    <span>Perbelanjaan</span>
+                    <span class="badge-coming-soon">AKAN DATANG</span>
+                </div>
+            </div>
+
+            <!-- RIGHT: Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-blue-600">
+                <i class="ph ph-list text-2xl"></i>
+            </button>
+        </div>
+
+    </nav>
+
+    <!-- Mobile Menu Popup Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden">
+        <div class="mobile-menu-popup">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="mobile-nav-item">Utama</a>
+                <a href="infaq-pembangunan.html" class="mobile-nav-item">Projek Pembangunan</a>
+                <div class="mobile-nav-section">Kaedah Infaq:</div>
+                <a href="opt/infaq-transfer.html" class="mobile-nav-subitem">Bank Transfer</a>
+                <a href="opt/infaq-qr.html" class="mobile-nav-subitem">QR Pay</a>
+                <a href="opt/toyyib-pay.html" class="mobile-nav-subitem">ToyyibPay</a>
+                <a href="opt/infaq-tabung.html" class="mobile-nav-subitem">Tabung Fizikal</a>
+                <a href="tabung-bulanan.html" class="mobile-nav-item">Laporan Bulanan</a>
+                <div class="mobile-nav-item-disabled">
+                    Perbelanjaan MAMTJ6 <span class="text-xs">(Akan Datang)</span>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
 
     <!-- MAIN CONTENT -->
     <main class="w-full max-w-5xl mx-auto p-4 md:p-8 flex-grow flex flex-col gap-6">
@@ -263,15 +346,44 @@
                 <i class="ph-fill ph-clock"></i> Data dikemaskini: <span id="last-update"
                     class="font-medium text-slate-500">...</span>
             </p>
-            <p class="text-slate-500 text-sm">© 2024 Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6)</p>
+            <p class="text-slate-500 text-sm">© <span id="copyright-year">2025</span> Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6) | <a href="https://mamtj6.com" target="_blank" class="text-blue-600 hover:text-blue-700 hover:underline">mamtj6.com</a></p>
             <p class="text-[10px] text-slate-300 mt-2 uppercase tracking-widest">
-                MAMTJ6 System v2.1
+                Version <span id="app-version">v2.1</span>
             </p>
         </div>
     </footer>
 
     <!-- Script Logic -->
     <script src="script.js"></script>
+
+    <!-- Navigation Script -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            // Toggle menu on button click
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenuOverlay.classList.toggle('active');
+            });
+
+            // Close menu when clicking on overlay (outside popup)
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if (e.target === mobileMenuOverlay) {
+                    mobileMenuOverlay.classList.remove('active');
+                }
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
+                    mobileMenuOverlay.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

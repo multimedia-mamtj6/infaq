@@ -1,5 +1,8 @@
 const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
 
+// Version management - Single source of truth
+const APP_VERSION = "2.1";
+
 // Helper: Format Currency
 function formatCurrency(amount) {
     if (typeof amount !== 'number') return "RM 0.00";
@@ -19,6 +22,28 @@ function stopLoading() {
         el.classList.remove('skeleton');
         el.classList.add('fade-in'); // Add nice fade-in effect
     });
+}
+
+// Helper: Update version display in footer
+function updateVersionDisplay() {
+    const versionElement = document.getElementById('app-version');
+    if (versionElement) {
+        versionElement.textContent = `v${APP_VERSION}`;
+    }
+}
+
+// Helper: Update copyright year to current year
+function updateCopyrightYear() {
+    const copyrightElement = document.getElementById('copyright-year');
+    if (copyrightElement) {
+        copyrightElement.textContent = new Date().getFullYear();
+    }
+}
+
+// Helper: Initialize footer with version and year
+function initializeFooter() {
+    updateVersionDisplay();
+    updateCopyrightYear();
 }
 
 async function loadDashboard() {
@@ -71,10 +96,14 @@ async function loadDashboard() {
         // Remove Skeletons to reveal data
         stopLoading();
 
+        // Initialize footer
+        initializeFooter();
+
     } catch (error) {
         console.error("Error loading data:", error);
         set('project-name', "Ralat memuatkan data. Sila refresh.");
         stopLoading(); // Stop shimmer even if error
+        initializeFooter(); // Initialize footer even if data load fails
     }
 }
 
@@ -122,8 +151,12 @@ async function loadReport() {
         // 4. Render Past Years Charts
         renderPastYearsCharts(data.graf, currentYear);
 
+        // Initialize footer
+        initializeFooter();
+
     } catch (error) {
         console.error("Error loading report data:", error);
+        initializeFooter(); // Initialize footer even if data load fails
     }
 }
 

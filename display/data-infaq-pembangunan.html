@@ -14,10 +14,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://multimedia.mamtj6.com/media/img/Infaq-bg.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #000;
             color: white;
             text-align: center;
             margin: 0;
@@ -27,6 +24,22 @@
             min-height: 100vh;
             padding: 0;
             box-sizing: border-box;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://multimedia.mamtj6.com/media/img/Infaq-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.5;
+            z-index: -1;
         }
 
         .container {
@@ -249,7 +262,7 @@
             <p>Sasaran: RM250,000</p>
         </div>
 
-        <p>Kemaskini sehingga: <span id="tarikhKemaskini" class="loading">Loading...</span></p>
+        <p>Kemaskini sehingga: <span id="tarikhKemaskini" class="loading">Loading...</span> | Maklumat lanjut, layari <strong style="color: #ffd700;">infaq.mamtj6.com</strong></p>
     </div>
     <script>
     const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";

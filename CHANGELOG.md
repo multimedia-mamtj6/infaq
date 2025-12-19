@@ -6,6 +6,43 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.7.0] - 2025-12-19
+
+### Added
+- **Centralized Version Management System**: Single source of truth for version numbers
+    - `APP_VERSION` constant in `script.js` controls all page versions
+    - `updateVersionDisplay()` function dynamically updates version text
+    - `updateCopyrightYear()` function auto-updates copyright year
+    - `initializeFooter()` function manages both version and year updates
+    - Version display added to all 4 donation method pages (previously missing)
+        - `opt/infaq-transfer.html`
+        - `opt/infaq-qr.html`
+        - `opt/infaq-tabung.html`
+        - `opt/toyyib-pay.html`
+
+### Changed
+- **Standardized Version Format**: All pages now consistently show "Version v2.1" format
+    - Previously: "MAMTJ6 System v2.1" on some pages, "Version v2.1" on others
+    - Now: Uniform "Version v2.1" across all 7 pages
+- **Dynamic Copyright Year**: Copyright year now auto-updates to current year via JavaScript
+    - Eliminates manual year updates every January
+    - Year displayed via `<span id="copyright-year">` element
+- **Footer Consistency**: All 7 pages now have identical footer structure and styling
+
+### Technical Details
+- Added `<script src="../script.js"></script>` to donation pages to access version functions
+- Added `DOMContentLoaded` event listeners on donation pages to initialize footer
+- Version and year fallback text preserved in HTML if JavaScript fails to load
+- Modified files: `script.js`, `index.html`, `tabung-bulanan.html`, `infaq-pembangunan.html`, `opt/infaq-transfer.html`, `opt/infaq-qr.html`, `opt/infaq-tabung.html`, `opt/toyyib-pay.html`
+
+### Benefits
+- **Single Update Point**: Change `APP_VERSION = "2.2"` in one line to update all pages
+- **Maintenance Efficiency**: Version bumps now take 1 second instead of editing 7 files
+- **Consistency Guarantee**: Impossible to have mismatched versions across pages
+- **Future-Proof**: Easy to extend with build timestamps or commit hashes
+
+---
+
 ## [2.6.0] - 2025-01-15
 
 ### Added
