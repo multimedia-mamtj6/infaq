@@ -3,7 +3,7 @@
     "kutipan": {
       "tahunIni": {
         "tahun": 2025,
-        "jumlah": 102207
+        "jumlah": 103854
       },
       "tahunLepas": {
         "tahun": 2024,
@@ -11,7 +11,7 @@
       },
       "bulanIni": {
         "bulan": "DISEMBER",
-        "jumlah": 3624
+        "jumlah": 5271
       },
       "bulanLepas": {
         "bulan": "NOVEMBER",
@@ -22,19 +22,19 @@
   "projek": {
     "NamaProjek": "Infaq Tabung Bangunan Tambahan MAMTJ6",
     "SasaranKutipan": 250000,
-    "JumlahTerkumpul": 142711,
-    "TarikhKemaskini": "2025-11-25T16:00:00.000Z",
-    "Peratusan": 57.1
+    "JumlahTerkumpul": 157145,
+    "TarikhKemaskini": "2025-12-18T16:00:00.000Z",
+    "Peratusan": 62.9
   },
   "paparanBulanIni": {
     "Tahun": 2025,
     "Bulan": "DISEMBER",
     "Minggu1": 1955,
     "Minggu2": 1669,
-    "Minggu3": 0,
+    "Minggu3": 1647,
     "Minggu4": 0,
     "Minggu5": 0,
-    "JumlahBulanan": 3624
+    "JumlahBulanan": 5271
   },
   "paparanBulanLepas": {
     "Tahun": 2025,
@@ -106,9 +106,9 @@
         6761,
         9343,
         7415,
-        3624
+        5271
       ]
     }
   },
-  "tarikhKemaskini": "2025-12-19T08:18:24.662Z"
+  "tarikhKemaskini": "2025-12-20T02:07:00.221Z"
 }
