@@ -1,0 +1,138 @@
+{
+  "ringkasan": {
+    "kutipan": {
+      "tahunIni": {
+        "tahun": 2026,
+        "jumlah": 1658.8
+      },
+      "tahunLepas": {
+        "tahun": 2025,
+        "jumlah": 105533
+      },
+      "bulanIni": {
+        "bulan": "JANUARI",
+        "jumlah": 0
+      },
+      "bulanLepas": {
+        "bulan": "DISEMBER",
+        "jumlah": 6950
+      }
+    }
+  },
+  "paparanBulanIni": {
+    "Tahun": 2026,
+    "Bulan": "JANUARI",
+    "Minggu1": 0,
+    "Minggu2": 0,
+    "Minggu3": 0,
+    "Minggu4": 0,
+    "Minggu5": 0,
+    "JumlahBulanan": 0
+  },
+  "paparanBulanLepas": {
+    "Tahun": 2025,
+    "Bulan": "DISEMBER",
+    "Minggu1": 1955,
+    "Minggu2": 1669,
+    "Minggu3": 1647,
+    "Minggu4": 1679,
+    "Minggu5": 0,
+    "JumlahBulanan": 6950
+  },
+  "graf": {
+    "2024": {
+      "tahun": "2024",
+      "labels": [
+        "JAN",
+        "FEB",
+        "MAC",
+        "APR",
+        "MEI",
+        "JUN",
+        "JUL",
+        "OGO",
+        "SEP",
+        "OKT",
+        "NOV",
+        "DIS"
+      ],
+      "data": [
+        11676,
+        14531,
+        17798,
+        10404,
+        10532,
+        8983,
+        8228,
+        10192,
+        7700,
+        8339,
+        9642,
+        7067
+      ]
+    },
+    "2025": {
+      "tahun": "2025",
+      "labels": [
+        "JAN",
+        "FEB",
+        "MAC",
+        "APR",
+        "MEI",
+        "JUN",
+        "JUL",
+        "OGO",
+        "SEP",
+        "OKT",
+        "NOV",
+        "DIS"
+      ],
+      "data": [
+        9623,
+        7372,
+        14834,
+        7965,
+        10073,
+        8699,
+        7161,
+        9337,
+        6761,
+        9343,
+        7415,
+        6950
+      ]
+    },
+    "2026": {
+      "tahun": "2026",
+      "labels": [
+        "JAN",
+        "FEB",
+        "MAC",
+        "APR",
+        "MEI",
+        "JUN",
+        "JUL",
+        "OGO",
+        "SEP",
+        "OKT",
+        "NOV",
+        "DIS"
+      ],
+      "data": [
+        1658.8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "tarikhKemaskini": "2026-01-03T14:40:41.527Z"
+}
