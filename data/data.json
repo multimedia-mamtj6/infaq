@@ -2,20 +2,20 @@
   "ringkasan": {
     "kutipan": {
       "tahunIni": {
+        "tahun": 2026,
+        "jumlah": 1658.8
+      },
+      "tahunLepas": {
         "tahun": 2025,
         "jumlah": 105533
       },
-      "tahunLepas": {
-        "tahun": 2024,
-        "jumlah": 125092
-      },
       "bulanIni": {
-        "bulan": "DISEMBER",
-        "jumlah": 6950
+        "bulan": "JANUARI",
+        "jumlah": 0
       },
       "bulanLepas": {
-        "bulan": "NOVEMBER",
-        "jumlah": 7415
+        "bulan": "DISEMBER",
+        "jumlah": 6950
       }
     }
   },
@@ -27,6 +27,9 @@
     "Peratusan": 63.2
   },
   "paparanBulanIni": {
+    "error": "Data bulan semasa tidak dijumpai."
+  },
+  "paparanBulanLepas": {
     "Tahun": 2025,
     "Bulan": "DISEMBER",
     "Minggu1": 1955,
@@ -35,16 +38,6 @@
     "Minggu4": 1679,
     "Minggu5": 0,
     "JumlahBulanan": 6950
-  },
-  "paparanBulanLepas": {
-    "Tahun": 2025,
-    "Bulan": "NOVEMBER",
-    "Minggu1": 1707,
-    "Minggu2": 1879,
-    "Minggu3": 1932,
-    "Minggu4": 1897,
-    "Minggu5": 0,
-    "JumlahBulanan": 7415
   },
   "graf": {
     "2024": {
@@ -110,5 +103,5 @@
       ]
     }
   },
-  "tarikhKemaskini": "2025-12-31T14:08:26.457Z"
+  "tarikhKemaskini": "2026-01-03T10:22:06.384Z"
 }
