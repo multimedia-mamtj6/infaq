@@ -3,6 +3,7 @@ const GITHUB_USERNAME = "multimedia-mamtj6";
 const GITHUB_REPO = "infaq";
 const GITHUB_BRANCH = "main";
 const FILE_PATH = "data/data.json"; // JSON utama untuk semua data
+const MONTHLY_FILE_PATH = "data/monthly.json"; // JSON untuk data bulanan
 const DAILY_FILE_PATH = "data/daily.json"; // JSON khas untuk kutipan harian
 // ----------------------------------------------------
 
@@ -68,28 +69,35 @@ function publishJsonToGithub() {
     // 1. Kumpul semua data yang diperlukan
     const summaryData = getSummaryData();
     const projectData = getProjectData();
-    const currentMonthData = getCurrentMonthData();
+    const currentMonthData = getCurrentMonthDataSafe(); // CHANGED: Use safe version
     const pastMonthData = getPastMonthData();
-    const graphData2025 = getYearlyGraphData('2025');
-    const graphData2024 = getYearlyGraphData('2024');
     const dailyData = getDailyData();
+
+    // Dapatkan tahun untuk graf (termasuk tahun semasa walaupun tiada data)
+    const graphYears = getGraphYears(); // CHANGED: Use dynamic year detection
+    const graphDataByYear = {};
+    graphYears.forEach(year => {
+      graphDataByYear[String(year)] = getYearlyGraphDataSafe(String(year)); // CHANGED: Use safe version
+    });
 
     const currentTimestamp = new Date().toISOString();
 
-    // 2. Gabungkan data UTAMA (tanpa kutipan harian)
+    // 2. Data UTAMA - Projek sahaja (ringkas & cepat)
     const mainData = {
-      ringkasan: summaryData,
       projek: projectData,
-      paparanBulanIni: currentMonthData,
-      paparanBulanLepas: pastMonthData,
-      graf: {
-        '2025': graphData2025,
-        '2024': graphData2024
-      },
       tarikhKemaskini: currentTimestamp
     };
 
-    // 3. Data khas untuk kutipan harian sahaja
+    // 3. Data BULANAN - Semua statistik kutipan bulanan
+    const monthlyData = {
+      ringkasan: summaryData,
+      paparanBulanIni: currentMonthData,
+      paparanBulanLepas: pastMonthData,
+      graf: graphDataByYear,
+      tarikhKemaskini: currentTimestamp
+    };
+
+    // 4. Data HARIAN - Kutipan harian sahaja
     const dailyOnlyData = {
       projek: {
         NamaProjek: projectData.NamaProjek,
@@ -101,14 +109,16 @@ function publishJsonToGithub() {
       tarikhKemaskini: currentTimestamp
     };
 
-    // 4. Muat naik kedua-dua fail ke GitHub
+    // 5. Muat naik ketiga-tiga fail ke GitHub
     const mainContent = JSON.stringify(mainData, null, 2);
+    const monthlyContent = JSON.stringify(monthlyData, null, 2);
     const dailyContent = JSON.stringify(dailyOnlyData, null, 2);
 
     uploadToGithub(mainContent, token, FILE_PATH);
+    uploadToGithub(monthlyContent, token, MONTHLY_FILE_PATH);
     uploadToGithub(dailyContent, token, DAILY_FILE_PATH);
 
-    ui.alert('Berjaya!', `Kedua-dua fail telah berjaya dikemas kini di GitHub:\n- ${FILE_PATH}\n- ${DAILY_FILE_PATH}`, ui.ButtonSet.OK);
+    ui.alert('Berjaya!', `Ketiga-tiga fail telah berjaya dikemas kini di GitHub:\n- ${FILE_PATH}\n- ${MONTHLY_FILE_PATH}\n- ${DAILY_FILE_PATH}`, ui.ButtonSet.OK);
 
   } catch (e) {
     console.error(e);
@@ -221,11 +231,16 @@ function getPastMonthData() {
 
 /**
  * Mengambil data dari tab Projek.
- * VERSI DIKEMAS KINI: Mengabaikan baris kosong.
+ * VERSI DIKEMAS KINI: Mengabaikan baris kosong & membaca TarikhKemaskini dari B5.
  */
 function getProjectData() {
+  const sheet = SPREADSHEET.getSheetByName('Projek');
+  if (!sheet) return { error: "Sheet 'Projek' tidak dijumpai." };
+
   const projectInfo = getSheetData('Projek');
   const data = {};
+
+  // Read key-value pairs
   projectInfo.forEach(row => {
     // PEMBETULAN: Hanya proses baris yang mempunyai 'Perkara'.
     if (row && row.Perkara) {
@@ -233,9 +248,18 @@ function getProjectData() {
     }
   });
 
+  // Read TarikhKemaskini from specific cell B5
+  const tarikhKemaskini = sheet.getRange('B5').getValue();
+  if (tarikhKemaskini) {
+    data.TarikhKemaskini = (tarikhKemaskini instanceof Date)
+      ? tarikhKemaskini.toISOString()
+      : new Date(tarikhKemaskini).toISOString();
+  }
+
   const target = parseFloat(data.SasaranKutipan);
   const collected = parseFloat(data.JumlahTerkumpul);
   data.Peratusan = (target > 0) ? parseFloat(((collected / target) * 100).toFixed(1)) : 0;
+
   return data;
 }
 
@@ -393,6 +417,90 @@ function getPreviousMonth(year, month) {
     return (monthIndex === 0) 
       ? { year: year - 1, month: "DISEMBER" } 
       : { year: year, month: monthNames[monthIndex - 1] };
+}
+
+/**
+ * Mendapatkan senarai tahun unik dari tab KutipanBulanan.
+ * Returns array of years sorted descending.
+ */
+function getAvailableYears() {
+  const allMonthlyData = getSheetData('KutipanBulanan');
+  const years = [...new Set(allMonthlyData.map(row => row.Tahun))];
+  return years.sort((a, b) => b - a); // Sort descending
+}
+
+/**
+ * Mendapatkan data bulan semasa dengan fallback untuk data kosong.
+ */
+function getCurrentMonthDataSafe() {
+  const config = getConfig();
+  const currentYear = parseInt(config.TahunSemasa);
+  const currentMonth = config.BulanSemasa.toUpperCase();
+
+  const allMonthlyData = getSheetData('KutipanBulanan');
+  const data = allMonthlyData.find(row => row.Tahun === currentYear && row.Bulan === currentMonth);
+
+  // Jika data tidak dijumpai, return struktur kosong
+  if (!data) {
+    return {
+      Tahun: currentYear,
+      Bulan: currentMonth,
+      Minggu1: 0,
+      Minggu2: 0,
+      Minggu3: 0,
+      Minggu4: 0,
+      Minggu5: 0,
+      JumlahBulanan: 0
+    };
+  }
+
+  return data;
+}
+
+/**
+ * Mendapatkan data graf tahunan dengan fallback untuk tahun baharu.
+ */
+function getYearlyGraphDataSafe(year) {
+  const allMonthlyData = getSheetData('KutipanBulanan');
+  const yearData = allMonthlyData.filter(row => row.Tahun === parseInt(year));
+
+  const monthOrder = ["JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"];
+
+  // Jika tiada data untuk tahun ini, return struktur kosong dengan 12 bulan
+  if (yearData.length === 0) {
+    return {
+      tahun: year,
+      labels: monthOrder.map(m => m.substring(0, 3)),
+      data: new Array(12).fill(0) // [0, 0, 0, ..., 0]
+    };
+  }
+
+  // Jika ada data, sort dan return
+  yearData.sort((a, b) => monthOrder.indexOf(a.Bulan) - monthOrder.indexOf(b.Bulan));
+
+  return {
+    tahun: year,
+    labels: yearData.map(row => row.Bulan.substring(0, 3)),
+    data: yearData.map(row => row.JumlahBulanan)
+  };
+}
+
+/**
+ * Mendapatkan senarai tahun untuk graf (termasuk tahun semasa & lepas).
+ * Memastikan tahun semasa sentiasa ada walaupun belum dikemas kini di sheet.
+ */
+function getGraphYears() {
+  const config = getConfig();
+  const currentYear = parseInt(config.TahunSemasa);
+
+  const allMonthlyData = getSheetData('KutipanBulanan');
+  const yearsInSheet = [...new Set(allMonthlyData.map(row => row.Tahun))];
+
+  // Gabungkan tahun dari sheet + tahun semasa & lepas
+  const allYears = new Set([...yearsInSheet, currentYear, currentYear - 1]);
+
+  // Sort descending (terkini dulu)
+  return Array.from(allYears).sort((a, b) => b - a);
 }
 
 /**

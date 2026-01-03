@@ -48,12 +48,19 @@ function initializeFooter() {
 
 async function loadDashboard() {
     try {
-        // Fetch Data
-        const response = await fetch(`${jsonDataUrl}?t=${new Date().getTime()}`);
-        if (!response.ok) throw new Error("Network response was not ok");
-        const data = await response.json();
+        // Fetch both JSON files in parallel for better performance
+        const timestamp = new Date().getTime();
+        const [dataResponse, monthlyResponse] = await Promise.all([
+            fetch(`${jsonDataUrl}?t=${timestamp}`),
+            fetch(`${jsonDataUrl.replace('data.json', 'monthly.json')}?t=${timestamp}`)
+        ]);
 
-        // --- 1. Update Project Section ---
+        if (!dataResponse.ok || !monthlyResponse.ok) throw new Error("Network response was not ok");
+
+        const data = await dataResponse.json();
+        const monthlyData = await monthlyResponse.json();
+
+        // --- 1. Update Project Section (from data.json) ---
         const p = data.projek;
         set('project-name', p.NamaProjek);
         set('project-raised', formatCurrency(p.JumlahTerkumpul));
@@ -71,8 +78,8 @@ async function loadDashboard() {
             }, 100);
         }
 
-        // --- 2. Update Monthly Stats ---
-        const k = data.ringkasan.kutipan;
+        // --- 2. Update Monthly Stats (from monthly.json) ---
+        const k = monthlyData.ringkasan.kutipan;
 
         // Current Month
         set('lbl-month-curr', `Bulan Ini (${k.bulanIni.bulan})`);
@@ -122,8 +129,9 @@ let pastYearChartInstances = {};
 
 async function loadReport() {
     try {
-        // Fetch Data
-        const response = await fetch(`${jsonDataUrl}?t=${new Date().getTime()}`);
+        // Fetch data from monthly.json instead of data.json
+        const monthlyDataUrl = jsonDataUrl.replace('data.json', 'monthly.json');
+        const response = await fetch(`${monthlyDataUrl}?t=${new Date().getTime()}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
 
