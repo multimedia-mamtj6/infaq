@@ -11,7 +11,7 @@
       },
       "bulanIni": {
         "bulan": "JANUARI",
-        "jumlah": 0
+        "jumlah": 1658.8
       },
       "bulanLepas": {
         "bulan": "DISEMBER",
@@ -22,12 +22,12 @@
   "paparanBulanIni": {
     "Tahun": 2026,
     "Bulan": "JANUARI",
-    "Minggu1": 0,
+    "Minggu1": 1658.8,
     "Minggu2": 0,
     "Minggu3": 0,
     "Minggu4": 0,
     "Minggu5": 0,
-    "JumlahBulanan": 0
+    "JumlahBulanan": 1658.8
   },
   "paparanBulanLepas": {
     "Tahun": 2025,
@@ -134,5 +134,5 @@
       ]
     }
   },
-  "tarikhKemaskini": "2026-01-03T15:41:33.393Z"
+  "tarikhKemaskini": "2026-01-03T15:46:11.089Z"
 }
