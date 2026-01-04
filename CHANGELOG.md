@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.0.1] - 2026-01-04
+
+### Changed
+- **Digital Signage Display (`display/data-infaq-pembangunan.html`)**:
+    - **Date Source Update**: Changed date display to use project-specific timestamp instead of system-wide timestamp
+        - **Previous**: Used `fullData.tarikhKemaskini` (root-level date field)
+        - **Current**: Uses `fullData.projek.TarikhKemaskini` (project-specific date field)
+        - **Benefit**: Date now accurately reflects when the project data was last updated, not the overall system update time
+        - **Example**: Display shows "30 Disember 2025" (project update) instead of "03 Januari 2026" (system update)
+        - **Technical**: Modified line 384 in `data-infaq-pembangunan.html`
+        - **Format**: Unchanged - maintains Malaysian Malay date format (DD [bulan] YYYY)
+
+### Technical Details
+- **File Modified**: `display/data-infaq-pembangunan.html` (line 384 only)
+- **Date Format**: `ms-MY` locale with format `day: '2-digit', month: 'long', year: 'numeric'`
+- **Impact**: No changes to functionality, only the data source for the date field
+- **Compatibility**: Works with existing JSON structure from `data/data.json`
+
+---
+
 ## [3.0.0] - 2026-01-03
 
 ### Added - Data Structure Optimization & Dynamic Year Support

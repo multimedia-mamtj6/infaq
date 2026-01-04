@@ -381,7 +381,7 @@
             const jumlahTerkumpulFormatted = formatCurrency(data.JumlahTerkumpul);
             const sasaranFormatted = `RM ${data.SasaranKutipan.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
 
-            const tarikh = new Date(fullData.tarikhKemaskini);
+            const tarikh = new Date(fullData.projek.TarikhKemaskini);
             const tarikhFormatted = tarikh.toLocaleDateString('ms-MY', {
                 day: '2-digit', month: 'long', year: 'numeric'
             });
