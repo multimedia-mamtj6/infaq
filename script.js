@@ -1,7 +1,7 @@
 const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
 
 // Version management - Single source of truth
-const APP_VERSION = "2.1";
+const APP_VERSION = "3.0.1";
 
 // Helper: Format Currency
 function formatCurrency(amount) {
@@ -93,12 +93,20 @@ async function loadDashboard() {
         set('lbl-year-curr', `Tahun Ini (${k.tahunIni.tahun})`);
         set('val-year-curr', formatCurrency(k.tahunIni.jumlah));
 
-        // --- 3. Footer Timestamp ---
-        const dateObj = new Date(data.tarikhKemaskini);
-        const formattedDate = dateObj.toLocaleString('en-US', {
+        // --- 3. Timestamps ---
+        // Project date for status-update (DATE ONLY - no time)
+        const projectDateObj = new Date(data.projek.TarikhKemaskini);
+        const projectFormattedDate = projectDateObj.toLocaleString('en-US', {
+            day: '2-digit', month: 'short', year: 'numeric'
+        });
+        set('status-update', projectFormattedDate);
+
+        // System date for last-update (with time)
+        const systemDateObj = new Date(data.tarikhKemaskini);
+        const systemFormattedDate = systemDateObj.toLocaleString('en-US', {
             day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
         });
-        ['last-update', 'status-update'].forEach(id => set(id, formattedDate));
+        set('last-update', systemFormattedDate);
 
         // Remove Skeletons to reveal data
         stopLoading();

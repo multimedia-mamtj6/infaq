@@ -9,19 +9,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [3.0.1] - 2026-01-04
 
 ### Changed
-- **Digital Signage Display (`display/data-infaq-pembangunan.html`)**:
-    - **Date Source Update**: Changed date display to use project-specific timestamp instead of system-wide timestamp
-        - **Previous**: Used `fullData.tarikhKemaskini` (root-level date field)
-        - **Current**: Uses `fullData.projek.TarikhKemaskini` (project-specific date field)
-        - **Benefit**: Date now accurately reflects when the project data was last updated, not the overall system update time
-        - **Example**: Display shows "30 Disember 2025" (project update) instead of "03 Januari 2026" (system update)
-        - **Technical**: Modified line 384 in `data-infaq-pembangunan.html`
-        - **Format**: Unchanged - maintains Malaysian Malay date format (DD [bulan] YYYY)
+- **Date Display System**: Separated project-specific dates from system-wide timestamps for better accuracy
+    - **Digital Signage Display (`display/data-infaq-pembangunan.html`)**:
+        - Line 384: Changed from `fullData.tarikhKemaskini` to `fullData.projek.TarikhKemaskini`
+        - Format: Malaysian Malay date only (DD [bulan] YYYY)
+        - Shows when project data was last updated
+
+    - **Main Website Pages (`script.js`)**:
+        - Lines 96-109: Separated date formatting for `#status-update` and `#last-update` elements
+        - **`#status-update`** (Status Kutipan Semasa section):
+            - Now uses `data.projek.TarikhKemaskini` (project-specific date)
+            - Format: Date only, no time (e.g., "30 Dec 2025")
+            - Appears in infaq-pembangunan.html line 245
+        - **`#last-update`** (Footer section):
+            - Continues using `data.tarikhKemaskini` (system-wide timestamp)
+            - Format: Date with time (e.g., "03 Jan 2026, 11:46 PM")
+            - Appears in all pages (index.html, infaq-pembangunan.html)
+
+### Benefits
+- **Accuracy**: Status Kutipan now shows when project collection data was actually updated
+- **Clarity**: System timestamp in footer shows overall data freshness
+- **User Experience**: More precise information about project status vs. system updates
 
 ### Technical Details
-- **File Modified**: `display/data-infaq-pembangunan.html` (line 384 only)
-- **Date Format**: `ms-MY` locale with format `day: '2-digit', month: 'long', year: 'numeric'`
-- **Impact**: No changes to functionality, only the data source for the date field
+- **Files Modified**:
+    - `display/data-infaq-pembangunan.html` (line 384)
+    - `script.js` (lines 96-109)
+- **Date Sources**:
+    - Project date: `data.projek.TarikhKemaskini` from data.json
+    - System date: `data.tarikhKemaskini` from data.json
 - **Compatibility**: Works with existing JSON structure from `data/data.json`
 
 ---
