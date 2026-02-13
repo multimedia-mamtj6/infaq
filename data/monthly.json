@@ -3,7 +3,7 @@
     "kutipan": {
       "tahunIni": {
         "tahun": 2026,
-        "jumlah": 10132.8
+        "jumlah": 12209.8
       },
       "tahunLepas": {
         "tahun": 2025,
@@ -11,7 +11,7 @@
       },
       "bulanIni": {
         "bulan": "FEBRUARI",
-        "jumlah": 2120
+        "jumlah": 4197
       },
       "bulanLepas": {
         "bulan": "JANUARI",
@@ -23,11 +23,11 @@
     "Tahun": 2026,
     "Bulan": "FEBRUARI",
     "Minggu1": 2120,
-    "Minggu2": 0,
+    "Minggu2": 2077,
     "Minggu3": 0,
     "Minggu4": 0,
     "Minggu5": 0,
-    "JumlahBulanan": 2120
+    "JumlahBulanan": 4197
   },
   "paparanBulanLepas": {
     "Tahun": 2026,
@@ -120,7 +120,7 @@
       ],
       "data": [
         8012.8,
-        2120,
+        4197,
         0,
         0,
         0,
@@ -134,5 +134,5 @@
       ]
     }
   },
-  "tarikhKemaskini": "2026-02-09T07:03:49.589Z"
+  "tarikhKemaskini": "2026-02-13T11:15:25.918Z"
 }
