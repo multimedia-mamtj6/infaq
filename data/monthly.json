@@ -10,16 +10,26 @@
         "jumlah": 105533
       },
       "bulanIni": {
-        "bulan": "MEI",
-        "jumlah": 9852
+        "bulan": "JUN",
+        "jumlah": 0
       },
       "bulanLepas": {
-        "bulan": "APRIL",
-        "jumlah": 7315
+        "bulan": "MEI",
+        "jumlah": 9852
       }
     }
   },
   "paparanBulanIni": {
+    "Tahun": 2026,
+    "Bulan": "JUN",
+    "Minggu1": 0,
+    "Minggu2": 0,
+    "Minggu3": 0,
+    "Minggu4": 0,
+    "Minggu5": 0,
+    "JumlahBulanan": 0
+  },
+  "paparanBulanLepas": {
     "Tahun": 2026,
     "Bulan": "MEI",
     "Minggu1": 1552,
@@ -28,16 +38,6 @@
     "Minggu4": 2038,
     "Minggu5": 2860,
     "JumlahBulanan": 9852
-  },
-  "paparanBulanLepas": {
-    "Tahun": 2026,
-    "Bulan": "APRIL",
-    "Minggu1": 1765,
-    "Minggu2": 1793,
-    "Minggu3": 1951,
-    "Minggu4": 1806,
-    "Minggu5": 0,
-    "JumlahBulanan": 7315
   },
   "graf": {
     "2024": {
@@ -134,5 +134,5 @@
       ]
     }
   },
-  "tarikhKemaskini": "2026-05-29T11:15:40.623Z"
+  "tarikhKemaskini": "2026-06-03T08:18:53.291Z"
 }
