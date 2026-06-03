@@ -2,8 +2,8 @@
   "projek": {
     "NamaProjek": "Infaq Tabung Bangunan Tambahan MAMTJ6",
     "SasaranKutipan": 250000,
-    "JumlahTerkumpul": 185550,
-    "Peratusan": 74.2
+    "JumlahTerkumpul": 186766,
+    "Peratusan": 74.7
   },
   "paparanHarian": [
     {
@@ -615,7 +615,12 @@
       "tarikh": "2026-05-25",
       "jumlah": 1586,
       "keterangan": "Tabung (Fizikal, 22/05/2026)"
+    },
+    {
+      "tarikh": "2026-06-03",
+      "jumlah": 1216,
+      "keterangan": "Tabung (Fizikal, 29/05/2026)"
     }
   ],
-  "tarikhKemaskini": "2026-05-29T11:15:40.623Z"
+  "tarikhKemaskini": "2026-06-03T08:18:53.291Z"
 }
