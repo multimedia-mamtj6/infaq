@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Basic -->
+    <title>Infaq Bayaran Bil Utiliti (Air, Elektrik, Internet) - Infaq Center MAMTJ6</title>
+    <meta name="description" content="Bantu ringankan bil utiliti Masjid Al-Mukhlisin, Taman Jaya 6. Bayar terus bil air (PAIP), elektrik (TNB) dan internet (Unifi) masjid melalui JomPAY sebagai sebahagian daripada infaq anda.">
+    <meta name="keywords" content="Infaq Utiliti, Bayar Bil Masjid, JomPAY Masjid, PAIP MAMTJ6, TNB MAMTJ6, Unifi MAMTJ6, Bil Air Masjid, Bil Elektrik Masjid, Bil Internet Masjid, Infaq Al-Mukhlisin">
+    <link rel="canonical" href="https://infaq.mamtj6.com/utiliti/index.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../media/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/media/favicon/favicon-192x192.png" sizes="192x192" />
+    <link rel="icon" type="image/png" href="/media/favicon/favicon-512x512.png" sizes="512x512" />
+    <link rel="icon" type="image/svg+xml" href="../media/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../media/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../media/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Infaq Center" />
+    <link rel="manifest" href="../media/favicon/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Infaq Bayaran Bil Utiliti (Air, Elektrik, Internet) - Infaq Center MAMTJ6">
+    <meta property="og:description" content="Bantu ringankan bil utiliti masjid - bayar terus bil air, elektrik dan internet masjid melalui JomPAY sebagai sebahagian daripada infaq anda.">
+    <meta property="og:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
+    <meta property="og:url" content="https://infaq.mamtj6.com/utiliti/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Infaq Center MAMTJ6">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Infaq Bayaran Bil Utiliti - Infaq Center MAMTJ6">
+    <meta name="twitter:description" content="Bayar terus bil air, elektrik dan internet masjid melalui JomPAY sebagai sebahagian daripada infaq anda.">
+    <meta name="twitter:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- 3. Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+            <!-- LEFT: Logo & Title -->
+            <a href="../index.html" class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-7 h-7 md:w-8 md:h-8">
+                <div>
+                    <h1 class="font-bold text-slate-800 text-xs sm:text-sm md:text-base leading-tight">Infaq Center MAMTJ6</h1>
+                    <p class="text-slate-500 text-[7px] sm:text-[9px] leading-tight">Memudahkan Anda Berinfaq</p>
+                </div>
+            </a>
+
+            <!-- CENTER: Navigation Tabs -->
+            <div class="hidden md:flex items-center gap-1 lg:gap-2">
+                <!-- Tab 1: Utama -->
+                <a href="../index.html" class="nav-tab">
+                    <i class="ph ph-house"></i>
+                    <span>Utama</span>
+                </a>
+
+                <!-- Tab 2: Projek Pembangunan -->
+                <a href="../infaq-pembangunan.html" class="nav-tab">
+                    <i class="ph ph-buildings"></i>
+                    <span>Projek Pembangunan</span>
+                </a>
+
+                <!-- Tab 3: Kaedah Infaq (Dropdown) -->
+                <div class="relative group">
+                    <button class="nav-tab">
+                        <i class="ph ph-hand-coins"></i>
+                        <span>Kaedah Infaq</span>
+                        <i class="ph ph-caret-down text-xs"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <a href="../opt/infaq-transfer.html" class="dropdown-item">
+                            <i class="ph ph-bank text-blue-600"></i>
+                            <span>Bank Transfer</span>
+                        </a>
+                        <a href="../opt/infaq-qr.html" class="dropdown-item">
+                            <i class="ph ph-qr-code text-green-600"></i>
+                            <span>QR Pay (DuitNow)</span>
+                        </a>
+                        <a href="../opt/toyyib-pay.html" class="dropdown-item">
+                            <i class="ph ph-credit-card text-purple-600"></i>
+                            <span>ToyyibPay</span>
+                        </a>
+                        <a href="../opt/infaq-tabung.html" class="dropdown-item">
+                            <i class="ph ph-package text-orange-600"></i>
+                            <span>Tabung Fizikal</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Utiliti (Dropdown) -->
+                <div class="relative group">
+                    <button class="nav-tab active">
+                        <i class="ph ph-plug-charging"></i>
+                        <span>Utiliti</span>
+                        <i class="ph ph-caret-down text-xs"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <a href="index.html#air" class="dropdown-item">
+                            <i class="ph ph-drop text-sky-600"></i>
+                            <span>Bil Air (PAIP)</span>
+                        </a>
+                        <a href="index.html#elektrik" class="dropdown-item">
+                            <i class="ph ph-lightning text-amber-600"></i>
+                            <span>Bil Elektrik (TNB)</span>
+                        </a>
+                        <a href="index.html#internet" class="dropdown-item">
+                            <i class="ph ph-wifi-high text-violet-600"></i>
+                            <span>Bil Internet (Unifi)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Laporan Bulanan -->
+                <a href="../tabung-bulanan.html" class="nav-tab">
+                    <i class="ph ph-chart-line"></i>
+                    <span>Laporan Bulanan</span>
+                </a>
+
+                <!-- Tab 6: Perbelanjaan (Coming Soon - Disabled) -->
+                <div class="nav-tab-disabled">
+                    <i class="ph ph-chart-bar"></i>
+                    <span>Perbelanjaan</span>
+                    <span class="badge-coming-soon">AKAN DATANG</span>
+                </div>
+            </div>
+
+            <!-- RIGHT: Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-blue-600">
+                <i class="ph ph-list text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Popup Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden">
+        <div class="mobile-menu-popup">
+            <div class="px-4 py-3 space-y-2">
+                <a href="../index.html" class="mobile-nav-item">
+                    <i class="ph ph-house mr-2"></i>
+                    Utama
+                </a>
+                <a href="../infaq-pembangunan.html" class="mobile-nav-item">
+                    <i class="ph ph-buildings mr-2"></i>
+                    Projek Pembangunan
+                </a>
+                <a href="../tabung-bulanan.html" class="mobile-nav-item">
+                    <i class="ph ph-chart-line mr-2"></i>
+                    Laporan Bulanan
+                </a>
+                <div class="mobile-nav-section">Kaedah Infaq:</div>
+                <a href="../opt/infaq-transfer.html" class="mobile-nav-subitem">
+                    <i class="ph ph-bank mr-2"></i>
+                    Bank Transfer
+                </a>
+                <a href="../opt/infaq-qr.html" class="mobile-nav-subitem">
+                    <i class="ph ph-qr-code mr-2"></i>
+                    QR Pay
+                </a>
+                <a href="../opt/toyyib-pay.html" class="mobile-nav-subitem">
+                    <i class="ph ph-credit-card mr-2"></i>
+                    ToyyibPay
+                </a>
+                <a href="../opt/infaq-tabung.html" class="mobile-nav-subitem">
+                    <i class="ph ph-package mr-2"></i>
+                    Tabung Fizikal
+                </a>
+                <div class="mobile-nav-section">Utiliti:</div>
+                <a href="index.html#air" class="mobile-nav-subitem bg-sky-50 text-sky-600">
+                    <i class="ph ph-drop mr-2"></i>
+                    Bil Air (PAIP)
+                </a>
+                <a href="index.html#elektrik" class="mobile-nav-subitem">
+                    <i class="ph ph-lightning mr-2"></i>
+                    Bil Elektrik (TNB)
+                </a>
+                <a href="index.html#internet" class="mobile-nav-subitem">
+                    <i class="ph ph-wifi-high mr-2"></i>
+                    Bil Internet (Unifi)
+                </a>
+                <div class="mobile-nav-item-disabled">
+                    <i class="ph ph-chart-bar mr-2"></i>
+                    Perbelanjaan MAMTJ6 <span class="text-xs">(Akan Datang)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT (Split Layout) -->
+    <main
+        class="flex-grow w-full max-w-6xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+
+        <!-- LEFT COLUMN: Context & Information -->
+        <div class="space-y-8 fade-in-up order-2 lg:order-1">
+
+            <!-- Header Text -->
+            <div>
+                <span class="text-amber-600 font-bold tracking-wider uppercase text-xs mb-2 block">Kaedah Infaq:
+                    Bil Utiliti</span>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                    Ringankan Beban Bil Bulanan Masjid Sebagai Sebahagian Daripada Infaq Anda.
+                </h1>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Setiap bulan, masjid menanggung kos bil air, elektrik dan internet untuk memastikan kelancaran
+                    aktiviti dan ibadah jemaah. Anda boleh menyumbang dengan membayar terus bil-bil ini bagi pihak
+                    masjid melalui <span class="font-semibold text-slate-800">JomPAY</span> di aplikasi perbankan anda.
+                </p>
+            </div>
+
+            <!-- Quote Card -->
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
+                <i class="ph-fill ph-quotes text-3xl text-amber-300 mb-2"></i>
+                <p class="text-amber-900 font-medium italic mb-4">
+                    "Barangsiapa meringankan kesusahan seorang mukmin di dunia, nescaya Allah akan meringankan
+                    kesusahannya pada hari kiamat."
+                </p>
+                <p class="text-sm text-amber-700 font-bold uppercase tracking-wide">— HR. Muslim</p>
+            </div>
+
+            <!-- IMPORTANT NOTICE -->
+            <div class="bg-rose-50 border border-rose-200 rounded-2xl p-5 flex gap-4">
+                <i class="ph-fill ph-warning-circle text-2xl text-rose-500 shrink-0"></i>
+                <div>
+                    <p class="font-bold text-rose-700 mb-1">Penting Sebelum Membayar</p>
+                    <p class="text-sm text-rose-600 leading-relaxed">
+                        Nombor akaun dan kod biller JomPAY yang dipaparkan di sebelah adalah milik
+                        <span class="font-semibold">MASJID</span> (bukan akaun peribadi anda). Sila semak dan
+                        masukkan nombor rujukan dengan teliti supaya bayaran sampai terus ke akaun bil rasmi masjid.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Steps -->
+            <div class="space-y-4">
+                <h3 class="font-bold text-slate-800 text-lg">Cara Membayar Melalui JomPAY:</h3>
+                <div class="flex gap-4">
+                    <div
+                        class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                        1</div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Buka Aplikasi Perbankan & Pilih JomPAY</p>
+                        <p class="text-sm text-slate-500">Tersedia di kebanyakan aplikasi perbankan utama di Malaysia.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                        2</div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Pilih Tab Bil & Salin Maklumat</p>
+                        <p class="text-sm text-slate-500">Pilih jenis bil (Air, Elektrik atau Internet) di sebelah
+                            kanan, kemudian salin Kod Biller dan Nombor Akaun masjid.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                        3</div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Tampal Sebagai Kod Biller & Nombor Rujukan</p>
+                        <p class="text-sm text-slate-500">Masukkan Kod Biller, kemudian Nombor Akaun masjid sebagai
+                            Ref-1, dan masukkan jumlah bil yang ingin dibantu.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                        4</div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Sahkan & Hantar Bukti Pembayaran</p>
+                        <p class="text-sm text-slate-500">Selepas bayaran berjaya, hantar resit kepada kami melalui
+                            WhatsApp untuk rekod masjid.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Action Card -->
+        <div class="fade-in-up order-1 lg:order-2 lg:sticky lg:top-24">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+                <!-- Tab Switcher -->
+                <div class="p-2 bg-slate-100 flex gap-1">
+                    <button id="tab-btn-air" onclick="location.hash = 'air'"
+                        class="utility-tab-btn flex-1 flex flex-col sm:flex-row items-center justify-center gap-1.5 py-3 rounded-xl font-semibold text-sm transition">
+                        <i class="ph-fill ph-drop text-lg"></i>
+                        <span>Air</span>
+                    </button>
+                    <button id="tab-btn-elektrik" onclick="location.hash = 'elektrik'"
+                        class="utility-tab-btn flex-1 flex flex-col sm:flex-row items-center justify-center gap-1.5 py-3 rounded-xl font-semibold text-sm transition">
+                        <i class="ph-fill ph-lightning text-lg"></i>
+                        <span>Elektrik</span>
+                    </button>
+                    <button id="tab-btn-internet" onclick="location.hash = 'internet'"
+                        class="utility-tab-btn flex-1 flex flex-col sm:flex-row items-center justify-center gap-1.5 py-3 rounded-xl font-semibold text-sm transition">
+                        <i class="ph-fill ph-wifi-high text-lg"></i>
+                        <span>Internet</span>
+                    </button>
+                </div>
+
+                <!-- PANEL: AIR (PAIP) -->
+                <div id="panel-air" class="utility-panel">
+                    <div class="bg-gradient-to-br from-sky-600 to-slate-900 p-6 md:p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 -ml-12 -mb-12 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+
+                        <div class="flex justify-between items-center mb-8 relative z-10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                                    <i class="ph-fill ph-drop text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg leading-tight">PAIP</p>
+                                    <p class="text-sky-200 text-xs">Pengurusan Air Pahang Berhad</p>
+                                </div>
+                            </div>
+                            <span
+                                class="text-[10px] md:text-xs font-bold bg-green-500/20 border border-green-400/30 text-green-100 px-3 py-1 rounded-full uppercase tracking-wide whitespace-nowrap">Akaun
+                                Bil Masjid</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 relative z-10">
+                            <div>
+                                <p class="text-sky-200 text-[10px] uppercase tracking-wider mb-2">Nombor Akaun</p>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg md:text-xl font-mono font-bold tracking-wide">0325-4146-23</h2>
+                                </div>
+                                <button onclick="copyToClipboard('0325414623')"
+                                    class="mt-2 text-[11px] font-bold text-sky-100 hover:text-white inline-flex items-center gap-1">
+                                    <i class="ph-bold ph-copy"></i> Salin
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-sky-200 text-[10px] uppercase tracking-wider mb-2">Kod Biller JomPAY</p>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg md:text-xl font-mono font-bold tracking-wide">51987</h2>
+                                </div>
+                                <button onclick="copyToClipboard('51987')"
+                                    class="mt-2 text-[11px] font-bold text-sky-100 hover:text-white inline-flex items-center gap-1">
+                                    <i class="ph-bold ph-copy"></i> Salin
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 relative z-10">
+                            <p class="font-semibold leading-tight">MASJID AL-MUKHLISIN TAMAN JAYA 6</p>
+                            <p class="text-sky-200 text-xs mt-1">Ref-1: Nombor Akaun Masjid di atas</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-50">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <i class="ph-fill ph-device-mobile text-xl text-sky-500 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800 text-sm">Saluran Alternatif</p>
+                                <p class="text-sm text-slate-500 mt-1">Bil air masjid juga boleh dibayar melalui
+                                    aplikasi <span class="font-semibold text-slate-700">PahangGo</span> menggunakan
+                                    Nombor Akaun masjid yang sama di atas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL: ELEKTRIK (TNB) -->
+                <div id="panel-elektrik" class="utility-panel hidden">
+                    <div class="bg-gradient-to-br from-amber-500 to-slate-900 p-6 md:p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 -ml-12 -mb-12 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+
+                        <div class="flex justify-between items-center mb-8 relative z-10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                                    <i class="ph-fill ph-lightning text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg leading-tight">TNB</p>
+                                    <p class="text-amber-100 text-xs">Tenaga Nasional Berhad</p>
+                                </div>
+                            </div>
+                            <span
+                                class="text-[10px] md:text-xs font-bold bg-green-500/20 border border-green-400/30 text-green-100 px-3 py-1 rounded-full uppercase tracking-wide whitespace-nowrap">Akaun
+                                Bil Masjid</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 relative z-10">
+                            <div>
+                                <p class="text-amber-100 text-[10px] uppercase tracking-wider mb-2">Nombor Akaun</p>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg md:text-xl font-mono font-bold tracking-wide">2207-4045-5605</h2>
+                                </div>
+                                <button onclick="copyToClipboard('220740455605')"
+                                    class="mt-2 text-[11px] font-bold text-amber-100 hover:text-white inline-flex items-center gap-1">
+                                    <i class="ph-bold ph-copy"></i> Salin
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-amber-100 text-[10px] uppercase tracking-wider mb-2">Kod Biller JomPAY</p>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg md:text-xl font-mono font-bold tracking-wide">5454</h2>
+                                </div>
+                                <button onclick="copyToClipboard('5454')"
+                                    class="mt-2 text-[11px] font-bold text-amber-100 hover:text-white inline-flex items-center gap-1">
+                                    <i class="ph-bold ph-copy"></i> Salin
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 relative z-10">
+                            <p class="font-semibold leading-tight">MASJID AL-MUKHLISIN TAMAN JAYA 6</p>
+                            <p class="text-amber-100 text-xs mt-1">Ref-1: Nombor Akaun Masjid di atas</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-50">
+                        <a href="https://myaccount.mytnb.com.my/payment/quickpay/" target="_blank"
+                            class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start hover:border-amber-300 transition group">
+                            <i class="ph-fill ph-link text-xl text-amber-500 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800 text-sm group-hover:text-amber-600 transition">Saluran
+                                    Alternatif: TNB Express Quickpay</p>
+                                <p class="text-sm text-slate-500 mt-1">Bayar terus melalui portal rasmi TNB
+                                    menggunakan Nombor Akaun masjid di atas.</p>
+                                <p class="text-xs text-amber-600 font-semibold mt-2 break-all">myaccount.mytnb.com.my/payment/quickpay <i class="ph-bold ph-arrow-up-right"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PANEL: INTERNET (Unifi) -->
+                <div id="panel-internet" class="utility-panel hidden">
+                    <div class="bg-gradient-to-br from-violet-600 to-slate-900 p-6 md:p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 -ml-12 -mb-12 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+
+                        <div class="flex justify-between items-center mb-8 relative z-10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                                    <i class="ph-fill ph-wifi-high text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg leading-tight">Unifi</p>
+                                    <p class="text-violet-200 text-xs">Telekom Malaysia (TM)</p>
+                                </div>
+                            </div>
+                            <span
+                                class="text-[10px] md:text-xs font-bold bg-green-500/20 border border-green-400/30 text-green-100 px-3 py-1 rounded-full uppercase tracking-wide whitespace-nowrap">Akaun
+                                Bil Masjid</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 relative z-10">
+                            <div>
+                                <p class="text-violet-200 text-[10px] uppercase tracking-wider mb-2">Nombor Akaun</p>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg md:text-xl font-mono font-bold tracking-wide">1075-7173-12</h2>
+                                </div>
+                                <button onclick="copyToClipboard('1075717312')"
+                                    class="mt-2 text-[11px] font-bold text-violet-100 hover:text-white inline-flex items-center gap-1">
+                                    <i class="ph-bold ph-copy"></i> Salin
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-violet-200 text-[10px] uppercase tracking-wider mb-2">Kod Biller JomPAY</p>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg md:text-xl font-mono font-bold tracking-wide">8888</h2>
+                                </div>
+                                <button onclick="copyToClipboard('8888')"
+                                    class="mt-2 text-[11px] font-bold text-violet-100 hover:text-white inline-flex items-center gap-1">
+                                    <i class="ph-bold ph-copy"></i> Salin
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 relative z-10">
+                            <p class="font-semibold leading-tight">MASJID AL-MUKHLISIN TAMAN JAYA 6</p>
+                            <p class="text-violet-200 text-xs mt-1">Ref-1: Nombor Akaun Masjid di atas</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-50 space-y-3">
+                        <a href="https://selfcare.unifi.com.my/billing/pay-for-anyone" target="_blank"
+                            class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start hover:border-violet-300 transition group">
+                            <i class="ph-fill ph-link text-xl text-violet-500 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800 text-sm group-hover:text-violet-600 transition">Saluran
+                                    Alternatif: Bayar Untuk Orang Lain (Unifi Selfcare)</p>
+                                <p class="text-sm text-slate-500 mt-1">Bayar terus melalui portal rasmi Unifi
+                                    menggunakan Nombor Akaun masjid di atas.</p>
+                                <p class="text-xs text-violet-600 font-semibold mt-2 break-all">selfcare.unifi.com.my/billing/pay-for-anyone <i class="ph-bold ph-arrow-up-right"></i></p>
+                            </div>
+                        </a>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <i class="ph-fill ph-envelope-simple text-xl text-violet-500 shrink-0 mt-0.5"></i>
+                            <div class="min-w-0">
+                                <p class="font-bold text-slate-800 text-sm">E-mel Pengesahan Masjid</p>
+                                <p class="text-sm text-slate-500 mt-1">Untuk rekod resit Unifi, anda boleh hantar
+                                    salinan ke e-mel rasmi masjid:</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <p class="text-xs font-mono font-semibold text-violet-600 break-all">masjidalmukhlisintamanjaya6@gmail.com</p>
+                                    <button onclick="copyToClipboard('masjidalmukhlisintamanjaya6@gmail.com')"
+                                        class="text-violet-500 hover:text-violet-700 text-[11px] font-bold shrink-0">Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shared Action Area -->
+                <div class="px-6 pb-6 bg-slate-50">
+                    <a href="https://wa.me/601156828198?text=Assalamualaikum,%20saya%20telah%20membuat%20bayaran%20bil%20utiliti%20masjid%20melalui%20JomPAY.%20Ini%20resitnya."
+                        target="_blank"
+                        class="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl text-center shadow-lg shadow-green-500/20 transition flex items-center justify-center gap-2 group">
+                        <i class="ph-fill ph-whatsapp-logo text-xl group-hover:scale-110 transition-transform"></i>
+                        <span>Hantar Resit (WhatsApp)</span>
+                    </a>
+                    <p class="text-center text-xs text-slate-400 mt-3">
+                        Pautan ini akan membuka WhatsApp secara automatik.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">© <span id="copyright-year">2024</span> Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6) | <a href="https://mamtj6.com" target="_blank" class="text-blue-600 hover:text-blue-700 hover:underline">mamtj6.com</a></p>
+            <p class="text-[10px] text-slate-300 mt-2 uppercase tracking-widest">
+                Version <span id="app-version">v2.1</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl opacity-0 transition-all duration-300 pointer-events-none z-50 flex items-center gap-3 translate-y-10">
+        <i class="ph-fill ph-check-circle text-green-400 text-xl"></i>
+        <span id="toast-message" class="font-medium">Disalin!</span>
+    </div>
+
+    <!-- Script Logic -->
+    <script src="../script.js"></script>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Berjaya disalin!');
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+
+            toastMessage.innerText = message;
+
+            // Show
+            toast.classList.remove('opacity-0', 'translate-y-10');
+
+            // Hide after 2s
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10');
+            }, 2000);
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenuOverlay.classList.toggle('active');
+            });
+
+            // Close on overlay click
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if (e.target === mobileMenuOverlay) {
+                    mobileMenuOverlay.classList.remove('active');
+                }
+            });
+
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
+                    mobileMenuOverlay.classList.remove('active');
+                }
+            });
+        }
+
+        // Utility tab switcher
+        const utilityTabs = ['air', 'elektrik', 'internet'];
+        const utilityActiveClasses = ['bg-white', 'shadow-md', 'text-slate-800'];
+        const utilityInactiveClasses = ['text-slate-400'];
+
+        function selectUtilityTab(tab) {
+            if (!utilityTabs.includes(tab)) return;
+            utilityTabs.forEach((t) => {
+                const panel = document.getElementById(`panel-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (!panel || !btn) return;
+                if (t === tab) {
+                    panel.classList.remove('hidden');
+                    btn.classList.add(...utilityActiveClasses);
+                    btn.classList.remove(...utilityInactiveClasses);
+                } else {
+                    panel.classList.add('hidden');
+                    btn.classList.remove(...utilityActiveClasses);
+                    btn.classList.add(...utilityInactiveClasses);
+                }
+            });
+        }
+
+        function applyHashTab() {
+            const hash = window.location.hash.replace('#', '');
+            selectUtilityTab(utilityTabs.includes(hash) ? hash : 'air');
+        }
+
+        window.addEventListener('hashchange', applyHashTab);
+
+        // Initialize footer and tabs on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFooter();
+            applyHashTab();
+        });
+    </script>
+</body>
+
+
+</html>
