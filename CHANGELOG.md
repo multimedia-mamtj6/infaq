@@ -6,6 +6,47 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.1.0] - 2026-06-09
+
+### Changed — Utility Bill Payment Page (`utiliti/index.html`)
+
+#### Account Details Updated
+- **Bil Air (PAIP)**: Penama Akaun updated to `PENGERUSI SURAU, BADAN KEBAJIKAN TAMAN JAYA 6`
+- **Bil Elektrik (TNB)**: Penama Akaun updated to `SETIAUSAHA BADAN KEBAJIKAN TAMAN JAYA 6`
+- **Bil Internet (Unifi)**: Penama Akaun updated to `MASJID AL-MUKHLISIN`
+- **Unifi email label**: Updated to "E-mel pengesahan untuk diisi dalam ruangan Unifi Selfcare"
+
+#### Provider Logos
+- Replaced Phosphor icon placeholders with official provider logos for all 3 panels:
+    - PAIP: `dev.mamtj6.com/media/logo-luar/paip/PNG/paip.png`
+    - TNB: `dev.mamtj6.com/media/logo-luar/tnb/PNG/tnb.png`
+    - Unifi: `dev.mamtj6.com/media/logo-luar/unifi/PNG/unifi.png`
+- Added PahangGo logo to PAIP alternative channel card: `dev.mamtj6.com/media/logo-luar/pahanggo/PNG/pahanggo.png`
+- Logos repositioned **above** company name (stacked layout) with white rounded rectangle background (`bg-white rounded-xl px-3 py-2`)
+- Logo size: `h-10 w-auto max-w-[140px] object-contain` for natural wide aspect ratio
+
+#### Gradient & Colour Updates
+- **TNB panel**: Gradient changed from `amber-500 → slate-900` to `blue-700 → #020617` (dark navy blue)
+    - Blur orbs updated to `bg-blue-400/20` for blue glow effect
+    - All tint text changed from `amber` → `blue` (`text-blue-200`, `text-blue-100`)
+    - Alternative channel card accent colors changed from `amber` → `blue`
+- **Unifi panel**: Gradient changed from `violet-600 → slate-900` to `#ff6910 → #3d1000` (Unifi orange to dark burnt brown)
+    - All tint text changed from `violet` → `orange` (`text-orange-200`, `text-orange-100`)
+    - Alternative channel card accent colors changed from `violet` → `orange`
+
+#### PahangGo Alternative Channel
+- Converted from plain `<div>` card to clickable `<a>` link
+- Added URL: `https://pahanggo.com/product.html` (opens in new tab)
+- Card now shows URL text and hover effects consistent with TNB/Unifi alternative channel cards
+- Applied `sky` colour palette to match PAIP tab theme
+
+### Technical Details
+- **File modified**: `utiliti/index.html`
+- **Version bumped**: `APP_VERSION` in `script.js` → `3.1.0`
+- Logo assets served from `dev.mamtj6.com` (GitHub Pages CDN) — not raw.githubusercontent.com
+
+---
+
 ## [3.0.1] - 2026-01-04
 
 ### Changed

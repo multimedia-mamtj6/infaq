@@ -113,10 +113,32 @@ JSON schema (see DATA_STRUCTURE.md for complete details):
 - Auto-refreshes data every 5 minutes
 
 ### Donation Pages
-- `infaq-transfer.html` - Bank transfer with copy-to-clipboard
-- `infaq-qr.html` - QR Pay (DuitNow) scanning
-- `toyyib-pay.html` - Online payment (UI only, not yet integrated)
-- `infaq-tabung.html` - Physical donation box with location map
+- `opt/infaq-transfer.html` - Bank transfer with copy-to-clipboard
+- `opt/infaq-qr.html` - QR Pay (DuitNow) scanning
+- `opt/toyyib-pay.html` - Online payment (UI only, not yet integrated)
+- `opt/infaq-tabung.html` - Physical donation box with location map
+
+### Utility Bill Payment Page (`utiliti/index.html`)
+Allows donors to pay the masjid's utility bills directly via JomPAY as infaq. Three tabs — Air, Elektrik, Internet — each showing the masjid's official account number and JomPAY biller code.
+
+**Account details (Penama Akaun):**
+| Utility | Provider | Nombor Akaun | Biller JomPAY | Penama Akaun |
+|---|---|---|---|---|
+| Air | PAIP | 0325-4146-23 | 51987 | PENGERUSI SURAU, BADAN KEBAJIKAN TAMAN JAYA 6 |
+| Elektrik | TNB | 2207-4045-5605 | 5454 | SETIAUSAHA BADAN KEBAJIKAN TAMAN JAYA 6 |
+| Internet | Unifi (TM) | 1075-7173-12 | 8888 | MASJID AL-MUKHLISIN |
+
+**Tab colour palettes:**
+- Air (PAIP): `sky-600 → slate-900`, tints `sky-200`
+- Elektrik (TNB): `blue-700 → #020617`, tints `blue-200`
+- Internet (Unifi): `#ff6910 → #3d1000`, tints `orange-200`
+
+**Provider logos**: Served from `dev.mamtj6.com/media/logo-luar/{paip,tnb,unifi,pahanggo}/PNG/`
+
+**Alternative channels:**
+- PAIP → PahangGo app (`pahanggo.com/product.html`)
+- TNB → TNB Express Quickpay (`myaccount.mytnb.com.my/payment/quickpay`)
+- Unifi → Unifi Selfcare (`selfcare.unifi.com.my/billing/pay-for-anyone`), email: `masjidalmukhlisintamanjaya6@gmail.com`
 
 ### Reports Page (tabung-bulanan.html)
 - Weekly collection breakdown (bar chart)

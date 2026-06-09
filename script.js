@@ -1,7 +1,7 @@
 const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
 
 // Version management - Single source of truth
-const APP_VERSION = "3.0.1";
+const APP_VERSION = "3.1.0";
 
 // Helper: Format Currency
 function formatCurrency(amount) {

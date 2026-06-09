@@ -134,6 +134,14 @@ graph LR
 |------|---------|--------|
 | `tabung-bulanan.html` | Monthly reports | Weekly + Monthly |
 
+### Utility Bill Payment Page
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `utiliti/index.html` | JomPAY utility bill payment guide | ✅ Complete |
+
+Three-tab page (Air/Elektrik/Internet) showing masjid's JomPAY biller codes and account numbers so donors can pay utility bills directly as infaq. Tab is activated via URL hash (`#air`, `#elektrik`, `#internet`). Provider logos loaded from `dev.mamtj6.com`.
+
 ### Display Pages (Legacy/Future)
 
 | File | Status |
@@ -158,6 +166,11 @@ graph LR
 --qr-green: #10b981;          /* QR Pay */
 --billplz-purple: #9333ea;    /* Billplz */
 --tabung-orange: #f59e0b;     /* Physical Tabung */
+
+/* Utility Tab Colors */
+--paip-sky: sky-600;          /* Bil Air (PAIP) gradient start */
+--tnb-blue: #1d4ed8;          /* Bil Elektrik (TNB) gradient start */
+--unifi-orange: #ff6910;      /* Bil Internet (Unifi) gradient start */
 
 /* Semantic Colors */
 --success-green: #22c55e;
