@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Basic -->
-    <title>Laporan Perbelanjaan - Infaq Center MAMTJ6</title>
-    <meta name="description" content="Lihat laporan lengkap perbelanjaan bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6. Trend perbelanjaan, jumlah kumulatif, dan statistik yang dikemaskini secara berkala.">
-    <meta name="keywords" content="Laporan Perbelanjaan MAMTJ6, Perbelanjaan Masjid, Statistik Perbelanjaan, Trend Perbelanjaan, Jumlah Kumulatif, Grafik Perbelanjaan, Perbelanjaan Masjid Al-Mukhlisin">
-    <link rel="canonical" href="https://infaq.mamtj6.com/perbelanjaan/index.html">
+    <title>Perbelanjaan Bulanan (Tepat) - Infaq Center MAMTJ6</title>
+    <meta name="description" content="Lihat jumlah perbelanjaan tepat bagi setiap bulan Masjid Al-Mukhlisin, Taman Jaya 6 - bukan jumlah kumulatif. Pilih tahun untuk melihat trend perbelanjaan bulanan.">
+    <meta name="keywords" content="Perbelanjaan Bulanan MAMTJ6, Jumlah Perbelanjaan Tepat, Perbelanjaan Masjid, Trend Perbelanjaan Bulanan, Grafik Perbelanjaan">
+    <link rel="canonical" href="https://infaq.mamtj6.com/perbelanjaan/bulanan.html">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../media/favicon/favicon-96x96.png" sizes="96x96" />
@@ -22,17 +22,17 @@
     <link rel="manifest" href="../media/favicon/site.webmanifest" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Laporan Perbelanjaan - Infaq Center MAMTJ6">
-    <meta property="og:description" content="Lihat laporan lengkap perbelanjaan bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6 dengan trend dan analisis statistik.">
+    <meta property="og:title" content="Perbelanjaan Bulanan (Tepat) - Infaq Center MAMTJ6">
+    <meta property="og:description" content="Lihat jumlah perbelanjaan tepat bagi setiap bulan Masjid Al-Mukhlisin, Taman Jaya 6 - bukan jumlah kumulatif.">
     <meta property="og:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
-    <meta property="og:url" content="https://infaq.mamtj6.com/perbelanjaan/index.html">
+    <meta property="og:url" content="https://infaq.mamtj6.com/perbelanjaan/bulanan.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Infaq Center MAMTJ6">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Laporan Perbelanjaan - Infaq Center MAMTJ6">
-    <meta name="twitter:description" content="Lihat laporan lengkap perbelanjaan bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6 dengan trend dan analisis statistik.">
+    <meta name="twitter:title" content="Perbelanjaan Bulanan (Tepat) - Infaq Center MAMTJ6">
+    <meta name="twitter:description" content="Lihat jumlah perbelanjaan tepat bagi setiap bulan Masjid Al-Mukhlisin, Taman Jaya 6 - bukan jumlah kumulatif.">
     <meta name="twitter:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
 
 
@@ -242,64 +242,47 @@
                     <span class="text-blue-200 text-lg" id="report-month-name">(...)</span>
                 </div>
                 <p class="mt-4 text-blue-100 text-sm max-w-md">
-                    Data ini dikemaskini secara berkala. Berikut adalah perincian trend perbelanjaan bulanan dan
-                    kumulatif tahunan.
+                    Paparan ini menunjukkan jumlah <strong>tepat</strong> perbelanjaan bagi setiap bulan - bukan
+                    jumlah kumulatif.
                 </p>
             </div>
         </div>
 
         <!-- Sub-nav: switch between overview (cumulative) and exact monthly -->
         <div class="flex items-center gap-2">
-            <span class="text-sm font-medium px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600">
-                Ringkasan &amp; Kumulatif
-            </span>
-            <a href="bulanan.html"
+            <a href="index.html"
                 class="text-sm font-medium px-3 py-1.5 rounded-lg text-slate-500 hover:bg-slate-100 transition">
-                Bulanan (Tepat)
+                Ringkasan &amp; Kumulatif
             </a>
+            <span class="text-sm font-medium px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600">
+                Bulanan (Tepat)
+            </span>
         </div>
 
-        <!-- GRID CARTA -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-            <!-- CARTA 1: TREND BULANAN -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="font-bold text-slate-700 flex items-center gap-2">
-                        <i class="ph-fill ph-calendar-week text-blue-500"></i> Trend Bulanan
-                    </h3>
-                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium"
-                        id="report-year-label">Tahun Ini</span>
-                </div>
-                <div class="h-64 w-full">
-                    <canvas id="expenseMonthlyChart"></canvas>
-                </div>
+        <!-- CARTA UTAMA: TREND BULANAN (TEPAT) -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                    <i class="ph-fill ph-calendar-week text-blue-500"></i> Trend Bulanan
+                </h3>
+                <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium"
+                    id="report-year-label">Tahun Ini</span>
             </div>
-
-            <!-- CARTA 2: TREND KUMULATIF TAHUNAN -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="font-bold text-slate-700 flex items-center gap-2">
-                        <i class="ph-fill ph-trend-up text-blue-500"></i> Trend Kumulatif Tahunan
-                    </h3>
-                </div>
-                <div class="h-64 w-full">
-                    <canvas id="expenseCumulativeChart"></canvas>
-                </div>
-                <!-- Total Sum Display -->
-                <div class="mt-4 bg-slate-50 border border-slate-100 rounded-xl p-4">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-blue-100 p-2 rounded-lg">
-                            <i class="ph-fill ph-coins text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <p class="text-slate-600 text-sm">Jumlah Terkumpul Tahun Ini</p>
-                            <p class="text-slate-800 font-bold text-lg" id="current-year-total">RM 0.00</p>
-                        </div>
+            <div class="h-64 w-full">
+                <canvas id="expenseMonthlyChart"></canvas>
+            </div>
+            <!-- Total Sum Display -->
+            <div class="mt-4 bg-slate-50 border border-slate-100 rounded-xl p-4">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-100 p-2 rounded-lg">
+                        <i class="ph-fill ph-coins text-blue-600 text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-slate-600 text-sm">Jumlah Tahunan</p>
+                        <p class="text-slate-800 font-bold text-lg" id="monthly-year-total">RM 0.00</p>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <!-- PAST YEARS CHARTS SECTION -->
@@ -355,8 +338,8 @@
     <script>
         // Initialize report specific logic when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof loadPerbelanjaanReport === 'function') {
-                loadPerbelanjaanReport();
+            if (typeof loadPerbelanjaanMonthlyReport === 'function') {
+                loadPerbelanjaanMonthlyReport();
             }
         });
 
