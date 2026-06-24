@@ -516,15 +516,22 @@ function renderExpenseMonthlyChart(data) {
     if (expenseMonthlyChartInstance) expenseMonthlyChartInstance.destroy();
 
     expenseMonthlyChartInstance = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: data.labels,
             datasets: [{
                 label: 'Perbelanjaan (RM)',
                 data: data.data,
-                backgroundColor: '#3b82f6',
-                borderRadius: 6,
-                barThickness: 20,
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                borderWidth: 2,
+                tension: 0.4,
+                fill: true,
+                pointBackgroundColor: '#fff',
+                pointBorderColor: '#3b82f6',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6
             }]
         },
         options: {
@@ -934,15 +941,22 @@ function renderPastYearExpenseMonthlyChart(year, data) {
     if (!ctx) return;
 
     const chartInstance = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: data.labels,
             datasets: [{
                 label: `Perbelanjaan ${year}`,
                 data: data.data,
-                backgroundColor: '#3b82f6',
-                borderRadius: 6,
-                barThickness: 20,
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                borderWidth: 2,
+                tension: 0.4,
+                fill: true,
+                pointBackgroundColor: '#fff',
+                pointBorderColor: '#3b82f6',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6
             }]
         },
         options: {
