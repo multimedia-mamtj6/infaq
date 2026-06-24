@@ -235,6 +235,38 @@ Where B2:B6 are Minggu1 to Minggu5
 
 ---
 
+## 💸 `data/perbelanjaan.json` Schema
+
+Tracks monthly mosque expenses, exported alongside the donation files from the `Perbelanjaan` sheet tab (`Tahun`, `Bulan`, `Jumlah`).
+
+```json
+{
+  "ringkasan": {
+    "perbelanjaan": {
+      "tahunIni": { "tahun": 2026, "jumlah": "number" },
+      "tahunLepas": { "tahun": 2025, "jumlah": "number" },
+      "bulanIni": { "bulan": "string", "jumlah": "number" },
+      "bulanLepas": { "bulan": "string", "jumlah": "number" }
+    }
+  },
+  "paparanBulanIni": { "Tahun": 2026, "Bulan": "string", "Jumlah": "number", "JumlahKumulatif": "number" },
+  "paparanBulanLepas": { "Tahun": 2026, "Bulan": "string", "Jumlah": "number", "JumlahKumulatif": "number" },
+  "graf": {
+    "2026": {
+      "tahun": "2026",
+      "labels": ["Jan", "Feb", "..."],
+      "data": [number, "..."],
+      "dataKumulatif": [number, "..."]
+    }
+  },
+  "tarikhKemaskini": "ISO 8601 date string"
+}
+```
+
+`JumlahKumulatif`/`dataKumulatif` is always computed by Apps Script as a running sum of `Jumlah` within each year (resetting at the year boundary) — the sheet's own `JumlahKumulatif` column, if present, is never read and has no effect on the exported JSON.
+
+---
+
 ## 📖 Data Fields Explained
 
 ### 1. `projek` Object

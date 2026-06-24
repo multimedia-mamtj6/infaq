@@ -5,6 +5,7 @@ const GITHUB_BRANCH = "main";
 const FILE_PATH = "data/data.json"; // JSON utama untuk semua data
 const MONTHLY_FILE_PATH = "data/monthly.json"; // JSON untuk data bulanan
 const DAILY_FILE_PATH = "data/daily.json"; // JSON khas untuk kutipan harian
+const PERBELANJAAN_FILE_PATH = "data/perbelanjaan.json"; // JSON untuk data perbelanjaan
 // ----------------------------------------------------
 
 const SPREADSHEET = SpreadsheetApp.getActiveSpreadsheet();
@@ -80,6 +81,16 @@ function publishJsonToGithub() {
       graphDataByYear[String(year)] = getYearlyGraphDataSafe(String(year)); // CHANGED: Use safe version
     });
 
+    // 1b. Kumpul data PERBELANJAAN (tab 'Perbelanjaan')
+    const expenseSummaryData = getExpenseSummaryData();
+    const currentMonthExpenseData = getCurrentMonthExpenseDataSafe();
+    const pastMonthExpenseData = getPastMonthExpenseData();
+    const expenseGraphYears = getExpenseGraphYears();
+    const expenseGraphDataByYear = {};
+    expenseGraphYears.forEach(year => {
+      expenseGraphDataByYear[String(year)] = getYearlyExpenseGraphDataSafe(String(year));
+    });
+
     const currentTimestamp = new Date().toISOString();
 
     // 2. Data UTAMA - Projek sahaja (ringkas & cepat)
@@ -109,16 +120,27 @@ function publishJsonToGithub() {
       tarikhKemaskini: currentTimestamp
     };
 
-    // 5. Muat naik ketiga-tiga fail ke GitHub
+    // 4b. Data PERBELANJAAN - Semua statistik perbelanjaan bulanan
+    const perbelanjaanData = {
+      ringkasan: expenseSummaryData,
+      paparanBulanIni: currentMonthExpenseData,
+      paparanBulanLepas: pastMonthExpenseData,
+      graf: expenseGraphDataByYear,
+      tarikhKemaskini: currentTimestamp
+    };
+
+    // 5. Muat naik keempat-empat fail ke GitHub
     const mainContent = JSON.stringify(mainData, null, 2);
     const monthlyContent = JSON.stringify(monthlyData, null, 2);
     const dailyContent = JSON.stringify(dailyOnlyData, null, 2);
+    const perbelanjaanContent = JSON.stringify(perbelanjaanData, null, 2);
 
     uploadToGithub(mainContent, token, FILE_PATH);
     uploadToGithub(monthlyContent, token, MONTHLY_FILE_PATH);
     uploadToGithub(dailyContent, token, DAILY_FILE_PATH);
+    uploadToGithub(perbelanjaanContent, token, PERBELANJAAN_FILE_PATH);
 
-    ui.alert('Berjaya!', `Ketiga-tiga fail telah berjaya dikemas kini di GitHub:\n- ${FILE_PATH}\n- ${MONTHLY_FILE_PATH}\n- ${DAILY_FILE_PATH}`, ui.ButtonSet.OK);
+    ui.alert('Berjaya!', `Keempat-empat fail telah berjaya dikemas kini di GitHub:\n- ${FILE_PATH}\n- ${MONTHLY_FILE_PATH}\n- ${DAILY_FILE_PATH}\n- ${PERBELANJAAN_FILE_PATH}`, ui.ButtonSet.OK);
 
   } catch (e) {
     console.error(e);
@@ -204,6 +226,43 @@ function getSummaryData() {
       tahunLepas: { tahun: currentYear - 1, jumlah: totalLastYear },
       bulanIni: { bulan: currentMonth, jumlah: thisMonthData ? thisMonthData.JumlahBulanan : 0 },
       bulanLepas: { bulan: lastMonthName, jumlah: lastMonthData ? lastMonthData.JumlahBulanan : 0 }
+    }
+  };
+}
+
+/**
+ * Mengambil data ringkasan perbelanjaan untuk halaman utama.
+ */
+function getExpenseSummaryData() {
+  const config = getConfig();
+  if (!config || !config.TahunSemasa || !config.BulanSemasa) {
+    return { error: "Sila pastikan tab 'Konfigurasi' mempunyai 'Tahun Semasa' dan 'Bulan Semasa'." };
+  }
+  const currentYear = parseInt(config.TahunSemasa);
+  const currentMonth = config.BulanSemasa.toUpperCase();
+
+  const allExpenseData = getSheetData('Perbelanjaan');
+
+  let totalThisYear = 0;
+  let totalLastYear = 0;
+  allExpenseData.forEach(row => {
+    if (row.Tahun === currentYear) {
+      totalThisYear += row.Jumlah;
+    } else if (row.Tahun === currentYear - 1) {
+      totalLastYear += row.Jumlah;
+    }
+  });
+
+  const thisMonthData = allExpenseData.find(row => row.Tahun === currentYear && row.Bulan === currentMonth);
+  const { year: lastMonthYear, month: lastMonthName } = getPreviousMonth(currentYear, currentMonth);
+  const lastMonthData = allExpenseData.find(row => row.Tahun === lastMonthYear && row.Bulan === lastMonthName);
+
+  return {
+    perbelanjaan: {
+      tahunIni: { tahun: currentYear, jumlah: totalThisYear },
+      tahunLepas: { tahun: currentYear - 1, jumlah: totalLastYear },
+      bulanIni: { bulan: currentMonth, jumlah: thisMonthData ? thisMonthData.Jumlah : 0 },
+      bulanLepas: { bulan: lastMonthName, jumlah: lastMonthData ? lastMonthData.Jumlah : 0 }
     }
   };
 }
@@ -367,7 +426,7 @@ function getSheetData(sheetName) {
 
   const numericHeaders = [
     'Tahun', 'Minggu1', 'Minggu2', 'Minggu3', 'Minggu4', 'Minggu5',
-    'JumlahBulanan', 'SasaranKutipan', 'JumlahTerkumpul', 'RM'
+    'JumlahBulanan', 'SasaranKutipan', 'JumlahTerkumpul', 'RM', 'Jumlah'
   ];
 
   return data.map(row => {
@@ -500,6 +559,114 @@ function getGraphYears() {
   const allYears = new Set([...yearsInSheet, currentYear, currentYear - 1]);
 
   // Sort descending (terkini dulu)
+  return Array.from(allYears).sort((a, b) => b - a);
+}
+
+/**
+ * Mengira jumlah kumulatif (running total) bagi satu set baris dalam tahun yang sama.
+ * Mengabaikan nilai JumlahKumulatif dari helaian - sentiasa dikira semula dari Jumlah,
+ * mengikut susunan bulan, supaya hasilnya tepat walaupun helaian tidak lengkap/tersusun.
+ */
+function computeCumulativeByMonth(rowsForYear) {
+  const monthOrder = ["JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"];
+  const sorted = rowsForYear.slice().sort((a, b) => monthOrder.indexOf(a.Bulan) - monthOrder.indexOf(b.Bulan));
+
+  let running = 0;
+  return sorted.map(row => {
+    running += row.Jumlah;
+    return { Bulan: row.Bulan, Jumlah: row.Jumlah, JumlahKumulatif: running };
+  });
+}
+
+/**
+ * Mendapatkan data perbelanjaan bulan semasa dengan fallback untuk data kosong.
+ */
+function getCurrentMonthExpenseDataSafe() {
+  const config = getConfig();
+  const currentYear = parseInt(config.TahunSemasa);
+  const currentMonth = config.BulanSemasa.toUpperCase();
+
+  const allExpenseData = getSheetData('Perbelanjaan');
+  const yearRows = computeCumulativeByMonth(allExpenseData.filter(row => row.Tahun === currentYear));
+  const data = yearRows.find(row => row.Bulan === currentMonth);
+
+  if (data) {
+    return { Tahun: currentYear, Bulan: currentMonth, Jumlah: data.Jumlah, JumlahKumulatif: data.JumlahKumulatif };
+  }
+
+  return {
+    Tahun: currentYear,
+    Bulan: currentMonth,
+    Jumlah: 0,
+    JumlahKumulatif: yearRows.length ? yearRows[yearRows.length - 1].JumlahKumulatif : 0
+  };
+}
+
+/**
+ * Mendapatkan data perbelanjaan bulan lepas dengan fallback untuk data kosong.
+ */
+function getPastMonthExpenseData() {
+  const config = getConfig();
+  const currentYear = parseInt(config.TahunSemasa);
+  const currentMonth = config.BulanSemasa.toUpperCase();
+  const { year: lastMonthYear, month: lastMonthName } = getPreviousMonth(currentYear, currentMonth);
+
+  const allExpenseData = getSheetData('Perbelanjaan');
+  const yearRows = computeCumulativeByMonth(allExpenseData.filter(row => row.Tahun === lastMonthYear));
+  const data = yearRows.find(row => row.Bulan === lastMonthName);
+
+  if (data) {
+    return { Tahun: lastMonthYear, Bulan: lastMonthName, Jumlah: data.Jumlah, JumlahKumulatif: data.JumlahKumulatif };
+  }
+
+  return {
+    Tahun: lastMonthYear,
+    Bulan: lastMonthName,
+    Jumlah: 0,
+    JumlahKumulatif: yearRows.length ? yearRows[yearRows.length - 1].JumlahKumulatif : 0
+  };
+}
+
+/**
+ * Mendapatkan data graf perbelanjaan tahunan dengan fallback untuk tahun baharu.
+ */
+function getYearlyExpenseGraphDataSafe(year) {
+  const allExpenseData = getSheetData('Perbelanjaan');
+  const yearData = allExpenseData.filter(row => row.Tahun === parseInt(year));
+
+  const monthOrder = ["JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"];
+
+  if (yearData.length === 0) {
+    return {
+      tahun: year,
+      labels: monthOrder.map(m => m.substring(0, 3)),
+      data: new Array(12).fill(0),
+      dataKumulatif: new Array(12).fill(0)
+    };
+  }
+
+  const withCumulative = computeCumulativeByMonth(yearData);
+
+  return {
+    tahun: year,
+    labels: withCumulative.map(row => row.Bulan.substring(0, 3)),
+    data: withCumulative.map(row => row.Jumlah),
+    dataKumulatif: withCumulative.map(row => row.JumlahKumulatif)
+  };
+}
+
+/**
+ * Mendapatkan senarai tahun untuk graf perbelanjaan (termasuk tahun semasa & lepas).
+ */
+function getExpenseGraphYears() {
+  const config = getConfig();
+  const currentYear = parseInt(config.TahunSemasa);
+
+  const allExpenseData = getSheetData('Perbelanjaan');
+  const yearsInSheet = [...new Set(allExpenseData.map(row => row.Tahun))];
+
+  const allYears = new Set([...yearsInSheet, currentYear, currentYear - 1]);
+
   return Array.from(allYears).sort((a, b) => b - a);
 }
 
