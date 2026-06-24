@@ -367,7 +367,7 @@
     </footer>
 
     <!-- Script Logic -->
-    <script src="../script.js"></script>
+    <script>document.write('<script src="../script.js?v=' + Date.now() + '"><\/script>');</script>
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
