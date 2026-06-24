@@ -436,13 +436,22 @@ function getSheetData(sheetName) {
         let value = row[index];
         
         if (numericHeaders.includes(header)) {
-          let valueAsString = String(value);
-          let valueWithoutCommas = valueAsString.replace(/,/g, '');
-          
-          value = (valueWithoutCommas === '' || valueWithoutCommas === '-') ? 0 : valueWithoutCommas;
-          obj[header] = parseFloat(value) || 0;
+          // Jika Google Sheets menukar sel "Tahun" secara automatik kepada
+          // Date (auto-format input bernombor 4-digit), ambil tahunnya terus
+          // - jika tidak, ia akan dibaca sebagai 0 selepas String()/parseFloat().
+          if (header === 'Tahun' && value instanceof Date) {
+            obj[header] = value.getFullYear();
+          } else {
+            let valueAsString = String(value);
+            let valueWithoutCommas = valueAsString.replace(/,/g, '');
+
+            value = (valueWithoutCommas === '' || valueWithoutCommas === '-') ? 0 : valueWithoutCommas;
+            obj[header] = parseFloat(value) || 0;
+          }
         } else {
-          obj[header] = value;
+          // Buang jarak di hujung/awal (cth: "JANUARI " dengan jarak) supaya
+          // perbandingan tepat (===) dengan senarai nama bulan tidak gagal.
+          obj[header] = (typeof value === 'string') ? value.trim() : value;
         }
       }
     });

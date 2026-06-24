@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Basic -->
+    <title>Laporan Perbelanjaan - Infaq Center MAMTJ6</title>
+    <meta name="description" content="Lihat laporan lengkap perbelanjaan bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6. Trend perbelanjaan, jumlah kumulatif, dan statistik yang dikemaskini secara berkala.">
+    <meta name="keywords" content="Laporan Perbelanjaan MAMTJ6, Perbelanjaan Masjid, Statistik Perbelanjaan, Trend Perbelanjaan, Jumlah Kumulatif, Grafik Perbelanjaan, Perbelanjaan Masjid Al-Mukhlisin">
+    <link rel="canonical" href="https://infaq.mamtj6.com/perbelanjaan/index.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../media/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/media/favicon/favicon-192x192.png" sizes="192x192" />
+    <link rel="icon" type="image/png" href="/media/favicon/favicon-512x512.png" sizes="512x512" />
+    <link rel="icon" type="image/svg+xml" href="../media/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../media/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../media/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Infaq Center" />
+    <link rel="manifest" href="../media/favicon/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Laporan Perbelanjaan - Infaq Center MAMTJ6">
+    <meta property="og:description" content="Lihat laporan lengkap perbelanjaan bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6 dengan trend dan analisis statistik.">
+    <meta property="og:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
+    <meta property="og:url" content="https://infaq.mamtj6.com/perbelanjaan/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Infaq Center MAMTJ6">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laporan Perbelanjaan - Infaq Center MAMTJ6">
+    <meta name="twitter:description" content="Lihat laporan lengkap perbelanjaan bulanan dan tahunan Masjid Al-Mukhlisin, Taman Jaya 6 dengan trend dan analisis statistik.">
+    <meta name="twitter:image" content="https://infaq.mamtj6.com/media/preview/link-preview.jpg">
+
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- 3. Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 4. Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+            <!-- LEFT: Logo & Title -->
+            <a href="../index.html" class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                <img src="https://multimedia.mamtj6.com/media/logo/mamtj6_single.svg" alt="Logo" class="w-7 h-7 md:w-8 md:h-8">
+                <div>
+                    <h1 class="font-bold text-slate-800 text-xs sm:text-sm md:text-base leading-tight">Infaq Center MAMTJ6</h1>
+                    <p class="text-slate-500 text-[7px] sm:text-[9px] leading-tight">Memudahkan Anda Berinfaq</p>
+                </div>
+            </a>
+
+            <!-- CENTER: Navigation Tabs -->
+            <div class="hidden md:flex items-center gap-1 lg:gap-2">
+                <!-- Tab 1: Utama -->
+                <a href="../index.html" class="nav-tab">
+                    <i class="ph ph-house"></i>
+                    <span>Utama</span>
+                </a>
+
+                <!-- Tab 2: Projek Pembangunan -->
+                <a href="../infaq-pembangunan.html" class="nav-tab">
+                    <i class="ph ph-buildings"></i>
+                    <span>Projek Pembangunan</span>
+                </a>
+
+                <!-- Tab 3: Kaedah Infaq (Dropdown) -->
+                <div class="relative group">
+                    <button class="nav-tab">
+                        <i class="ph ph-hand-coins"></i>
+                        <span>Kaedah Infaq</span>
+                        <i class="ph ph-caret-down text-xs"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <a href="../opt/infaq-transfer.html" class="dropdown-item">
+                            <i class="ph ph-bank text-blue-600"></i>
+                            <span>Bank Transfer</span>
+                        </a>
+                        <a href="../opt/infaq-qr.html" class="dropdown-item">
+                            <i class="ph ph-qr-code text-green-600"></i>
+                            <span>QR Pay (DuitNow)</span>
+                        </a>
+                        <a href="../opt/toyyib-pay.html" class="dropdown-item">
+                            <i class="ph ph-credit-card text-purple-600"></i>
+                            <span>ToyyibPay</span>
+                        </a>
+                        <a href="../opt/infaq-tabung.html" class="dropdown-item">
+                            <i class="ph ph-package text-orange-600"></i>
+                            <span>Tabung Fizikal</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Utiliti (Dropdown) -->
+                <div class="relative group">
+                    <button class="nav-tab">
+                        <i class="ph ph-plug-charging"></i>
+                        <span>Utiliti</span>
+                        <i class="ph ph-caret-down text-xs"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <a href="../utiliti/index.html#air" class="dropdown-item">
+                            <i class="ph ph-drop text-sky-600"></i>
+                            <span>Bil Air (PAIP)</span>
+                        </a>
+                        <a href="../utiliti/index.html#elektrik" class="dropdown-item">
+                            <i class="ph ph-lightning text-amber-600"></i>
+                            <span>Bil Elektrik (TNB)</span>
+                        </a>
+                        <a href="../utiliti/index.html#internet" class="dropdown-item">
+                            <i class="ph ph-wifi-high text-violet-600"></i>
+                            <span>Bil Internet (Unifi)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Laporan Bulanan -->
+                <a href="../tabung-bulanan.html" class="nav-tab">
+                    <i class="ph ph-chart-line"></i>
+                    <span>Laporan Bulanan</span>
+                </a>
+
+                <!-- Tab 6: Perbelanjaan -->
+                <a href="index.html" class="nav-tab active">
+                    <i class="ph ph-chart-bar"></i>
+                    <span>Perbelanjaan</span>
+                </a>
+            </div>
+
+            <!-- RIGHT: Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-blue-600">
+                <i class="ph ph-list text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Popup Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden">
+        <div class="mobile-menu-popup">
+            <div class="px-4 py-3 space-y-2">
+                <a href="../index.html" class="mobile-nav-item">
+                    <i class="ph ph-house mr-2"></i>
+                    Utama
+                </a>
+                <a href="../infaq-pembangunan.html" class="mobile-nav-item">
+                    <i class="ph ph-buildings mr-2"></i>
+                    Projek Pembangunan
+                </a>
+                <a href="../tabung-bulanan.html" class="mobile-nav-item">
+                    <i class="ph ph-chart-line mr-2"></i>
+                    Laporan Bulanan
+                </a>
+                <a href="index.html" class="mobile-nav-item bg-blue-50 text-blue-600">
+                    <i class="ph ph-chart-bar mr-2"></i>
+                    Perbelanjaan
+                </a>
+                <div class="mobile-nav-section">Kaedah Infaq:</div>
+                <a href="../opt/infaq-transfer.html" class="mobile-nav-subitem">
+                    <i class="ph ph-bank mr-2"></i>
+                    Bank Transfer
+                </a>
+                <a href="../opt/infaq-qr.html" class="mobile-nav-subitem">
+                    <i class="ph ph-qr-code mr-2"></i>
+                    QR Pay
+                </a>
+                <a href="../opt/toyyib-pay.html" class="mobile-nav-subitem">
+                    <i class="ph ph-credit-card mr-2"></i>
+                    ToyyibPay
+                </a>
+                <a href="../opt/infaq-tabung.html" class="mobile-nav-subitem">
+                    <i class="ph ph-package mr-2"></i>
+                    Tabung Fizikal
+                </a>
+                <div class="mobile-nav-section">Utiliti:</div>
+                <a href="../utiliti/index.html#air" class="mobile-nav-subitem">
+                    <i class="ph ph-drop mr-2"></i>
+                    Bil Air (PAIP)
+                </a>
+                <a href="../utiliti/index.html#elektrik" class="mobile-nav-subitem">
+                    <i class="ph ph-lightning mr-2"></i>
+                    Bil Elektrik (TNB)
+                </a>
+                <a href="../utiliti/index.html#internet" class="mobile-nav-subitem">
+                    <i class="ph ph-wifi-high mr-2"></i>
+                    Bil Internet (Unifi)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="w-full max-w-5xl mx-auto p-4 md:p-8 flex-grow flex flex-col gap-6">
+
+        <!-- KAD RINGKASAN UTAMA -->
+        <div
+            class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
+                <i class="ph-fill ph-chart-bar text-[15rem]"></i>
+            </div>
+
+            <div class="relative z-10">
+                <h2 class="text-blue-100 text-sm font-medium uppercase tracking-wider mb-1">Jumlah Perbelanjaan Bulan
+                    Ini</h2>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-4xl md:text-5xl font-bold" id="report-month-total">RM 0.00</span>
+                    <span class="text-blue-200 text-lg" id="report-month-name">(...)</span>
+                </div>
+                <p class="mt-4 text-blue-100 text-sm max-w-md">
+                    Data ini dikemaskini secara berkala. Berikut adalah perincian trend perbelanjaan bulanan dan
+                    kumulatif tahunan.
+                </p>
+            </div>
+        </div>
+
+        <!-- GRID CARTA -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- CARTA 1: TREND BULANAN -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                        <i class="ph-fill ph-calendar-week text-blue-500"></i> Trend Bulanan
+                    </h3>
+                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium"
+                        id="report-year-label">Tahun Ini</span>
+                </div>
+                <div class="h-64 w-full">
+                    <canvas id="expenseMonthlyChart"></canvas>
+                </div>
+            </div>
+
+            <!-- CARTA 2: TREND KUMULATIF TAHUNAN -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                        <i class="ph-fill ph-trend-up text-blue-500"></i> Trend Kumulatif Tahunan
+                    </h3>
+                </div>
+                <div class="h-64 w-full">
+                    <canvas id="expenseCumulativeChart"></canvas>
+                </div>
+                <!-- Total Sum Display -->
+                <div class="mt-4 bg-slate-50 border border-slate-100 rounded-xl p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-blue-100 p-2 rounded-lg">
+                            <i class="ph-fill ph-coins text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-slate-600 text-sm">Jumlah Terkumpul Tahun Ini</p>
+                            <p class="text-slate-800 font-bold text-lg" id="current-year-total">RM 0.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PAST YEARS CHARTS SECTION -->
+        <div id="past-years-section" class="hidden">
+            <!-- Section Header -->
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                    <i class="ph-fill ph-clock-counter-clockwise text-blue-500"></i>
+                    Trend Tahun-Tahun Lepas
+                </h3>
+                <span class="text-xs text-slate-500">Data sejarah perbelanjaan</span>
+            </div>
+
+            <!-- Year Selector Dropdown -->
+            <div class="mb-6">
+                <label for="year-selector" class="block text-sm font-medium text-slate-700 mb-2">
+                    Pilih Tahun untuk Paparan:
+                </label>
+                <select
+                    id="year-selector"
+                    class="w-full md:w-64 px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+
+            <!-- Single Full-Width Chart Container -->
+            <div id="past-years-container">
+                <!-- Selected year chart will appear here -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1 mb-2">
+                <i class="ph-fill ph-clock"></i> Data dikemaskini: <span id="last-update"
+                    class="font-medium text-slate-500">...</span>
+            </p>
+            <p class="text-slate-500 text-sm">© <span id="copyright-year">2024</span> Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6) | <a href="https://mamtj6.com" target="_blank" class="text-blue-600 hover:text-blue-700 hover:underline">mamtj6.com</a></p>
+            <p class="text-[10px] text-slate-300 mt-2 uppercase tracking-widest">
+                Version <span id="app-version">v2.1</span>
+            </p>
+        </div>
+    </footer>
+
+
+
+    <!-- Script Logic -->
+    <script src="../script.js"></script>
+    <script>
+        // Initialize report specific logic when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof loadPerbelanjaanReport === 'function') {
+                loadPerbelanjaanReport();
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenuOverlay.classList.toggle('active');
+            });
+
+            // Close on overlay click
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if (e.target === mobileMenuOverlay) {
+                    mobileMenuOverlay.classList.remove('active');
+                }
+            });
+
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
+                    mobileMenuOverlay.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
