@@ -2,8 +2,8 @@
   "projek": {
     "NamaProjek": "Infaq Tabung Bangunan Tambahan MAMTJ6",
     "SasaranKutipan": 250000,
-    "JumlahTerkumpul": 194122,
-    "Peratusan": 77.6
+    "JumlahTerkumpul": 194282,
+    "Peratusan": 77.7
   },
   "paparanHarian": [
     {
@@ -657,5 +657,5 @@
       "keterangan": "Infaq Jemaah (Tunai, 12/07/2026)"
     }
   ],
-  "tarikhKemaskini": "2026-07-12T07:40:28.576Z"
+  "tarikhKemaskini": "2026-07-16T08:18:09.520Z"
 }
