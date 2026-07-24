@@ -7,11 +7,6 @@
   },
   "paparanHarian": [
     {
-      "tarikh": "2022-12-20",
-      "jumlah": 1128,
-      "keterangan": "Kutipan Tabung (Fizikal, 13/12/2024)"
-    },
-    {
       "tarikh": "2024-03-28",
       "jumlah": 0,
       "keterangan": "Pelancaran Tabung (Fizikal)"
@@ -225,6 +220,11 @@
       "tarikh": "2024-12-06",
       "jumlah": 757,
       "keterangan": "Kutipan Tabung (Fizikal, 6/12/2024)"
+    },
+    {
+      "tarikh": "2024-12-20",
+      "jumlah": 1128,
+      "keterangan": "Kutipan Tabung (Fizikal, 13/12/2024)"
     },
     {
       "tarikh": "2024-12-23",
@@ -667,5 +667,5 @@
       "keterangan": "Infaq Jemaah (Tunai, 20/07/2026)"
     }
   ],
-  "tarikhKemaskini": "2026-07-20T13:50:01.348Z"
+  "tarikhKemaskini": "2026-07-24T08:45:05.559Z"
 }
