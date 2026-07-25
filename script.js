@@ -1,4 +1,4 @@
-const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
+const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/dev/refs/heads/main/admin/infaq/data/data.json";
 
 // Version management - Single source of truth
 const APP_VERSION = "3.1.0";
