@@ -6,6 +6,52 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.2.0] - 2026-07-25
+
+### Added — Expense Report Pages
+
+#### New Pages
+- **`perbelanjaan/index.html`**: Cumulative expense report showing current year progress and past-years trend charts via dropdown selector
+- **`perbelanjaan/bulanan.html`**: Monthly expense breakdown with two charts — monthly amounts (line) and running cumulative total (line)
+- Both pages reachable by direct URL; nav tabs on other pages remain disabled ("AKAN DATANG") pending full rollout
+
+#### New Functions in `script.js`
+- **`normalizeYearGraphData(yearData)`**: Defensively dedupes duplicate month labels from `graf` entries and recomputes cumulative totals client-side — handles data anomalies (e.g. tripled 2024 entries from duplicate Perbelanjaan sheet rows)
+- **`loadPerbelanjaanReport()`**: Fetches `perbelanjaan.json` and populates expense report pages
+- **`renderExpenseMonthlyChart(data)`**: Line chart for monthly expense amounts
+- **`renderExpenseCumulativeChart(data)`**: Line chart for year-to-date running cumulative total
+- **`renderPastYearsExpenseCharts()`**, **`renderPastYearExpenseMonthlyChart()`**: Dynamic past-years dropdown and chart injection for expense data
+
+### Changed
+
+#### Data Source Migration
+- **`script.js` line 1**: `jsonDataUrl` migrated from `multimedia-mamtj6/infaq` main repo to `multimedia-mamtj6/dev` repo
+  - Old: `https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json`
+  - New: `https://raw.githubusercontent.com/multimedia-mamtj6/dev/refs/heads/main/admin/infaq/data/data.json`
+- All derived URLs (`monthly.json`, `perbelanjaan.json`, `daily.json`) resolve automatically via `.replace('data.json', '...')`
+- Dev repo data is more current and has cleaner perbelanjaan history
+
+#### Chart Type: Expense Charts Changed to Line
+- `renderExpenseMonthlyChart()`: changed from `type: 'bar'` to `type: 'line'`
+- `renderPastYearExpenseMonthlyChart()`: changed from `type: 'bar'` to `type: 'line'`
+- Consistent with `renderMonthlyChart()` styling across the site
+
+### Technical Details
+
+**Files Modified**:
+- `script.js` line 1 — data source URL
+- `script.js` — new expense chart/report functions added
+- `perbelanjaan/index.html` — new page
+- `perbelanjaan/bulanan.html` — new page
+
+**Data files updated** (`data/` folder pulled from dev repo 2026-07-25):
+- `data/data.json` — `JumlahTerkumpul: 197990`, `Peratusan: 79.2`
+- `data/monthly.json` — restored 2024 graf data, bulan values now full Malay names ("JULAI" vs "JUL")
+- `data/perbelanjaan.json` — 2025 real data + 2023/2024 as zeros (no historical rows in dev sheet)
+- `data/daily.json` — synced, not yet consumed by any frontend page
+
+---
+
 ## [3.1.0] - 2026-06-09
 
 ### Changed — Utility Bill Payment Page (`utiliti/index.html`)

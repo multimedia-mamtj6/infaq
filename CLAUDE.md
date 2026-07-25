@@ -55,54 +55,75 @@ The application follows a simple data-driven architecture:
 
 ### Data Structure
 
-Data is fetched from:
+Data source (single line controls all JSON URLs via `.replace('data.json', '...')`):
 ```javascript
-const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
+// script.js line 1
+const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/dev/refs/heads/main/admin/infaq/data/data.json";
 ```
 
-JSON schema (see DATA_STRUCTURE.md for complete details):
+The dashboard fetches **two files in parallel** (see `loadDashboard()`, script.js line 49):
+- `data.json` → project info only
+- `monthly.json` → all collection statistics
+
+**`data/data.json`** (project block only):
 ```json
 {
   "projek": {
     "NamaProjek": "string",
     "SasaranKutipan": number,
     "JumlahTerkumpul": number,
-    "Peratusan": number
+    "Peratusan": number,
+    "TarikhKemaskini": "ISO 8601"
   },
+  "tarikhKemaskini": "ISO 8601"
+}
+```
+Note: Two timestamps with different purposes — `projek.TarikhKemaskini` = when human updated the sheet (shown in `#status-update`); root `tarikhKemaskini` = when Apps Script synced (shown in `#last-update` footer).
+
+**`data/monthly.json`** (collection statistics):
+```json
+{
   "ringkasan": {
     "kutipan": {
       "bulanIni": { "bulan": "string", "jumlah": number },
       "bulanLepas": { "bulan": "string", "jumlah": number },
-      "tahunIni": { "tahun": "string", "jumlah": number }
+      "tahunIni": { "tahun": number, "jumlah": number },
+      "tahunLepas": { "tahun": number, "jumlah": number }
     }
   },
-  "paparanBulanIni": {
-    "Minggu1": number,
-    "Minggu2": number,
-    "Minggu3": number,
-    "Minggu4": number,
-    "Minggu5": number
-  },
-  "graf": {
-    "2025": {
-      "tahun": "2025",
-      "labels": ["Jan", "Feb", ...],
-      "data": [number, ...]
-    }
-  },
-  "tarikhKemaskini": "ISO 8601 date string"
+  "paparanBulanIni": { "Tahun": number, "Bulan": "string", "Minggu1": number, ..., "Minggu5": number, "JumlahBulanan": number },
+  "paparanBulanLepas": { ... },
+  "graf": { "2024": { "tahun": "2024", "labels": [...], "data": [...] }, "2025": {...}, "2026": {...} },
+  "tarikhKemaskini": "ISO 8601"
 }
 ```
 
+**`data/perbelanjaan.json`** (expense report):
+```json
+{
+  "ringkasan": { "perbelanjaan": { "tahunIni": {...}, "tahunLepas": {...}, "bulanIni": {...}, "bulanLepas": {...} } },
+  "paparanBulanIni": { "Tahun": number, "Bulan": "string", "Jumlah": number, "JumlahKumulatif": number },
+  "paparanBulanLepas": { ... },
+  "graf": { "2025": { "tahun": "2025", "labels": [...], "data": [...], "dataKumulatif": [...] }, ... },
+  "tarikhKemaskini": "ISO 8601"
+}
+```
+
+**`data/daily.json`** — published but not yet consumed by any frontend page. Reserved for future daily tracker.
+
 ### Key Functions in script.js
 
-- `loadDashboard()` - Fetches data and updates dashboard (index.html)
-- `loadReport()` - Fetches data and renders charts (tabung-bulanan.html)
+- `loadDashboard()` - Fetches `data.json` + `monthly.json` in parallel, updates dashboard (index.html)
+- `loadReport()` - Fetches `monthly.json`, renders charts (tabung-bulanan.html)
+- `loadPerbelanjaanReport()` - Fetches `perbelanjaan.json`, renders expense charts (perbelanjaan/bulanan.html)
+- `normalizeYearGraphData(yearData)` - Dedupes duplicate month labels, recomputes cumulative client-side (defensive against Sheets duplicate-row bugs)
 - `formatCurrency(amount)` - Formats numbers as Malaysian Ringgit
 - `set(id, value)` - Safely updates element text content
 - `stopLoading()` - Removes skeleton loading states
 - `renderWeeklyChart(data)` - Renders weekly collection bar chart
 - `renderMonthlyChart(data)` - Renders monthly trend line chart
+- `renderExpenseMonthlyChart(data)` - Renders expense monthly line chart
+- `renderExpenseCumulativeChart(data)` - Renders cumulative expense line chart
 
 ## Page Structure
 
@@ -117,6 +138,11 @@ JSON schema (see DATA_STRUCTURE.md for complete details):
 - `opt/infaq-qr.html` - QR Pay (DuitNow) scanning
 - `opt/toyyib-pay.html` - Online payment (UI only, not yet integrated)
 - `opt/infaq-tabung.html` - Physical donation box with location map
+
+### Expense Report Pages
+- `perbelanjaan/index.html` - Cumulative expense report (current year + past-years dropdown)
+- `perbelanjaan/bulanan.html` - Monthly expense breakdown with line charts
+- Reachable by direct URL only — nav tabs on other pages still show "AKAN DATANG" (intentional)
 
 ### Utility Bill Payment Page (`utiliti/index.html`)
 Allows donors to pay the masjid's utility bills directly via JomPAY as infaq. Three tabs — Air, Elektrik, Internet — each showing the masjid's official account number and JomPAY biller code.
