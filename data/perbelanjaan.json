@@ -10,24 +10,24 @@
         "jumlah": 78152.43000000001
       },
       "bulanIni": {
-        "bulan": "JULAI",
+        "bulan": "OGOS",
         "jumlah": 0
       },
       "bulanLepas": {
-        "bulan": "JUN",
+        "bulan": "JULAI",
         "jumlah": 0
       }
     }
   },
   "paparanBulanIni": {
     "Tahun": 2026,
-    "Bulan": "JULAI",
+    "Bulan": "OGOS",
     "Jumlah": 0,
     "JumlahKumulatif": 0
   },
   "paparanBulanLepas": {
     "Tahun": 2026,
-    "Bulan": "JUN",
+    "Bulan": "JULAI",
     "Jumlah": 0,
     "JumlahKumulatif": 0
   },
@@ -213,5 +213,5 @@
       ]
     }
   },
-  "tarikhKemaskini": "2026-07-24T21:15:20.040Z"
+  "tarikhKemaskini": "2026-08-03T15:44:13.568Z"
 }
