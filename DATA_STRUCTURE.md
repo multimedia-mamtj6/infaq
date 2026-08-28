@@ -33,15 +33,18 @@ graph LR
 
 - **Data Source**: Google Sheets (manually maintained)
 - **Export Format**: JSON
-- **Hosting**: GitHub (raw file URL)
+- **Hosting**: Published from the `multimedia-mamtj6/dev` repo, served in production via Vercel at `dev.mamtj6.com` (raw GitHub URL as fallback)
 - **Update Frequency**: Manual (as needed)
-- **Cache Duration**: 5 minutes (browser auto-refresh)
+- **Cache Duration**: Server sends `Cache-Control: no-store`; site still appends a `?t=` cache-busting query param and auto-refreshes every 5 minutes
 
 ### Data URL
 
 ```javascript
-const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
+const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
 ```
+Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/data.json`.
+
+> **Note**: This doc's "Complete Structure" example below shows the pre-v3.0.0 schema (everything merged into one file). Since v3.0.0, `data.json` only contains `projek` + `tarikhKemaskini` — the rest (`ringkasan`, `paparanBulanIni`, `graf`) moved to `monthly.json`. See [CLAUDE.md](CLAUDE.md) for the current per-file schema until this doc gets a full schema refresh.
 
 ---
 

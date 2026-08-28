@@ -40,7 +40,7 @@ The application follows a simple data-driven architecture:
 
 1. **Data Source**: Google Sheets (manually updated by administrators)
 2. **Data Export**: Sheets exported to JSON format
-3. **Data Hosting**: JSON hosted on GitHub raw URL
+3. **Data Hosting**: JSON published from the `multimedia-mamtj6/dev` repo, served in production via Vercel at `dev.mamtj6.com` (raw GitHub URL as fallback if the Vercel deploy is behind)
 4. **Data Fetching**: `script.js` fetches JSON via Fetch API
 5. **Data Display**: DOM manipulation updates the UI
 6. **Auto-Refresh**: Data refreshes every 5 minutes
@@ -58,8 +58,11 @@ The application follows a simple data-driven architecture:
 Data source (single line controls all JSON URLs via `.replace('data.json', '...')`):
 ```javascript
 // script.js line 1
-const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/dev/refs/heads/main/admin/infaq/data/data.json";
+const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
 ```
+Fallback if the production endpoint 404s or CORS-fails (Vercel deploy lag): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/data.json`.
+
+**Note**: The `display/` kiosk pages (below) do **not** share this variable — each one hardcodes its own separate `jsonDataUrl` in an inline `<script>` block, since they're standalone pages designed to run without depending on `script.js`.
 
 The dashboard fetches **two files in parallel** (see `loadDashboard()`, script.js line 49):
 - `data.json` → project info only
@@ -171,6 +174,15 @@ Allows donors to pay the masjid's utility bills directly via JomPAY as infaq. Th
 - Monthly trends visualization (line chart)
 - Uses Chart.js for rendering
 
+### Kiosk/Display Pages (`display/`)
+Fullscreen standalone signage pages for physical displays at the mosque, reachable via `display/index.html`'s "Menu Paparan Digital" chooser. Each page is self-contained — its own inline `<script>`, own `jsonDataUrl`, own `fetch`/`formatCurrency`/chart config — deliberately **not** importing `script.js`, so a kiosk device isn't coupled to the main site's JS bundle.
+
+- `display/index.html` - Kiosk menu chooser with 3 buttons
+- `display/data-infaq-pembangunan.html` - Fetches `data.json`, project fund progress with slot-machine number animation
+- `display/data-tabung-bulanan.html` - Fetches `monthly.json`, weekly/monthly donation totals + yearly trend chart
+- `display/data-perbelanjaan-bulanan.html` - Fetches `perbelanjaan.json`, monthly expense totals + yearly exact-monthly trend chart (blue line, same styling as `renderExpenseMonthlyChart()` in `script.js`)
+- `display/data-tabung-bulanan-ori.html`, `display/old/*.html` - Orphaned/archived, not linked from any nav — left on legacy URLs intentionally
+
 ## Design System
 
 ### Responsive Breakpoints
@@ -219,6 +231,7 @@ Edit `script.js` line 1:
 ```javascript
 const jsonDataUrl = "YOUR_NEW_URL_HERE";
 ```
+This does **not** repoint the `display/` kiosk pages — each one has its own hardcoded `jsonDataUrl` that must be edited separately (see "Kiosk/Display Pages" above).
 
 ## Testing
 

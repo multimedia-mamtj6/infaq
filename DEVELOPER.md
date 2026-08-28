@@ -142,13 +142,18 @@ graph LR
 
 Three-tab page (Air/Elektrik/Internet) showing masjid's JomPAY biller codes and account numbers so donors can pay utility bills directly as infaq. Tab is activated via URL hash (`#air`, `#elektrik`, `#internet`). Provider logos loaded from `dev.mamtj6.com`.
 
-### Display Pages (Legacy/Future)
+### Display Pages (Kiosk/Signage)
 
-| File | Status |
-|------|--------|
-| `display/infaq-pembangunan.html` | 🔄 To be implemented |
-| `display/tabung-bulanini.html` | 📦 Archive |
-| `display/tabung-bulanlepas.html` | 📦 Archive |
+Standalone fullscreen pages for physical displays — each has its own inline `<script>` and its own `jsonDataUrl`, deliberately not importing `script.js` so a kiosk device isn't coupled to the main site's JS bundle.
+
+| File | Fetches | Status |
+|------|---------|--------|
+| `display/index.html` | — | ✅ Kiosk menu chooser (3 buttons) |
+| `display/data-infaq-pembangunan.html` | `data.json` | ✅ Complete |
+| `display/data-tabung-bulanan.html` | `monthly.json` | ✅ Complete |
+| `display/data-perbelanjaan-bulanan.html` | `perbelanjaan.json` | ✅ Complete |
+| `display/data-tabung-bulanan-ori.html` | `monthly.json` | 📦 Orphaned backup, not linked |
+| `display/old/*.html` (3 files) | `data.json` | 📦 Archived |
 
 ---
 
@@ -289,14 +294,17 @@ xl: 1280px  /* Extra large */
 
 **Current Setup:**
 - Data stored in Google Sheets
-- Manually exported to JSON
-- Hosted on GitHub (raw URL)
+- Manually exported to JSON by Apps Script in the `multimedia-mamtj6/dev` repo
+- Served in production via Vercel at `dev.mamtj6.com` (raw GitHub URL as fallback)
 - Fetched via JavaScript
 
 **Data URL:**
 ```javascript
-const jsonDataUrl = "https://raw.githubusercontent.com/multimedia-mamtj6/infaq/main/data/data.json";
+const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
 ```
+Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/data.json`.
+
+**Note**: `display/data-*.html` kiosk pages each hardcode their own separate `jsonDataUrl` — they don't share this one.
 
 ### Data Structure
 
@@ -592,6 +600,7 @@ See [DATA_STRUCTURE.md](DATA_STRUCTURE.md) for complete schema documentation.
 // In script.js, line 1
 const jsonDataUrl = "YOUR_NEW_URL_HERE";
 ```
+This only repoints `script.js` (and everything that shares it). The `display/data-*.html` kiosk pages each hardcode their own `jsonDataUrl` and must be edited individually.
 
 ### Pre-Deployment Checklist
 

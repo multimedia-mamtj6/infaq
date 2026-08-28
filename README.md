@@ -103,10 +103,15 @@ infaq-mamtj6/
 ├── DEVELOPER.md              # Technical documentation
 ├── USER_GUIDE.md             # User guide (bilingual)
 ├── DATA_STRUCTURE.md         # Data management guide
-└── display/                  # Additional display pages
-    ├── infaq-pembangunan.html
-    ├── tabung-bulanini.html
-    └── tabung-bulanlepas.html
+├── perbelanjaan/              # Expense report pages
+│   ├── index.html
+│   └── bulanan.html
+├── utiliti/                   # Utility bill (JomPAY) payment guide
+└── display/                   # Standalone kiosk/signage pages
+    ├── index.html
+    ├── data-infaq-pembangunan.html
+    ├── data-tabung-bulanan.html
+    └── data-perbelanjaan-bulanan.html
 ```
 
 ---

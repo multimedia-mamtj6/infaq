@@ -6,6 +6,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.3.0] - 2026-08-28
+
+### Added — Expense Kiosk Display Page
+
+- **`display/data-perbelanjaan-bulanan.html`**: New standalone fullscreen kiosk page for expenses, styled like `display/data-tabung-bulanan.html` (same adaptive fullscreen/normal viewport handling). Shows Bulan Ini/Bulan Lepas expense totals (no weekly breakdown — `perbelanjaan.json` has none) and a yearly exact-monthly line chart, styled identically to `renderExpenseMonthlyChart()` in `script.js` (blue `#3b82f6`, flat fill).
+- **`display/index.html`**: Kiosk menu chooser grid changed from 2 to 3 buttons to include the new expense page (blue theme, `ph-chart-bar` icon).
+
+### Changed — Data Source Migrated to Production Endpoint
+
+- **`script.js` line 1**: `jsonDataUrl` migrated from the raw GitHub URL to the production Vercel endpoint:
+  - Old: `https://raw.githubusercontent.com/multimedia-mamtj6/dev/refs/heads/main/admin/infaq/data/data.json`
+  - New: `https://dev.mamtj6.com/admin/infaq/data/data.json`
+  - Verified live: 200 OK with `Cache-Control: no-store` and `Access-Control-Allow-Origin: *` on all 4 JSON files.
+- **`display/data-infaq-pembangunan.html`** and **`display/data-tabung-bulanan.html`**: repointed from the old `multimedia-mamtj6/infaq` repo to the same production endpoint above — these two pages had never been migrated to the `dev` repo in the 3.2.0 migration and were discovered still on the legacy URL via a full-repo audit this session.
+- Left intentionally untouched (orphaned/archived, not linked from any live nav): `home.html`, `display/data-tabung-bulanan-ori.html`, `display/old/*.html`.
+
+### Technical Details
+
+**Files Modified**:
+- `script.js` line 1 — data source URL
+- `display/data-infaq-pembangunan.html`, `display/data-tabung-bulanan.html` — data source URL
+- `display/index.html` — new nav button, grid layout
+- `display/data-perbelanjaan-bulanan.html` — new file
+- `CLAUDE.md`, `DEVELOPER.md`, `DATA_STRUCTURE.md`, `README.md` — updated data source URLs and `display/` folder documentation to match
+
+---
+
 ## [3.2.0] - 2026-07-25
 
 ### Added — Expense Report Pages
