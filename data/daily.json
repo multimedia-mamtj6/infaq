@@ -684,7 +684,7 @@
     {
       "tarikh": "2026-08-15",
       "jumlah": 1256,
-      "keterangan": "Infaq Jemaah (Tunai, 15/08/2026"
+      "keterangan": "Infaq Jemaah (Tunai, 15/08/2026)"
     },
     {
       "tarikh": "2026-08-17",
@@ -695,7 +695,12 @@
       "tarikh": "2026-08-24",
       "jumlah": 847,
       "keterangan": "Tabung (Fizikal, 21/08/2026)"
+    },
+    {
+      "tarikh": "2026-08-30",
+      "jumlah": 500,
+      "keterangan": "Infaq Jemaah (Tunai, 30/08/2026)"
     }
   ],
-  "tarikhKemaskini": "2026-08-24T05:15:02.193Z"
+  "tarikhKemaskini": "2026-08-31T10:25:10.706Z"
 }
