@@ -700,7 +700,12 @@
       "tarikh": "2026-08-30",
       "jumlah": 500,
       "keterangan": "Infaq Jemaah (Tunai, 30/08/2026)"
+    },
+    {
+      "tarikh": "2026-09-01",
+      "jumlah": 1563.3,
+      "keterangan": "Tabung (Fizikal , 28 & 31/8/2026, Syiling 31/8/2026)"
     }
   ],
-  "tarikhKemaskini": "2026-08-31T10:25:10.706Z"
+  "tarikhKemaskini": "2026-09-01T09:59:11.620Z"
 }
