@@ -10,25 +10,25 @@
         "jumlah": 78152.43000000001
       },
       "bulanIni": {
-        "bulan": "OGOS",
+        "bulan": "SEPTEMBER",
         "jumlah": 0
       },
       "bulanLepas": {
-        "bulan": "JULAI",
-        "jumlah": 12125
+        "bulan": "OGOS",
+        "jumlah": 0
       }
     }
   },
   "paparanBulanIni": {
     "Tahun": 2026,
-    "Bulan": "OGOS",
+    "Bulan": "SEPTEMBER",
     "Jumlah": 0,
     "JumlahKumulatif": 95463.5
   },
   "paparanBulanLepas": {
     "Tahun": 2026,
-    "Bulan": "JULAI",
-    "Jumlah": 12125,
+    "Bulan": "OGOS",
+    "Jumlah": 0,
     "JumlahKumulatif": 95463.5
   },
   "graf": {
@@ -213,5 +213,5 @@
       ]
     }
   },
-  "tarikhKemaskini": "2026-08-31T10:25:10.706Z"
+  "tarikhKemaskini": "2026-09-01T09:59:11.620Z"
 }
