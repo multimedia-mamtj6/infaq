@@ -1,4 +1,7 @@
-const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
+const DATA_BASE_URL = "https://dev.mamtj6.com/admin/infaq/data";
+const jsonDataUrl = `${DATA_BASE_URL}/projek-baharu.json`;
+const monthlyDataUrl = `${DATA_BASE_URL}/monthly.json`;
+const perbelanjaanDataUrl = `${DATA_BASE_URL}/perbelanjaan.json`;
 
 // Version management - Single source of truth
 const APP_VERSION = "3.1.0";
@@ -52,7 +55,7 @@ async function loadDashboard() {
         const timestamp = new Date().getTime();
         const [dataResponse, monthlyResponse] = await Promise.all([
             fetch(`${jsonDataUrl}?t=${timestamp}`),
-            fetch(`${jsonDataUrl.replace('data.json', 'monthly.json')}?t=${timestamp}`)
+            fetch(`${monthlyDataUrl}?t=${timestamp}`)
         ]);
 
         if (!dataResponse.ok || !monthlyResponse.ok) throw new Error("Network response was not ok");
@@ -138,7 +141,6 @@ let pastYearChartInstances = {};
 async function loadReport() {
     try {
         // Fetch data from monthly.json instead of data.json
-        const monthlyDataUrl = jsonDataUrl.replace('data.json', 'monthly.json');
         const response = await fetch(`${monthlyDataUrl}?t=${new Date().getTime()}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -473,7 +475,6 @@ function normalizeYearGraphData(yearData) {
 
 async function loadPerbelanjaanReport() {
     try {
-        const perbelanjaanDataUrl = jsonDataUrl.replace('data.json', 'perbelanjaan.json');
         const response = await fetch(`${perbelanjaanDataUrl}?t=${new Date().getTime()}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -792,7 +793,6 @@ let pastYearExpenseMonthlyChartInstances = {};
 
 async function loadPerbelanjaanMonthlyReport() {
     try {
-        const perbelanjaanDataUrl = jsonDataUrl.replace('data.json', 'perbelanjaan.json');
         const response = await fetch(`${perbelanjaanDataUrl}?t=${new Date().getTime()}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();

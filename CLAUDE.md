@@ -64,6 +64,10 @@ Fallback if the production endpoint 404s or CORS-fails (Vercel deploy lag): `htt
 
 **Note**: The `display/` kiosk pages (below) do **not** share this variable — each one hardcodes its own separate `jsonDataUrl` in an inline `<script>` block, since they're standalone pages designed to run without depending on `script.js`.
 
+**Projek Baharu pages**: There are two dedicated pages for a **second, separate project** (the old project stays unchanged on `data.json`'s single `projek` object). Each page is fully self-contained with its own `jsonDataUrl` pointing to the new project's JSON at `https://dev.mamtj6.com/admin/infaq/data/projek-baharu.json`. Both expect a JSON with the same `projek` shape as below:
+- `infaq-pembangunan-baharu.html` — Website page (nav tab "Projek Baharu"). Self-contained inline script (does not use `script.js`), updates `project-*`, `status-update`, `last-update`.
+- `display/data-infaq-pembangunan-baharu.html` — Display/kiosk page (menu button "Projek Baharu" in `display/index.html`). Same slot-machine animation as `display/data-infaq-pembangunan.html`.
+
 The dashboard fetches **two files in parallel** (see `loadDashboard()`, script.js line 49):
 - `data.json` → project info only
 - `monthly.json` → all collection statistics
@@ -177,8 +181,9 @@ Allows donors to pay the masjid's utility bills directly via JomPAY as infaq. Th
 ### Kiosk/Display Pages (`display/`)
 Fullscreen standalone signage pages for physical displays at the mosque, reachable via `display/index.html`'s "Menu Paparan Digital" chooser. Each page is self-contained — its own inline `<script>`, own `jsonDataUrl`, own `fetch`/`formatCurrency`/chart config — deliberately **not** importing `script.js`, so a kiosk device isn't coupled to the main site's JS bundle.
 
-- `display/index.html` - Kiosk menu chooser with 3 buttons
+- `display/index.html` - Kiosk menu chooser with 4 buttons
 - `display/data-infaq-pembangunan.html` - Fetches `data.json`, project fund progress with slot-machine number animation
+- `display/data-infaq-pembangunan-baharu.html` - Fetches `projek-baharu.json` (`https://dev.mamtj6.com/admin/infaq/data/projek-baharu.json`), same slot-machine animation. See "Projek Baharu pages" above.
 - `display/data-tabung-bulanan.html` - Fetches `monthly.json`, weekly/monthly donation totals + yearly trend chart
 - `display/data-perbelanjaan-bulanan.html` - Fetches `perbelanjaan.json`, monthly expense totals + yearly exact-monthly trend chart (blue line, same styling as `renderExpenseMonthlyChart()` in `script.js`)
 - `display/data-tabung-bulanan-ori.html`, `display/old/*.html` - Orphaned/archived, not linked from any nav — left on legacy URLs intentionally
@@ -232,6 +237,13 @@ Edit `script.js` line 1:
 const jsonDataUrl = "YOUR_NEW_URL_HERE";
 ```
 This does **not** repoint the `display/` kiosk pages — each one has its own hardcoded `jsonDataUrl` that must be edited separately (see "Kiosk/Display Pages" above).
+
+### Configuring the Projek Baharu pages
+
+The two **Projek Baharu** pages both read the new project's JSON at:
+- `https://dev.mamtj6.com/admin/infaq/data/projek-baharu.json`
+
+Both expect a JSON with a single `projek` object (`NamaProjek`, `SasaranKutipan`, `JumlahTerkumpul`, `Peratusan`, `TarikhKemaskini`) plus an optional root `tarikhKemaskini`. To change the source, edit the `jsonDataUrl` line in `infaq-pembangunan-baharu.html` and `display/data-infaq-pembangunan-baharu.html`.
 
 ## Testing
 

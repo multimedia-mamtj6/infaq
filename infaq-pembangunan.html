@@ -599,7 +599,80 @@
     </div>
 
     <!-- Scripts -->
-    <script>document.write('<script src="script.js?v=' + Date.now() + '"><\/script>');</script>
+    <script>
+        // ===================================================================
+        //  Self-contained data fetch for Projek Pembangunan (old project).
+        //  This page does NOT use script.js — it fetches its own JSON so it
+        //  stays independent from the main dashboard (index.html).
+        // ===================================================================
+        const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
+
+        function formatCurrency(amount) {
+            if (typeof amount !== 'number') return "RM 0.00";
+            return `RM ${amount.toLocaleString('en-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function set(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value;
+        }
+
+        function stopLoading() {
+            document.querySelectorAll('.skeleton').forEach(el => {
+                el.classList.remove('skeleton');
+                el.classList.add('fade-in');
+            });
+        }
+
+        function initializeFooter() {
+            const yearEl = document.getElementById('copyright-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        }
+
+        async function loadDashboard() {
+            try {
+                const timestamp = new Date().getTime();
+                const response = await fetch(`${jsonDataUrl}?t=${timestamp}`);
+                if (!response.ok) throw new Error("Network response was not ok");
+                const data = await response.json();
+                const p = data.projek;
+
+                set('project-name', p.NamaProjek);
+                set('project-raised', formatCurrency(p.JumlahTerkumpul));
+                set('project-target', formatCurrency(p.SasaranKutipan).replace('.00', ''));
+
+                const bar = document.getElementById('project-bar');
+                const percentageText = document.getElementById('project-percent');
+                if (bar && percentageText) {
+                    setTimeout(() => {
+                        bar.style.width = `${p.Peratusan}%`;
+                        percentageText.textContent = `${p.Peratusan}%`;
+                    }, 100);
+                }
+
+                const projectDateObj = new Date(p.TarikhKemaskini);
+                set('status-update', projectDateObj.toLocaleString('en-US', {
+                    day: '2-digit', month: 'short', year: 'numeric'
+                }));
+
+                const systemDateObj = new Date(data.tarikhKemaskini);
+                set('last-update', systemDateObj.toLocaleString('en-US', {
+                    day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
+                }));
+
+                stopLoading();
+                initializeFooter();
+            } catch (error) {
+                console.error("Error loading data:", error);
+                set('project-name', "Ralat memuatkan data. Sila refresh.");
+                stopLoading();
+                initializeFooter();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+        setInterval(loadDashboard, 300000);
+    </script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script>
         // Lightbox functionality
