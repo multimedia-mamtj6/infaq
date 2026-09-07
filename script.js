@@ -1,5 +1,5 @@
 const DATA_BASE_URL = "https://dev.mamtj6.com/admin/infaq/data";
-const jsonDataUrl = `${DATA_BASE_URL}/projek-baharu.json`;
+const jsonDataUrl = `${DATA_BASE_URL}/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`;
 const monthlyDataUrl = `${DATA_BASE_URL}/monthly.json`;
 const perbelanjaanDataUrl = `${DATA_BASE_URL}/perbelanjaan.json`;
 
