@@ -47,6 +47,8 @@ Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubuse
 
 > **Note**: This doc's "Complete Structure" example below shows the pre-v3.0.0 schema (everything merged into one file). Since v3.0.0, `data.json` only contains `projek` + `tarikhKemaskini` — the rest (`ringkasan`, `paparanBulanIni`, `graf`) moved to `monthly.json`. See [CLAUDE.md](CLAUDE.md) for the current per-file schema until this doc gets a full schema refresh.
 
+> **⚠️ 2026-09-08 Addendum — `projek.TarikhKemaskini` not guaranteed**: The current project source (`projek-perolehan-tanah-perkuburan-...json`) does **NOT** include `TarikhKemaskini` inside the `projek` object — only a root-level `tarikhKemaskini`. The older `data.json` DOES include `projek.TarikhKemaskini`. Different Apps Script exports can have different shapes. **Always verify against the live JSON; code defensively with `projek.TarikhKemaskini || tarikhKemaskini`.**
+
 ---
 
 ## 📝 JSON Data Schema

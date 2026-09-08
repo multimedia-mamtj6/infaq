@@ -72,20 +72,21 @@ The dashboard fetches **two files in parallel** (see `loadDashboard()`, script.j
 - `data.json` → project info only
 - `monthly.json` → all collection statistics
 
-**`data/data.json`** (project block only):
+**Project data file** (what `script.js` and the Baharu pages fetch — the projek-perolehan JSON). **Verified live 2026-09-08:**
 ```json
 {
   "projek": {
     "NamaProjek": "string",
     "SasaranKutipan": number,
     "JumlahTerkumpul": number,
-    "Peratusan": number,
-    "TarikhKemaskini": "ISO 8601"
+    "Peratusan": number
   },
+  "paparanHarian": [ { "tarikh": "string", "jumlah": number, "keterangan": "string" } ],
   "tarikhKemaskini": "ISO 8601"
 }
 ```
-Note: Two timestamps with different purposes — `projek.TarikhKemaskini` = when human updated the sheet (shown in `#status-update`); root `tarikhKemaskini` = when Apps Script synced (shown in `#last-update` footer).
+> **⚠️ IMPORTANT:** This projek-perolehan JSON does **NOT** include `projek.TarikhKemaskini` — only the root `tarikhKemaskini` exists. Any code referencing `projek.TarikhKemaskini` will produce `Invalid Date` (a bug fixed 2026-09-08 in `script.js:101` and `display/data-infaq-pembangunan-baharu.html:390`). The older `data.json` file DOES have `projek.TarikhKemaskini`; different Apps Script exports can have different shapes, so always verify against the live JSON.
+Note: `script.js` falls back safely: `data.projek.TarikhKemaskini || data.tarikhKemaskini` for `#status-update`. Root `tarikhKemaskini` = when Apps Script synced (used for `#last-update` footer).
 
 **`data/monthly.json`** (collection statistics):
 ```json

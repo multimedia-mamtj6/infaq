@@ -98,7 +98,9 @@ async function loadDashboard() {
 
         // --- 3. Timestamps ---
         // Project date for status-update (DATE ONLY - no time)
-        const projectDateObj = new Date(data.projek.TarikhKemaskini);
+        // Falls back to root tarikhKemaskini if projek.TarikhKemaskini is absent
+        const projectDateSource = data.projek.TarikhKemaskini || data.tarikhKemaskini;
+        const projectDateObj = new Date(projectDateSource);
         const projectFormattedDate = projectDateObj.toLocaleString('en-US', {
             day: '2-digit', month: 'short', year: 'numeric'
         });

@@ -32,14 +32,16 @@ https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/pr
     "NamaProjek": "string",
     "SasaranKutipan": number,
     "JumlahTerkumpul": number,
-    "Peratusan": number,
-    "TarikhKemaskini": "ISO 8601"
+    "Peratusan": number
   },
+  "paparanHarian": [ { "tarikh": "string", "jumlah": number, "keterangan": "string" } ],
   "tarikhKemaskini": "ISO 8601"
 }
 ```
 
-**Updated:** 2026-09-07 (switched from `projek-baharu.json`)
+> **⚠️ IMPORTANT (verified live 2026-09-08):** This JSON does **NOT** contain `projek.TarikhKemaskini`. The only timestamp is the root-level `tarikhKemaskini`. Any code referencing `projek.TarikhKemaskini` will get `Invalid Date`. (The original `data.json` file DOES have `projek.TarikhKemaskini` — different JSON files from the Apps Script can have different shapes.)
+
+**Updated:** 2026-09-07 (switched from `projek-baharu.json`); schema note added 2026-09-08
 
 ---
 
@@ -165,4 +167,4 @@ When changing any data source URL:
 
 ---
 
-*Last updated: 2026-09-07*
+*Last updated: 2026-09-08*

@@ -6,6 +6,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.3.1] - 2026-09-08
+
+### Fixed — "Invalid Date" on Projek Baharu Kiosk & Dashboard
+
+#### Bug
+`display/data-infaq-pembangunan-baharu.html` displayed `Kemaskini sehingga: Invalid Date` because the code referenced `fullData.projek.TarikhKemaskini` which does not exist in the projek-perolehan JSON.
+
+Similarly, `script.js` line 101 used `data.projek.TarikhKemaskini` for `#status-update` on `index.html` — same issue after the data URL was switched to the projek-perolehan JSON in v3.3.0.
+
+#### Root Cause
+The projek-perolehan JSON (`projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`) does **not** include `TarikhKemaskini` inside the `projek` object, unlike the original `data.json` which does. The `tarikhKemaskini` timestamp only exists at the root level.
+
+#### Fix
+- **`display/data-infaq-pembangunan-baharu.html` line 390**: Changed `fullData.projek.TarikhKemaskini` → `fullData.tarikhKemaskini`
+- **`script.js` line 101**: Changed `data.projek.TarikhKemaskini` → `data.projek.TarikhKemaskini || data.tarikhKemaskini` (safe fallback for both JSON shapes)
+
+#### Note
+`display/data-infaq-pembangunan.html` (non-baharu) uses `data.json` which **does** have `projek.TarikhKemaskini`, so it is not affected.
+
+### Documentation Corrected
+- Updated JSON schema across `database.md`, `CLAUDE.md`, `DATA_STRUCTURE.md`, and `DEVELOPER.md` to reflect that `projek.TarikhKemaskini` is not guaranteed in all JSON files
+- Updated `DEV_NOTES.md` with detailed session notes and lessons learned
+
+### Technical Details
+
+**Files Modified**:
+- `display/data-infaq-pembangunan-baharu.html` (line 390)
+- `script.js` (line 101)
+- `database.md`, `CLAUDE.md`, `DATA_STRUCTURE.md`, `DEVELOPER.md` — schema corrections
+- `DEV_NOTES.md` — session notes
+
+---
+
 ## [3.3.0] - 2026-08-28
 
 ### Added — Expense Kiosk Display Page

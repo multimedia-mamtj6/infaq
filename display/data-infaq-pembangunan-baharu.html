@@ -14,7 +14,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
+            background-color: #020722;
             color: white;
             text-align: center;
             margin: 0;
@@ -38,7 +38,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            opacity: 0.5;
+            opacity: 0.3;
             z-index: -1;
         }
 
@@ -252,7 +252,7 @@
 <body>
     <div class="container">
         <img src="https://multimedia.mamtj6.com/media/logo/mamtj6-white.webp" alt="Logo" class="logo">
-        <h1>INFAQ PROJEK BAHARU MAMTJ6</h1>
+        <h1>Projek Perolehan Tanah Perkuburan Kariah,<br>Masjid Al-Mukhlisin, Taman Jaya 6 (MAMTJ6)</h1>
         <div class="frame">
             <p>Jumlah derma/sumbangan terkini:</p>
             <p><strong id="jumlahDerma" class="loading">Loading...</strong></p>
@@ -387,7 +387,7 @@
             const jumlahTerkumpulFormatted = formatCurrency(data.JumlahTerkumpul);
             const sasaranFormatted = `RM ${data.SasaranKutipan.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
 
-            const tarikh = new Date(fullData.projek.TarikhKemaskini);
+            const tarikh = new Date(fullData.tarikhKemaskini);
             const tarikhFormatted = tarikh.toLocaleDateString('ms-MY', {
                 day: '2-digit', month: 'long', year: 'numeric'
             });

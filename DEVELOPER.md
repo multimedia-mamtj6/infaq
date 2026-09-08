@@ -316,7 +316,7 @@ Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubuse
 
 See [DATA_STRUCTURE.md](DATA_STRUCTURE.md) for complete schema documentation.
 
-**Quick Reference:**
+**Quick Reference (project data — `projek-perolehan-tanah-...json`):**
 ```json
 {
   "projek": {
@@ -325,30 +325,10 @@ See [DATA_STRUCTURE.md](DATA_STRUCTURE.md) for complete schema documentation.
     "JumlahTerkumpul": number,
     "Peratusan": number
   },
-  "ringkasan": {
-    "kutipan": {
-      "bulanIni": { "bulan": "string", "jumlah": number },
-      "bulanLepas": { "bulan": "string", "jumlah": number },
-      "tahunIni": { "tahun": "string", "jumlah": number }
-    }
-  },
-  "paparanBulanIni": {
-    "Minggu1": number,
-    "Minggu2": number,
-    "Minggu3": number,
-    "Minggu4": number,
-    "Minggu5": number
-  },
-  "graf": {
-    "2025": {
-      "tahun": "2025",
-      "labels": ["Jan", "Feb", ...],
-      "data": [1000, 1500, ...]
-    }
-  },
-  "tarikhKemaskini": "ISO 8601 date string"
+  "tarikhKemaskini": "ISO 8601"
 }
 ```
+> **⚠️ Note (2026-09-08):** This project JSON has **no** `projek.TarikhKemaskini` — only root `tarikhKemaskini`. Coding against `projek.TarikhKemaskini` yields `Invalid Date`; use `projek.TarikhKemaskini || tarikhKemaskini` or just root `tarikhKemaskini`. (The original `data.json` DOES have `projek.TarikhKemaskini`; shapes vary by export.)
 
 ### Updating Data
 
