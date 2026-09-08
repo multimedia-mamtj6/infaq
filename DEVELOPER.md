@@ -495,6 +495,28 @@ See [DATA_STRUCTURE.md](DATA_STRUCTURE.md) for complete schema documentation.
 // Check console for errors
 ```
 
+**Issue: Kiosk amount wraps onto two lines on real phones**
+```javascript
+// #jumlahDerma inherits desktop min-width: 900px — the mobile media
+// query MUST reset it (min-width: 0), or a 900px element sits in a ~370px frame
+// 4em is too wide (~420px) for the ~330px inner frame — use clamp(2em, 11vw, 4em)
+// Add white-space: nowrap to #jumlahDerma, flex-wrap: nowrap to
+// .slot-machine-container, flex-shrink: 0 to digit/static items
+// Fix BOTH twin pages: display/data-infaq-pembangunan.html AND
+// display/data-infaq-pembangunan-baharu.html (identical code)
+// NOTE: desktop device-emulation may NOT reproduce it — verify on a real phone
+```
+
+**Issue: CSS/layout fix not showing on phones after deploy**
+```javascript
+// HTML docs are cached: Cache-Control: max-age=600 via GitHub Pages ->
+// Fastly/Varnish -> Cloudflare edge (verified 2026-09-08)
+// The ?t= buster + 5-min auto-refresh apply to JSON data ONLY, never to HTML
+// (kiosk CSS is inline, so style fixes need a fresh HTML download)
+// Data fixes appear in seconds; layout fixes can lag ~10+ min on phones
+// Fix: hard-refresh or open a fresh tab; don't re-deploy a correct fix
+```
+
 ### Debugging Tips
 
 1. **Use Browser DevTools**

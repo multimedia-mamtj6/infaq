@@ -189,6 +189,12 @@ Fullscreen standalone signage pages for physical displays at the mosque, reachab
 - `display/data-perbelanjaan-bulanan.html` - Fetches `perbelanjaan.json`, monthly expense totals + yearly exact-monthly trend chart (blue line, same styling as `renderExpenseMonthlyChart()` in `script.js`)
 - `display/data-tabung-bulanan-ori.html`, `display/old/*.html` - Orphaned/archived, not linked from any nav — left on legacy URLs intentionally
 
+**Twin-page rule:** `display/data-infaq-pembangunan.html` and `display/data-infaq-pembangunan-baharu.html` are near-identical copies (slot-machine CSS+JS duplicated). Any fix to one MUST be mirrored to the other.
+
+**Kiosk mobile caveat:** these pages are kiosk-first (`font-size: 13em`, `min-width: 900px` for big TV displays). The mobile media query must explicitly undo every desktop-origin rule — mobile `#jumlahDerma` uses `clamp(2em, 11vw, 4em)` + `min-width: 0` + `nowrap` (fixed 2026-09-08 after the amount wrapped on real phones; desktop emulation did not reproduce it — trust on-device screenshots).
+
+**Page caching:** HTML docs serve `Cache-Control: max-age=600` via GitHub Pages → Fastly/Varnish → Cloudflare edge (verified 2026-09-08). The `?t=` buster and 5-min auto-refresh apply to JSON data only, never to the HTML document (kiosk CSS is inline) — so data fixes show in seconds but layout fixes can lag ~10+ min on phones. Hard-refresh / fresh tab when verifying CSS changes.
+
 ## Design System
 
 ### Responsive Breakpoints
@@ -244,7 +250,7 @@ This does **not** repoint the `display/` kiosk pages — each one has its own ha
 The two **Projek Baharu** pages both read the new project's JSON at:
 - `https://dev.mamtj6.com/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`
 
-Both expect a JSON with a single `projek` object (`NamaProjek`, `SasaranKutipan`, `JumlahTerkumpul`, `Peratusan`, `TarikhKemaskini`) plus an optional root `tarikhKemaskini`. To change the source, edit the `jsonDataUrl` line in `infaq-pembangunan-baharu.html`, `display/data-infaq-pembangunan-baharu.html`, **and** `script.js`.
+Both expect a JSON with a single `projek` object (`NamaProjek`, `SasaranKutipan`, `JumlahTerkumpul`, `Peratusan`) plus the root `tarikhKemaskini`. Note `projek.TarikhKemaskini` is NOT present in this JSON (only root `tarikhKemaskini`) — see schema warning above. To change the source, edit the `jsonDataUrl` line in `infaq-pembangunan-baharu.html`, `display/data-infaq-pembangunan-baharu.html`, **and** `script.js`.
 
 ## Testing
 

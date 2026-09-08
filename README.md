@@ -110,6 +110,7 @@ infaq-mamtj6/
 └── display/                   # Standalone kiosk/signage pages
     ├── index.html
     ├── data-infaq-pembangunan.html
+    ├── data-infaq-pembangunan-baharu.html
     ├── data-tabung-bulanan.html
     └── data-perbelanjaan-bulanan.html
 ```

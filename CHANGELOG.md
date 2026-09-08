@@ -6,6 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.3.2] - 2026-09-08
+
+### Fixed — Kiosk Amount Wraps on Real Phones
+
+#### Bug
+On real mobile browsers, `display/data-infaq-pembangunan-baharu.html` rendered the amount on two lines (`RM` / `30,000.00`) inside the blue frame. Desktop device-emulation did not reproduce it.
+
+#### Root Cause
+- `#jumlahDerma` inherited the desktop `min-width: 900px` — the mobile media query changed `font-size` but never reset it, so a 900px-wide element sat inside a ~370px frame.
+- `font-size: 4em` renders `RM 30,000.00` at ~420px wide vs ~330px of inner frame width — mathematically unable to fit on one line.
+- Nothing prevented wrapping: no `nowrap` on `.slot-machine-container`, shrinkable flex items.
+
+#### Fix (applied identically to both twin kiosk pages)
+- Mobile `#jumlahDerma`: `font-size: clamp(2em, 11vw, 4em); min-width: 0; white-space: nowrap;`
+- `.slot-machine-container`: `flex-wrap: nowrap; white-space: nowrap; max-width: 100%;`
+- `.slot-digit-wrapper`, `.slot-static`: `flex-shrink: 0`
+
+### Notes — Page Caching (verified live via `curl -I`, 2026-09-08)
+- HTML docs serve `Cache-Control: max-age=600` through GitHub Pages → Fastly/Varnish → Cloudflare edge. Data JSON is `no-store` + `?t=`-busted + 5-min auto-refresh, but that only busts data, never the HTML document (kiosk CSS is inline). So data fixes appear in seconds while layout fixes can lag ~10+ min on phones — hard-refresh / fresh tab when verifying CSS changes.
+
+### Technical Details
+
+**Files Modified**:
+- `display/data-infaq-pembangunan-baharu.html` (mobile CSS + slot-machine CSS)
+- `display/data-infaq-pembangunan.html` (same fix — twin page, identical code)
+
+---
+
 ## [3.3.1] - 2026-09-08
 
 ### Fixed — "Invalid Date" on Projek Baharu Kiosk & Dashboard
