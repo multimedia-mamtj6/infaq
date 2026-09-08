@@ -180,7 +180,9 @@
             }
            
             #jumlahDerma {
-                font-size: 4em;
+                font-size: clamp(2em, 11vw, 4em);
+                min-width: 0;
+                white-space: nowrap;
             }
  
             .progress-bar {
@@ -211,6 +213,9 @@
         .slot-machine-container {
             display: inline-flex;
             align-items: baseline;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            max-width: 100%;
             gap: 0;
             font-family: 'Oswald', sans-serif;
             line-height: 1;
@@ -222,6 +227,7 @@
             position: relative;
             height: 1em;
             vertical-align: baseline;
+            flex-shrink: 0;
         }
 
         .slot-digit-column {
@@ -238,6 +244,7 @@
 
         .slot-static {
             display: inline-block;
+            flex-shrink: 0;
         }
 
         /* Mobile adjustments */
