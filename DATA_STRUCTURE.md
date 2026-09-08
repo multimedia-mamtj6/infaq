@@ -40,9 +40,10 @@ graph LR
 ### Data URL
 
 ```javascript
-const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
+const DATA_BASE_URL = "https://dev.mamtj6.com/admin/infaq/data";
+const jsonDataUrl = `${DATA_BASE_URL}/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`;
 ```
-Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/data.json`.
+Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`.
 
 > **Note**: This doc's "Complete Structure" example below shows the pre-v3.0.0 schema (everything merged into one file). Since v3.0.0, `data.json` only contains `projek` + `tarikhKemaskini` — the rest (`ringkasan`, `paparanBulanIni`, `graf`) moved to `monthly.json`. See [CLAUDE.md](CLAUDE.md) for the current per-file schema until this doc gets a full schema refresh.
 

@@ -298,13 +298,19 @@ xl: 1280px  /* Extra large */
 - Served in production via Vercel at `dev.mamtj6.com` (raw GitHub URL as fallback)
 - Fetched via JavaScript
 
-**Data URL:**
+**Data URL (as of 2026-09-07):**
 ```javascript
-const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
+const DATA_BASE_URL = "https://dev.mamtj6.com/admin/infaq/data";
+const jsonDataUrl = `${DATA_BASE_URL}/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`;
 ```
-Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/data.json`.
+The project data source was switched from `projek-baharu.json` to the new long-form URL above for the "Projek Perolehan Tanah Perkuburan" project. The old `data.json` URL is no longer used by any page.
 
-**Note**: `display/data-*.html` kiosk pages each hardcode their own separate `jsonDataUrl` — they don't share this one.
+Fallback (if the production endpoint 404s or CORS-fails): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`.
+
+**Note**: `display/data-*.html` kiosk pages each hardcode their own separate `jsonDataUrl` — they don't share this one. When updating the data source, edit ALL THREE locations:
+1. `script.js` line 2 (used by `index.html` and `tabung-bulanan.html`)
+2. `infaq-pembangunan-baharu.html` line 408 (inline script)
+3. `display/data-infaq-pembangunan-baharu.html` line 274 (inline script)
 
 ### Data Structure
 

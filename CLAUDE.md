@@ -57,14 +57,14 @@ The application follows a simple data-driven architecture:
 
 Data source (single line controls all JSON URLs via `.replace('data.json', '...')`):
 ```javascript
-// script.js line 1
-const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/data.json";
+// script.js line 2
+const jsonDataUrl = "https://dev.mamtj6.com/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json";
 ```
-Fallback if the production endpoint 404s or CORS-fails (Vercel deploy lag): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/data.json`.
+Fallback if the production endpoint 404s or CORS-fails (Vercel deploy lag): `https://raw.githubusercontent.com/multimedia-mamtj6/dev/main/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`.
 
 **Note**: The `display/` kiosk pages (below) do **not** share this variable — each one hardcodes its own separate `jsonDataUrl` in an inline `<script>` block, since they're standalone pages designed to run without depending on `script.js`.
 
-**Projek Baharu pages**: There are two dedicated pages for a **second, separate project** (the old project stays unchanged on `data.json`'s single `projek` object). Each page is fully self-contained with its own `jsonDataUrl` pointing to the new project's JSON at `https://dev.mamtj6.com/admin/infaq/data/projek-baharu.json`. Both expect a JSON with the same `projek` shape as below:
+**Projek Baharu pages**: There are two dedicated pages for the project data (formerly called "Projek Baharu", now pointing to the cemetery land acquisition project). Each page is fully self-contained with its own `jsonDataUrl` pointing to `https://dev.mamtj6.com/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`. Both expect a JSON with the same `projek` shape as below. **Note: `script.js` also points to this same URL now** — all three locations were updated on 2026-09-07:
 - `infaq-pembangunan-baharu.html` — Website page (nav tab "Projek Baharu"). Self-contained inline script (does not use `script.js`), updates `project-*`, `status-update`, `last-update`.
 - `display/data-infaq-pembangunan-baharu.html` — Display/kiosk page (menu button "Projek Baharu" in `display/index.html`). Same slot-machine animation as `display/data-infaq-pembangunan.html`.
 
@@ -183,7 +183,7 @@ Fullscreen standalone signage pages for physical displays at the mosque, reachab
 
 - `display/index.html` - Kiosk menu chooser with 4 buttons
 - `display/data-infaq-pembangunan.html` - Fetches `data.json`, project fund progress with slot-machine number animation
-- `display/data-infaq-pembangunan-baharu.html` - Fetches `projek-baharu.json` (`https://dev.mamtj6.com/admin/infaq/data/projek-baharu.json`), same slot-machine animation. See "Projek Baharu pages" above.
+- `display/data-infaq-pembangunan-baharu.html` - Fetches `projek-baharu.json` (`https://dev.mamtj6.com/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`), same slot-machine animation. See "Projek Baharu pages" above.
 - `display/data-tabung-bulanan.html` - Fetches `monthly.json`, weekly/monthly donation totals + yearly trend chart
 - `display/data-perbelanjaan-bulanan.html` - Fetches `perbelanjaan.json`, monthly expense totals + yearly exact-monthly trend chart (blue line, same styling as `renderExpenseMonthlyChart()` in `script.js`)
 - `display/data-tabung-bulanan-ori.html`, `display/old/*.html` - Orphaned/archived, not linked from any nav — left on legacy URLs intentionally
@@ -232,7 +232,7 @@ Edit `infaq-transfer.html`:
 
 ### Changing the Data Source URL
 
-Edit `script.js` line 1:
+Edit `script.js` line 2:
 ```javascript
 const jsonDataUrl = "YOUR_NEW_URL_HERE";
 ```
@@ -241,9 +241,9 @@ This does **not** repoint the `display/` kiosk pages — each one has its own ha
 ### Configuring the Projek Baharu pages
 
 The two **Projek Baharu** pages both read the new project's JSON at:
-- `https://dev.mamtj6.com/admin/infaq/data/projek-baharu.json`
+- `https://dev.mamtj6.com/admin/infaq/data/projek-perolehan-tanah-perkuburan-kariah-masjid-al-mukhlisin-taman-jaya-6_0e3ddefc-abef-4059-82bf-c6777994459c.json`
 
-Both expect a JSON with a single `projek` object (`NamaProjek`, `SasaranKutipan`, `JumlahTerkumpul`, `Peratusan`, `TarikhKemaskini`) plus an optional root `tarikhKemaskini`. To change the source, edit the `jsonDataUrl` line in `infaq-pembangunan-baharu.html` and `display/data-infaq-pembangunan-baharu.html`.
+Both expect a JSON with a single `projek` object (`NamaProjek`, `SasaranKutipan`, `JumlahTerkumpul`, `Peratusan`, `TarikhKemaskini`) plus an optional root `tarikhKemaskini`. To change the source, edit the `jsonDataUrl` line in `infaq-pembangunan-baharu.html`, `display/data-infaq-pembangunan-baharu.html`, **and** `script.js`.
 
 ## Testing
 

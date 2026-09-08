@@ -197,6 +197,13 @@ infaq-mamtj6/
 - 🔄 Multi-language support (English/Malay toggle)
 - 🔄 Dark mode
 
+### Version 3.1 (Current)
+- ✅ Premium split layout implementation
+- ✅ Four donation methods
+- ✅ Real-time dashboard
+- ✅ Monthly reports with charts
+- ✅ Data source switched to Projek Perolehan Tanah Perkuburan (2026-09-07)
+
 ---
 
 ## 🤝 Contributing
@@ -246,9 +253,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Project Statistics
 
-- **Version**: 2.1.0
-- **Last Updated**: November 26, 2024
-- **Total Pages**: 6 main pages + 3 display pages
+- **Version**: 3.1.0
+- **Last Updated**: September 7, 2026
+- **Total Pages**: 6 main pages + 4 display pages
 - **Lines of Code**: ~2,500+
 - **Dependencies**: 3 (all CDN-hosted)
 - **Browser Support**: All modern browsers
